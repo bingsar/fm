@@ -1,0 +1,27 @@
+.container {
+    padding-bottom: 75px;
+}
+.swiper-slide {
+    width: unset;
+}
+.slide__image {
+    display: inline-block;
+}
+.catalog__btn {
+    width: 275px;
+    height: 37px;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FCFCFC;
+    background: #000;
+    border-radius: 50px;
+    margin: 20px auto 0;
+}

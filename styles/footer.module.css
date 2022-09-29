@@ -1,0 +1,227 @@
+.container {
+    padding: 0 30px;
+    margin: 0 auto;
+}
+.contact__wrap {
+    margin: 55px 0 70px 0;
+}
+.logo {
+    display: flex;
+    align-items: flex-start;
+}
+.logo__white {
+    width: 39px;
+    height: 23px;
+}
+.logo__text {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 13px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #FCFCFC;
+    max-width: 66px;
+    margin: 0 0 0 7px;
+}
+.title {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 34px;
+    text-transform: uppercase;
+    color: #FCFCFC;
+    margin: 67px 0 17px 0;
+}
+.subtitle {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FCFCFC;
+    max-width: 206px;
+    margin: 0 0 56px 0;
+}
+.input__item {
+    display: block;
+    background: #000;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid #FFF;
+    width: 100%;
+    margin: 0 0 35px 0;
+    padding: 0 0 6px 0;
+}
+.input__item::placeholder {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #FCFCFC;
+}
+.submit {
+    background: #EB5757;
+    border-radius: 50px;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #FCFCFC;
+    padding: 10px 15px;
+    border: 0;
+    margin:  0 0 24px 0;
+}
+.privacy {
+    display: flex;
+    align-items: center;
+    margin: 0 0 96px 0;
+}
+.checkbox {
+    position: relative;
+    border: 1px solid #FFF;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    margin: 0 10px 0 0;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+.checkbox:checked::after {
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: #FFF;
+}
+.text {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #FCFCFC;
+}
+.link {
+    text-decoration: underline;
+}
+.copyright__wrap {
+    border-top: 1px solid #FFF;
+    padding: 17px 0 57px 0;
+}
+.menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 20px 0;
+}
+.item {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #FCFCFC;
+}
+.copyright {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #FCFCFC;
+}
+
+
+@media (min-width: 768px) {
+    .logo__white {
+        width: 98px;
+        height: 58px;
+    }
+    .logo__text {
+        max-width: 175px;
+        font-size: 31px;
+        line-height: 31px;
+        margin: 0 0 0 18px;
+    }
+    .title {
+        font-size: 80px;
+        line-height: 90px;
+        margin: 148px 0 34px 0;
+    }
+    .subtitle {
+        font-size: 30px;
+        line-height: 38px;
+        max-width: 372px;
+        width: 100%;
+    }
+    .contact__wrap {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin: 144px 0 178px 0;
+    }
+    .input__item {
+        font-size: 18px;
+        line-height: 23px;
+        margin: 0 0 40px 0;
+        padding: 0 0 19px 0;
+    }
+    .contact {
+        width: 40%;
+    }
+    .form {
+        margin: 255px 0 0 0;
+        width: 60%;
+        padding: 0 0 0 30px;
+    }
+    .copyright__wrap {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .item {
+        margin: 0 18px 0 0;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .item:last-of-type {
+        margin: 0;
+    }
+    .copyright {
+        margin: 0 0 0 200px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .submit {
+        margin: 0;
+    }
+    .privacy {
+        margin: 0 0 0 31px;
+    }
+    .btn__privacy_wrap {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1340px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}

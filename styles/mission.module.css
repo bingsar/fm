@@ -1,0 +1,102 @@
+.container {
+    display: block;
+    padding: 0 30px;
+    margin: 0 auto;
+}
+.title {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 34px;
+    text-transform: uppercase;
+    color: #000000;
+    padding: 45px 0 10px 0;
+    border-top: 1px solid #000;
+}
+.text {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    margin: 0 0 20px 0;
+}
+.item__title {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000;
+    padding: 10px 0;
+    border-top: 1px solid #000;
+    cursor: pointer;
+}
+.item__text {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    margin: 5px 0 15px 0;
+}
+.item__image {
+    margin: 0 0 30px 0;
+}
+.title__icon {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+.minus {
+    transform: translateY(-7px);
+}
+.items__wrap {
+    margin: 0 0 56px 0;
+}
+@media (min-width: 768px) {
+    .items {
+        display: flex;
+        align-items: flex-start;
+    }
+    .title {
+        font-size: 110px;
+        line-height: 110px;
+        padding: 16px 0 50px 0;
+    }
+    .text {
+        position: relative;
+        font-size: 28px;
+        line-height: 36px;
+        max-width: 652px;
+        right: 0;
+        margin: 0 0 100px auto;
+    }
+    .item {
+        display: block;
+        padding: 0 20px 0 0;
+    }
+    .item__image {
+        display: block;
+        margin: 0;
+    }
+    .items__wrap {
+        margin: 0 0 277px 0;
+    }
+}
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1340px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}

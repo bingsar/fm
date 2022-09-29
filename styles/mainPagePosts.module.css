@@ -1,0 +1,131 @@
+.grid {
+    display: grid;
+    border-top: 1px solid #000;
+}
+.title {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 34px;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 8px 0 24px 0;
+}
+.item {
+    margin: 0 0 40px 0;
+}
+.item__image {
+    border-radius: 4px;
+    overflow: hidden;
+}
+.item__title {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
+    margin: 9px 0 5px 0;
+}
+.item__text {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    margin: 0 0 16px 0;
+}
+.item__btn {
+    width: 117px;
+    height: 37px;
+    background: #000000;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.btn__text {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: #FCFCFC;
+}
+.btn__icon {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: 320px 1fr;
+    }
+    .title {
+        font-size: 110px;
+        line-height: 110px;
+    }
+    .item__title {
+        font-size: 30px;
+        line-height: 38px;
+        margin: 25px 0 10px 0;
+    }
+    .item__text {
+        font-size: 18px;
+        line-height: 23px;
+        margin:  0 0 25px 0;
+        max-width: 320px;
+    }
+    .items {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: 'management management family'
+                             '. metal metal'
+                             'capital realEstate realEstate';
+        margin: 16px 0 277px 0;
+    }
+    .item {
+        margin: 0 0 150px 20px;
+    }
+    .item:nth-child(1) {
+        grid-area: management;
+    }
+    .item:nth-child(2) {
+        grid-area: family;
+    }
+    .item:nth-child(3) {
+         grid-area: metal;
+    }
+    .item:nth-child(4) {
+        grid-area: capital;
+    }
+    .item:nth-child(5) {
+        grid-area: realEstate;
+    }
+    .item__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 193px;
+        height: 40px;
+    }
+    .btn__text {
+        font-size: 20px;
+        line-height: 38px;
+    }
+    .btn__icon {
+        display: block;
+        width: 8px;
+        height: 8px;
+        background: #FFF;
+        border-radius: 50%;
+        margin: 0 0 0 28px;
+        transition: .3s ease-in-out;
+    }
+    .item__btn:hover .btn__icon {
+        transform: scale(3.5);
+    }
+}

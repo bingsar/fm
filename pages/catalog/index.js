@@ -1,0 +1,63 @@
+import PostCard from "../../components/PostCard";
+import {gql} from "@apollo/client";
+import {client} from "../../lib/apollo";
+
+export default function Catalog({posts}) {
+    return (
+        <>
+            <h1 className="title">
+                Headless WordPress Next.js Starter
+            </h1>
+
+            <p className="description">
+                Get started by editing <code>pages/index.js</code>
+            </p>
+
+            <div className="grid">
+                {
+                    posts.map((post) => {
+                        return (
+                            <PostCard key={post.uri} post={post}></PostCard>
+                        )
+                    })
+                }
+            </div>
+        </>
+    )
+}
+
+
+export async function getStaticProps() {
+
+    const GET_POSTS = gql`
+    query getAllPosts {
+      posts {
+        nodes {
+          categories {
+            nodes {
+              name
+            }
+          }
+          excerpt
+          title
+          featuredImage {
+            node {
+              mediaItemUrl
+            }
+          }
+        }
+      }
+    }
+  `
+
+    const response = await  client.query({
+        query: GET_POSTS
+    })
+
+    const posts = response?.data?.posts?.nodes
+    return {
+        props: {
+            posts
+        }
+    }
+}
