@@ -31,39 +31,39 @@ export default function Home({ posts }) {
     </div>
   )
 }
-
-export async function getStaticProps() {
-
-    const GET_POSTS = gql`
-        query getAllPosts {
-            posts {
-              nodes {
-              categories {
-                nodes {
-                  name
-                }
-              }
-              excerpt
-              title
-              featuredImage {
-                node {
-                  mediaItemUrl
-                }
-              }
-              id
-            }
-          }
-        }                           
-    `
-
-    const response = await  client.query({
-        query: GET_POSTS
-    })
-
-    const posts = response?.data?.posts?.nodes;
-    return {
-        props: {
-            posts
-        }
-    }
-}
+//
+// export async function getStaticProps() {
+//
+//     const GET_POSTS = gql`
+//         query getAllPosts {
+//             posts {
+//               nodes {
+//               categories {
+//                 nodes {
+//                   name
+//                 }
+//               }
+//               excerpt
+//               title
+//               featuredImage {
+//                 node {
+//                   mediaItemUrl
+//                 }
+//               }
+//               id
+//             }
+//           }
+//         }
+//     `
+//
+//     const response = await  client.query({
+//         query: GET_POSTS
+//     })
+//
+//     const posts = response?.data?.posts?.nodes;
+//     return {
+//         props: {
+//             posts
+//         }
+//     }
+// }
