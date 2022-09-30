@@ -48,6 +48,9 @@
     margin: 5px 0 15px 0;
 }
 .item__image {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
     margin: 0 0 30px 0;
 }
 .title__icon {
@@ -91,6 +94,17 @@
     }
     .items__wrap {
         margin: 0 0 277px 0;
+    }
+    .images {
+        position: relative;
+    }
+    .item__image_under {
+        position: absolute;
+        top: 0;
+        z-index: 1;
+    }
+    .item__title {
+        min-width: 320px;
     }
 }
 @media (min-width: 1440px) {

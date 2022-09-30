@@ -3,6 +3,7 @@ import minus from '../../public/minus.svg'
 import plus from '../../public/plus__thin.svg'
 import tailored from '../../public/tailored.jpg'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import {motion} from "framer-motion";
 
 import styles from '../../styles/mission.module.css'
 import {useState} from "react";
@@ -119,9 +120,9 @@ export default function Mission() {
                             </div>
                         </div>
                         <div className={styles.images}>
-                            {isOpenT ? <div className={styles.item__image}><Image src={tailored}></Image></div> : null }
-                            {isOpenP ? <div className={styles.item__image}><Image src={tailored}></Image></div> : null }
-                            {isOpenTr ? <div className={styles.item__image}><Image src={tailored}></Image></div> : null }
+                            {isOpenT ? <div className={styles.item__image}><Image src={tailored}></Image></div> : <div className={styles.item__image_under}><Image src={tailored}></Image></div> }
+                            {isOpenP ? <div className={styles.item__image}><Image src={tailored}></Image></div> : <div className={styles.item__image_under}><Image src={tailored}></Image></div> }
+                            {isOpenTr ? <div className={styles.item__image}><Image src={tailored}></Image></div> : <div className={styles.item__image_under}><Image src={tailored}></Image></div> }
                         </div>
                     </div>
                 }
