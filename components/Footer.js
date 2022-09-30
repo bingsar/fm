@@ -33,7 +33,7 @@ export default function Footer (){
                                 <button className={styles.submit} type={"submit"}>Submit</button>
                                 <div className={styles.privacy}>
                                     <input type="checkbox" className={styles.checkbox} required={true}/>
-                                    <div className={styles.text}>I have read the <a href className={styles.link}>privacy policy</a></div>
+                                    <div className={styles.text}>I have read the <span className={styles.link}>privacy policy</span></div>
                                 </div>
                             </div>
                         </form>
