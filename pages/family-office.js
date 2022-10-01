@@ -11,7 +11,7 @@ export default function Family() {
         <div className="container__wrap">
             <Head>
                 <title>F&M | Family Office</title>
-                <link rel="icon" href="favicon.ico"></link>
+                <link rel="icon" href="logo_fm.svg"></link>
             </Head>
             <Header />
             <main>

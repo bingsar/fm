@@ -15,8 +15,8 @@ export default function Home() {
   return (
     <div className="container__wrap">
       <Head>
-        <title>F&M</title>
-        <link rel="icon" href="favicon.ico"></link>
+        <title>F&M | Real Estate</title>
+        <link rel="icon" href="logo_fm.svg"></link>
       </Head>
         <Header />
         <main>

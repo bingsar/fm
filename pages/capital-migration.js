@@ -12,7 +12,7 @@ export default function CapitalMigration() {
         <div className="container__wrap">
             <Head>
                 <title>F&M | Capital Migration</title>
-                <link rel="icon" href="favicon.ico"></link>
+                <link rel="icon" href="logo_fm.svg"></link>
             </Head>
             <Header />
             <main>

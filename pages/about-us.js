@@ -10,7 +10,7 @@ export default function AboutUs() {
         <div className="container__wrap">
             <Head>
                 <title>F&M | About Us</title>
-                <link rel="icon" href="favicon.ico"></link>
+                <link rel="icon" href="logo_fm.svg"></link>
             </Head>
             <Header />
             <main>
