@@ -25,7 +25,7 @@ export default function CatalogSlider() {
                 pagination={{
                     clickable: true,
                     renderBullet: function(index, className) {
-                        return '<div class="' + className + '">' + "<div class='pagination__number'>" + (index + 1) + '</div>' + '</div>';
+                        return '<div class="' + className + '">' + "<div class='pagination__number'>" + (index+1) + '</div>' + '</div>';
                     }
                 }}
                 id="catalog__swiper"

@@ -73,9 +73,6 @@ main {
     background: #000;
     opacity: 1;
 }
-#catalog__swiper .swiper-wrapper {
-    justify-content: center;
-}
 
 @media (min-width: 768px) {
     .main {
@@ -89,5 +86,8 @@ main {
         width: 100%;
         margin: 0 auto;
         padding: unset;
+    }
+    #catalog__swiper .swiper-wrapper {
+        justify-content: center;
     }
 }
