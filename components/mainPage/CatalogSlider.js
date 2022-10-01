@@ -7,11 +7,11 @@ import slide2 from '../../public/slide2.png'
 import slide3 from '../../public/slide3.png'
 import slide4 from '../../public/slide4.png'
 
-import styles from '../../styles/catalog-slider.module.css'
+import styles from '../../styles/catalogSlider.module.css'
 import 'swiper/css';
 import "swiper/css/pagination";
 
-export default function Catalog__Slider() {
+export default function CatalogSlider() {
 
     const matches = useMediaQuery('(min-width:768px)');
 

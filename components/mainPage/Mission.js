@@ -2,6 +2,8 @@ import Image from "next/image";
 import minus from '../../public/minus.svg'
 import plus from '../../public/plus__thin.svg'
 import tailored from '../../public/tailored.jpg'
+import progressive from '../../public/progressive.jpg'
+import transparent from '../../public/transparent.jpg'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import {motion} from "framer-motion";
 
@@ -16,23 +18,36 @@ export default function Mission() {
     const [isOpenTr, setIsOpenTr] = useState(false)
 
     function openTHandler() {
-        setIsOpenT(!isOpenT)
+        if (!isOpenP && !isOpenTr) {
+            setIsOpenT(true)
+        } else {
+            setIsOpenT(!isOpenT)
+        }
         setIsOpenP(false)
         setIsOpenTr(false)
     }
     function openPHandler() {
+        if (!isOpenT && !isOpenTr) {
+            setIsOpenP(true)
+        } else {
+            setIsOpenP(!isOpenP)
+        }
         setIsOpenT(false)
-        setIsOpenP(!isOpenP)
         setIsOpenTr(false)
     }
     function openTrHandler() {
+        if (!isOpenT && !isOpenP) {
+            setIsOpenTr(true)
+        } else {
+            setIsOpenTr(!isOpenTr)
+        }
         setIsOpenT(false)
         setIsOpenP(false)
-        setIsOpenTr(!isOpenTr)
+
     }
 
     return (
-        <section className={styles.container}>
+        <section className="container">
             <div className={styles.title}>
                 our mission is the constant growth
                 of your wealth.
@@ -67,9 +82,9 @@ export default function Mission() {
                                     {isOpenP ? <div className={styles.minus}><Image src={minus} /></div> : <div className={styles.plus}><Image src={plus} /></div>}
                                 </div>
                             </div>
-                            {isOpenP ? <div className={styles.item__text}>We understand that your values, needs, and goals are unique and create strategies with accurate attention to your aspirations.</div> : null }
+                            {isOpenP ? <div className={styles.item__text}>We constantly keep an eye on new and emerging trends to offer you the best opportunities for growth, whether it comes to management of classic or digital asssets.</div> : null }
                         </div>
-                        {isOpenP ? <div className={styles.item__image}><Image src={tailored}></Image></div> : null }
+                        {isOpenP ? <div className={styles.item__image}><Image src={progressive}></Image></div> : null }
                         <div className={styles.item}>
                             <div className={styles.item__title} onClick={() => openTrHandler()}>
                                 <div className={styles.title__text}>
@@ -79,8 +94,9 @@ export default function Mission() {
                                     {isOpenTr ? <div className={styles.minus}><Image src={minus} /></div> : <div className={styles.plus}><Image src={plus} /></div>}
                                 </div>
                             </div>
-                            {isOpenTr ? <div className={styles.item__text}>We understand that your values, needs, and goals are unique and create strategies with accurate attention to your aspirations.</div> : null }
+                            {isOpenTr ? <div className={styles.item__text}>Knowing from inside and out is the key to make the right decision. We provide you with in-depth insights on all challenges and risks you may have with a strategy.</div> : null }
                         </div>
+                        {isOpenTr ? <div className={styles.item__image}><Image src={transparent}></Image></div> : null }
                     </div>
                     :
                     <div className={styles.items}>
@@ -120,9 +136,9 @@ export default function Mission() {
                             </div>
                         </div>
                         <div className={styles.images}>
-                            {isOpenT ? <div className={styles.item__image}><Image src={tailored}></Image></div> : <div className={styles.item__image_under}><Image src={tailored}></Image></div> }
-                            {isOpenP ? <div className={styles.item__image}><Image src={tailored}></Image></div> : <div className={styles.item__image_under}><Image src={tailored}></Image></div> }
-                            {isOpenTr ? <div className={styles.item__image}><Image src={tailored}></Image></div> : <div className={styles.item__image_under}><Image src={tailored}></Image></div> }
+                            {isOpenT ? <div className={styles.item__image}><Image src={tailored}></Image></div> : null}
+                            {isOpenP ? <div className={styles.item__image}><Image src={progressive}></Image></div> : null }
+                            {isOpenTr ? <div className={styles.item__image}><Image src={transparent}></Image></div> : null}
                         </div>
                     </div>
                 }

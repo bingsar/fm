@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import logo from '/public/logo_fm.svg'
 import globus from '/public/globus.svg'
 
@@ -10,9 +11,11 @@ export default function Navigation() {
             <nav>
                 <div className="container">
                     <div className={styles.top__menu}>
-                        <div className={styles.logo__wrap}>
-                            <Image src={logo}/>
-                        </div>
+                        <Link href="/">
+                            <div className={styles.logo__wrap}>
+                                <Image src={logo}/>
+                            </div>
+                        </Link>
                         <div className={styles.country}>
                             <div className={styles.globus__icon}>
                                 <Image src={globus} />

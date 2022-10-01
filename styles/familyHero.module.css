@@ -1,0 +1,47 @@
+.title {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 34px;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 0 8px 0;
+}
+.title:last-of-type {
+    margin: 0 0 22px 0;
+}
+.subtitle {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    margin: 0 0 46px 0;
+}
+.breadcrumbs {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #808080;
+    margin: 0 0 17px 0;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 110px;
+        line-height: 110px;
+        padding: 56px 0 0 0;
+    }
+    .second__title {
+        padding: 15px 0 50px 0;
+    }
+    .subtitle {
+        font-size: 28px;
+        line-height: 36px;
+        margin:  0 0 78px 0;
+    }
+}

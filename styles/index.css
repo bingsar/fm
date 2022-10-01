@@ -15,7 +15,7 @@ header {
     background: #FFF;
 }
 
-.main {
+main {
     border-radius: 0 0 16px 16px;
     background: #FFF;
 }
@@ -27,6 +27,15 @@ header {
     padding: 0 30px;
     margin: 0 auto;
     background: #FFF;
+}
+
+.link {
+    color: #808080;
+    text-decoration: none;
+    cursor: pointer;
+}
+.link:hover {
+    opacity: .7;
 }
 
 /*CATALOG SWIPER*/

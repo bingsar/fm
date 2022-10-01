@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import inv_management from '../../public/posts__img/main_inv_managment.jpg'
 import family from '../../public/posts__img/family.jpg'
 import metal from '../../public/posts__img/metal.jpg'
@@ -6,6 +7,7 @@ import capital from '../../public/posts__img/capital.jpg'
 import realEstate from '../../public/posts__img/realestate.jpg'
 
 import styles from "../../styles/mainPagePosts.module.css"
+import InvestmentManagment from "../../pages/investment-managment";
 
 export default function MainPagePosts({ post }) {
     return (
@@ -27,14 +29,16 @@ export default function MainPagePosts({ post }) {
                             in current trends to help you to make right investment decisions with outstanding attention to your personal concerns
                             and goals.
                         </div>
-                        <div className={styles.item__btn}>
-                            <div className={styles.btn__text}>
-                                learn more
-                            </div>
-                            <div className={styles.btn__icon}>
+                        <Link href="/investment-managment">
+                            <div className={styles.item__btn}>
+                                <div className={styles.btn__text}>
+                                    learn more
+                                </div>
+                                <div className={styles.btn__icon}>
 
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                     <div className={styles.item}>
                         <div className={styles.item__image}>
@@ -47,14 +51,16 @@ export default function MainPagePosts({ post }) {
                             We develop tailored strategies
                             to encompasses all your family’s needs, effectively protect, growth and transfer your wealth across generations.
                         </div>
-                        <div className={styles.item__btn}>
-                            <div className={styles.btn__text}>
-                                learn more
-                            </div>
-                            <div className={styles.btn__icon}>
+                        <Link href="/family-office">
+                            <div className={styles.item__btn}>
+                                <div className={styles.btn__text}>
+                                    learn more
+                                </div>
+                                <div className={styles.btn__icon}>
 
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                     <div className={styles.item}>
                         <div className={styles.item__image}>
@@ -67,14 +73,16 @@ export default function MainPagePosts({ post }) {
                             We provide all services in the precious metals loop to private individuals – from recycling
                             to trading.
                         </div>
-                        <div className={styles.item__btn}>
-                            <div className={styles.btn__text}>
-                                learn more
-                            </div>
-                            <div className={styles.btn__icon}>
+                        <Link href="/precious-metal-services">
+                            <div className={styles.item__btn}>
+                                <div className={styles.btn__text}>
+                                    learn more
+                                </div>
+                                <div className={styles.btn__icon}>
 
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                     <div className={styles.item}>
                         <div className={styles.item__image}>
@@ -87,14 +95,16 @@ export default function MainPagePosts({ post }) {
                             Our expertise and knowledge
                             of administration, compliance and regulations can help you reach personal and business interests.
                         </div>
-                        <div className={styles.item__btn}>
-                            <div className={styles.btn__text}>
-                                learn more
-                            </div>
-                            <div className={styles.btn__icon}>
+                        <Link href="/capital-migration">
+                            <div className={styles.item__btn}>
+                                <div className={styles.btn__text}>
+                                    learn more
+                                </div>
+                                <div className={styles.btn__icon}>
 
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                     <div className={styles.item}>
                         <div className={styles.item__image}>
@@ -106,14 +116,16 @@ export default function MainPagePosts({ post }) {
                         <div className={styles.item__text}>
                             Using our expertise, we can help you to make the most of your real estate investments and ensure long-term growth potential.
                         </div>
-                        <div className={styles.item__btn}>
-                            <div className={styles.btn__text}>
-                                learn more
-                            </div>
-                            <div className={styles.btn__icon}>
+                        <Link href="/real-estate-investment">
+                            <div className={styles.item__btn}>
+                                <div className={styles.btn__text}>
+                                    learn more
+                                </div>
+                                <div className={styles.btn__icon}>
 
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 </div>
             </div>

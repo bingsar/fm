@@ -99,8 +99,7 @@
         position: relative;
     }
     .item__image_under {
-        position: absolute;
-        top: 0;
+        position: relative;
         z-index: 1;
     }
     .item__title {

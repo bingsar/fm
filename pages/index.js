@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import MainPagePosts from "../components/mainPage/MainPagePosts";
 import Mission from "../components/mainPage/Mission";
-import Catalog__Slider from "../components/mainPage/Catalog__Slider";
+import CatalogSlider from "../components/mainPage/CatalogSlider";
 
 import { client } from "../lib/apollo";
 import { gql } from "@apollo/client";
@@ -11,8 +11,7 @@ import Labels from "../components/mainPage/Labels";
 import Footer from "../components/Footer";
 
 
-
-export default function Home({ posts }) {
+export default function Home() {
   return (
     <div className="container__wrap">
       <Head>
@@ -20,12 +19,12 @@ export default function Home({ posts }) {
         <link rel="icon" href="favicon.ico"></link>
       </Head>
         <Header />
-        <main className="main">
+        <main>
             <Hero />
             <MainPagePosts />
             <Mission />
             <Labels />
-            <Catalog__Slider />
+            <CatalogSlider />
         </main>
         <Footer />
     </div>
