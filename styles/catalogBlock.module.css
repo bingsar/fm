@@ -1,0 +1,208 @@
+.catalog__wrap {
+    display: block;
+    padding: 0 0 50px 0;
+    width: 100%;
+}
+.catalog__items {
+    margin: 40px 0 50px 0;
+}
+.loading {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #000000;
+}
+.item {
+    margin: 0 0 50px 0;
+}
+.item__title {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000;
+    margin: 15px 0 0 0;
+}
+.item__property_type {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #808080;
+    margin: 3px 0 9px 0;
+}
+.catalog__main_image {
+    display: block;
+    position: relative;
+    width: 100%;
+    min-height: 300px;
+}
+.item__country {
+    display: flex;
+    align-items: center;
+}
+.country__icon {
+    margin: 0 7px 0 0;
+}
+.country {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #000000;
+}
+.item__attributes {
+    display: flex;
+    align-items: center;
+    margin: 11px 0 13px 0;
+}
+.item__attribute {
+    display: flex;
+    align-items: center;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #000000;
+}
+.sqm {
+    margin: 0 12px 0 0;
+}
+.sqm__icon {
+    position: relative;
+    top: 2px;
+}
+.sqm__value {
+    margin: 0 0 0 4px;
+}
+.bedrooms {
+    margin: 0 13px 0 0;
+}
+.bedrooms__icon {
+    position: relative;
+    top: 2px;
+}
+.bedrooms__value {
+    margin: 0 6px 0 0;
+}
+.bathrooms__icon {
+    position: relative;
+    top: 2px;
+    margin: 0 0 0 6px;
+}
+.price {
+    display: flex;
+    align-items: center;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #000000;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 10px 0;
+    margin: 0 0 13px 0;
+}
+.price__currency {
+    margin: 0 0 0 14px;
+}
+.item__btn {
+    display: inline-block;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #FCFCFC;
+    padding: 10px 15px;
+    background: #000;
+    border-radius: 50px;
+    width: auto;
+    cursor: pointer;
+}
+.items__more_btn {
+    display: block;
+    width: 100%;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FCFCFC;
+    border-radius: 50px;
+    padding: 10px 0;
+    border: 0;
+    background: #000;
+    cursor: pointer;
+}
+.catalog__main_image img {
+    object-fit: cover;
+    object-position: left;
+}
+
+
+@media (min-width: 768px) {
+    .catalog__items {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
+        max-width: 1000px;
+        border-bottom: 1px solid #000;
+    }
+    .item__gallery {
+        width: 100%;
+    }
+    .item:nth-child(7n+1) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: 'info gallery gallery';
+        grid-column: 1/-1;
+        grid-gap: 20px;
+    }
+    .item:nth-child(7n+1) .item__info {
+        display: block;
+        width: 100%;
+        grid-area: info;
+    }
+    .item:nth-child(7n+1) .item__gallery {
+        display: block;
+        width: 100%;
+        grid-area: gallery;
+    }
+    .slide__image {
+        position: relative;
+        display: block;
+        height: 560px;
+    }
+    .item:not(:nth-child(7n+1)) .item__gallery {
+        display: none;
+    }
+    .slide__image img {
+        object-fit: cover;
+        object-position: center;
+    }
+    .items__more_btn {
+        width: 242px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1440px) {
+    .bedrooms__icon {
+        top: unset;
+    }
+    .bathrooms__icon {
+        top: unset;
+    }
+}

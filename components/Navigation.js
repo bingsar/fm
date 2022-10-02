@@ -32,14 +32,16 @@ export default function Navigation() {
                                 </option>
                             </select>
                         </div>
-                        <div className={styles.catalog__btn}>
-                            <div className={styles.catalog__text}>
-                                Real estate catalogue
-                            </div>
-                            <div className={styles.catalog__icon}>
+                        <Link href="/catalog">
+                            <div className={styles.catalog__btn}>
+                                <div className={styles.catalog__text}>
+                                    Real estate catalogue
+                                </div>
+                                <div className={styles.catalog__icon}>
 
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                         <div className={styles.menu__btn}>
                             Menu
                         </div>

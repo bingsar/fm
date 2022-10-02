@@ -16,7 +16,7 @@ export default function AddPropertyBar() {
     return (
         <AnimatePresence>
             {!isClose && (
-                <motion.div exit={{ height: 0 }} className="container">
+                <motion.div exit={{ height: 0, opacity: 0 }} className="container">
                     <div className={styles.bar}>
                         <div className={styles.plus__btn}>
                             <div className={styles.plus__icon}>

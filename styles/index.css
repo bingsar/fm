@@ -38,7 +38,8 @@ main {
     opacity: .7;
 }
 
-/*CATALOG SWIPER*/
+/* CATALOG SWIPER */
+
 #catalog__swiper .swiper-slide {
     width: unset !important;
 }
@@ -72,6 +73,19 @@ main {
     height: 35px;
     background: #000;
     opacity: 1;
+}
+
+/* ITEM SWIPER */
+.item__swiper .swiper-pagination {
+    bottom: unset !important;
+    top: 10px;
+}
+.item__swiper .swiper-pagination .swiper-pagination-bullet {
+    width: 89px;
+    background: #000000;
+    border-radius: 4px;
+    height: 4px;
+    bottom: unset !important;
 }
 
 @media (min-width: 768px) {

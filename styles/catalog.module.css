@@ -1,0 +1,7 @@
+@media (min-width: 768px) {
+    .catalog__wrap {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+}
