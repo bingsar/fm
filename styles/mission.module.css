@@ -92,6 +92,11 @@
         display: block;
         margin: 0;
     }
+    .item__text {
+        font-size: 18px;
+        line-height: 23px;
+        margin: 5px 0 21px 0;
+    }
     .items__wrap {
         margin: 0 0 277px 0;
     }
