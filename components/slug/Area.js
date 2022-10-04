@@ -7,7 +7,7 @@ import styles from '/styles/specifications.module.css'
 
 export default function Area({ product }) {
     const [isAreaOpen, setAreaOpen] = useState(false)
-    const areaCategory = 76
+    const areaCategory = 94
     function handleAreaClick() {
         setAreaOpen(!isAreaOpen)
     }

@@ -9,7 +9,7 @@ import styles from '/styles/specifications.module.css'
 export default function AdditionalItem({ product }) {
 
     const [isAdditionalsOpen, setAdditionalsOpen] = useState(false)
-    const additionalsCategory = 66
+    const additionalsCategory = 92
     function handleAdditionalsClick() {
         setAdditionalsOpen(!isAdditionalsOpen)
     }

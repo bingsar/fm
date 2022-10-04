@@ -34,8 +34,6 @@ export default function Slug({ product }) {
     const countryCategory = 31
     const propertyTypeCategory = 35
 
-    console.log(product)
-
     const { id, name, image, galleryImages, productCategories, attributes, slug, purchaseNote } = product;
 
     return (
