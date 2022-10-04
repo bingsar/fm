@@ -1,5 +1,5 @@
 module.exports = {
     images: {
-        domains: ['fm.local']
+        domains: ['fm-one.vercel.app']
     },
 }
