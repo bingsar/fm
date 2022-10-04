@@ -34,6 +34,8 @@ export default function Slug({ product }) {
     const countryCategory = 31
     const propertyTypeCategory = 35
 
+    console.log(product)
+
     const { id, name, image, galleryImages, productCategories, attributes, slug, purchaseNote } = product;
 
     return (
@@ -44,12 +46,12 @@ export default function Slug({ product }) {
             </Head>
             <Header />
             <main>
+                { matches ? null :
+                    <div className={styles.breadcrumbs}>
+                        <Link href="/"><a className="link">Home</a></Link>/<Link href="/catalog"><a className="link">Catalog</a></Link>/ { name }
+                    </div>
+                }
                 <section className="container">
-                    { matches ? null :
-                        <div className={styles.breadcrumbs}>
-                            <Link href="/"><a className="link">Home</a></Link>/<Link href="/catalog"><a className="link">Catalog</a></Link>/ { name }
-                        </div>
-                    }
                     <div className={styles.titleAndSliderAndInfo}>
                         <div className={styles.titleAndSlider}>
                             <div className={styles.header__wrap}>

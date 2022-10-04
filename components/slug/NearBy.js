@@ -7,7 +7,7 @@ export default function NearBy({ product }) {
                 Near the object.
             </div>
             <div className={styles.slider}>
-                { product }
+
             </div>
         </div>
     )

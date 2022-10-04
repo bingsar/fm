@@ -1,9 +1,9 @@
 import Image from "next/image";
 import minus from "../../public/minus.svg";
 import plus from "../../public/plus__thin.svg";
-import { useState } from "react";
 
 import styles from "../../styles/specifications.module.css";
+import { useState } from "react";
 
 export default function MainRooms({ product }) {
 
