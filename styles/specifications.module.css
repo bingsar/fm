@@ -1,0 +1,79 @@
+.desc__item_title_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.item {
+    border-top: 1px solid #808080;;
+}
+.item:last-of-type {
+    border-bottom: 1px solid #808080;
+}
+.desc__item_title {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
+    margin: 7px 0 12px 0;
+}
+.desc__item_title_icon_minus {
+    position: relative;
+    bottom: 10px;
+}
+.desc__item_title_icon_plus {
+    position: relative;
+    bottom: 3px;
+}
+.item__mainRooms {
+    display: flex;
+    align-items: center;
+    margin: 0 0 11px 0;
+}
+.item__value {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+    border: 1px solid #000;
+    width: 23px;
+    height: 23px;
+}
+.item__value_checked {
+    position: relative;
+    border: 1px solid #000;
+    width: 23px;
+    height: 23px;
+    background: #FFF;
+}
+.item__value_checked svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.item__name {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 0 0 12px;
+}
+.infrastructure {
+    margin: 0 0 63px 0;
+}
+
+@media (min-width: 768px) {
+
+}

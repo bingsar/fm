@@ -88,9 +88,88 @@ main {
     bottom: unset !important;
 }
 
+/* GALLERY SWIPER */
+.gallery__swiper {
+    position: relative;
+}
+.gallery__swiper .swiper-button-prev {
+    top: unset;
+    bottom: 5px;
+    left: 0;
+}
+.gallery__swiper .swiper-button-next {
+    top: unset;
+    bottom: 5px;
+    right: 0;
+}
+.gallery__swiper .swiper-button-prev:after {
+    font-size: 25px;
+    color: #808080;
+}
+.gallery__swiper .swiper-button-next:after {
+    font-size: 25px;
+    color: #808080;
+}
+.gallery__swiper .swiper-pagination {
+    position: relative;
+    margin: 20px auto 0;
+    display: inline-block;
+    width: auto !important;
+    justify-content: center;
+    left: 50% !important;
+    transform: translateX(-50%);
+}
+.gallery__swiper .swiper-pagination .swiper-pagination-bullet {
+    background: unset;
+    opacity: 1;
+    margin: 0 20px 0 0;
+    width: 35px;
+    height: 35px;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #808080;
+}
+.gallery__swiper .swiper-pagination .swiper-pagination-bullet .pagination__number {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.gallery__swiper .swiper-pagination .swiper-pagination-bullet-active {
+    color: #FCFCFC !important;
+    width: 35px;
+    height: 35px;
+    background: #000;
+    opacity: 1;
+}
+
 @media (min-width: 768px) {
     .main {
         border-radius: 0 0 40px 40px;
+    }
+    .gallery__swiper .swiper-pagination {
+        display: none;
+    }
+    .gallery__swiper .swiper-button-prev {
+        display: none;
+    }
+    .gallery__swiper .swiper-button-next {
+        display: none;
+    }
+    /* GALLERY THUMBS */
+    .gallery__thumbs {
+        margin: 25px 0 107px 0;
+    }
+    .gallery__thumbs .swiper-wrapper .swiper-slide {
+        width: auto !important;
+        margin: 0 20px 0 0;
+    }
+    .gallery__thumbs .swiper-wrapper .swiper-slide:last-of-type {
+        margin: 0;
     }
 }
 

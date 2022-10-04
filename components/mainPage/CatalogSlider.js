@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -51,7 +52,7 @@ export default function CatalogSlider() {
                     </div>
                 </SwiperSlide>
             </Swiper>
-            {!matches ? <div className={styles.catalog__btn}>See all catalog</div> : null}
+            {!matches ? <Link href="/catalog"><div className={styles.catalog__btn}>See all catalog</div></Link> : null}
         </section>
     )
 }

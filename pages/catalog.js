@@ -16,7 +16,7 @@ export default function Catalog() {
         <div className="container__wrap">
             <Head>
                 <title>F&M | Catalog</title>
-                <link rel="icon" href="logo_fm.svg"></link>
+                <link rel="icon" href="/logo_fm.svg"></link>
             </Head>
             <Header />
             <main>

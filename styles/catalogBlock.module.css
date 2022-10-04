@@ -150,6 +150,9 @@
     object-fit: cover;
     object-position: left;
 }
+.item__info {
+    cursor: pointer;
+}
 
 
 @media (min-width: 768px) {
