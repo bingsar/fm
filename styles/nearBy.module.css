@@ -10,3 +10,7 @@
     color: #000000;
     margin: 0 0 15px 0;
 }
+.slide__image {
+    position: relative;
+    height: 300px;
+}

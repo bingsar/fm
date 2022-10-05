@@ -93,7 +93,6 @@ export default function CatalogBlock() {
             <div className={styles.catalog__items}>
                 { products.map((product, index) => {
                     const { id, name, image, galleryImages, productCategories, attributes, slug } = product;
-                    console.log(name + ' ' + id)
                     return (
                         <div className={styles.item} key={id} data-id={index}>
                             <Link href={`/catalog/${slug}`}>
@@ -190,7 +189,6 @@ export default function CatalogBlock() {
                     method="post"
                     onSubmit={(event) => {
                         event.preventDefault();
-                        console.log(data.products?.pageInfo.endCursor)
                         fetchMore({ variables: { after: data.products.pageInfo.endCursor }});
                     }}
                 >
