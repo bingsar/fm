@@ -2,8 +2,10 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from 'react';
+import star from '/public/star.svg'
 import propertyType from '/public/propertyType.svg'
 import address from '/public/address.svg'
+import manager from '/public/michael.jpg'
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import MainRooms from "../../components/slug/MainRooms";
@@ -12,6 +14,9 @@ import Area from "../../components/slug/Area";
 import Infrastructure from "../../components/slug/Infrastructure";
 import Location from "../../components/slug/Location";
 import NearBy from "../../components/slug/NearBy";
+import Info from "../../components/slug/Info";
+import AnyQuestions from "../../components/slug/AnyQuestions";
+import Similar from "../../components/slug/Similar";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
@@ -28,13 +33,12 @@ import styles from '/styles/slug.module.css'
 export default function Slug({ product }) {
 
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
     const matches = useMediaQuery("(min-width: 768px)")
-
     const countryCategory = 31
     const propertyTypeCategory = 35
+    const { id, name, image, galleryImages, productCategories, attributes, slug, purchaseNote, description, productTags } = product;
 
-    const { id, name, image, galleryImages, productCategories, attributes, slug, purchaseNote } = product;
+    let extractedPrice
 
     return (
         <div className="container__wrap">
@@ -44,12 +48,12 @@ export default function Slug({ product }) {
             </Head>
             <Header />
             <main>
-                { matches ? null :
-                    <div className={styles.breadcrumbs}>
-                        <Link href="/"><a className="link">Home</a></Link>/<Link href="/catalog"><a className="link">Catalog</a></Link>/ { name }
-                    </div>
-                }
                 <section className="container">
+                    { matches ? null :
+                        <div className={styles.breadcrumbs}>
+                            <Link href="/"><a className="link">Home</a></Link>/<Link href="/catalog"><a className="link">Estate Catalog</a></Link>/ { name }
+                        </div>
+                    }
                     <div className={styles.titleAndSliderAndInfo}>
                         <div className={styles.titleAndSlider}>
                             <div className={styles.header__wrap}>
@@ -130,40 +134,114 @@ export default function Slug({ product }) {
                         <div className={styles.property__info}>
                             <div className={styles.price__wrap}>
                                 <div className={styles.price}>
-                                    { attributes.edges.map((price) => { if (price.node.name === 'Price') {return price.node.options[0]} }) }
+                                    { attributes.edges.map((price) => {
+                                        if (price.node.name === 'Price') {
+                                            extractedPrice = price.node.options[0]
+                                            return price.node.options[0]
+                                        }
+                                    }) }
                                 </div>
                                 <div className={styles.currency}>
                                     USD
                                 </div>
                             </div>
+                            <div className={styles.square}>
+                                <div className={styles.square__title}>
+                                    Square
+                                </div>
+                                <div className={styles.square__value}>
+                                    { attributes.edges.map((sqm) => {
+                                        if (sqm.node.name === 'sqm') {
+                                            return sqm.node.options[0]
+                                        }
+                                    }) } Sqm
+                                </div>
+                            </div>
+                            <div className={styles.sqmPerM}>
+                                <div className={styles.sqmPerM__title}>
+                                    Price per square meter
+                                </div>
+                                <div className={styles.sqmPerM__value}>
+                                    { attributes.edges.map((sqm) => { if (sqm.node.name === 'sqm') { return extractedPrice / sqm.node.options[0]  } }) } USD
+                                </div>
+                            </div>
+                            <div className={styles.floor}>
+                                <div className={styles.floor__title}>
+                                    Floor / levels
+                                </div>
+                                <div className={styles.floor__value}>
+                                    { attributes.edges.map((floor) => { if (floor.node.name === 'Floor / levels') { return floor.node.options[0]  } }) }
+                                </div>
+                            </div>
+                            { productTags.edges.map((tag, index) => {
+                                return <div className={styles.tags} key={index}>
+                                    <div className={styles.tags__icon}>
+                                        <Image src={star} />
+                                    </div>
+                                    <div className={styles.tags__value}>
+                                        { tag.node.name.replace(/-/g, ' ') }
+                                    </div>
+                                </div>
+                            } ) }
+                            { matches ? <div className={styles.manager}>
+                                <div className={styles.manager__img}>
+                                    <Image src={manager} />
+                                </div>
+                                <div className={styles.manager__info}>
+                                    <div className={styles.manager__title}>
+                                        Object manager
+                                    </div>
+                                    <div className={styles.manager__name}>
+                                        Michael Lee
+                                    </div>
+                                    <div className={styles.manager__btn}>
+                                        <div className={styles.manager__btn_text}>
+                                            call me
+                                        </div>
+                                        <div className={styles.manager__icon}>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                :
+                            null
+                            }
                         </div>
                     </div>
-                    <div className={styles.desc}>
-                        <div className={styles.desc__title}>
-                            Description.
+                    <div className={styles.leftColumn}>
+                        <div className={styles.desc}>
+                            <div className={styles.desc__title}>
+                                Description.
+                            </div>
+                            <div className={styles.desc__text}>
+                                { description }
+                            </div>
                         </div>
-                        <div className={styles.desc__text}>
-                            We provide wealth management advice to institutions and individuals around the world. Our professionals apply intimate knowledge across regions, sectors, and asset classes to curate bespoke solutions and strategies for each client. Every step of the way, we help you make informed decisions to manage and grow your assets and wealth.
+                        <div className={styles.spec}>
+                            <div className={styles.spec__title}>
+                                Specifications.
+                            </div>
+                            <div className={styles.desc__items}>
+                                <MainRooms product={product} />
+                                <AdditionalItem product={product} />
+                                <Area product={product} />
+                            </div>
                         </div>
+                        <div className={styles.infrastruct}>
+                            <div className={styles.spec__title}>
+                                Infrastructure.
+                            </div>
+                        </div>
+                        <Infrastructure product={product} />
+                        <Location />
+                        <NearBy product={product} />
+                        <Info product={product} />
                     </div>
-                    <div className={styles.spec}>
-                        <div className={styles.spec__title}>
-                            Specifications.
-                        </div>
-                        <div className={styles.desc__items}>
-                            <MainRooms product={product} />
-                            <AdditionalItem product={product} />
-                            <Area product={product} />
-                        </div>
-                    </div>
-                    <div className={styles.infrastruct}>
-                        <div className={styles.spec__title}>
-                            Infrastructure.
-                        </div>
-                    </div>
-                    <Infrastructure product={product} />
-                    <Location />
-                    <NearBy product={product} />
+                </section>
+                <AnyQuestions />
+                <section className="container">
+                    <Similar product={product}/>
                 </section>
             </main>
             <Footer />
@@ -175,61 +253,89 @@ export async function getStaticProps({ params }) {
 
     const GET_PRODUCT_BY_URI = gql`
         query getProductBySlug( $id: ID!) {
-          product( id: $id, idType: SLUG ) {
-            attributes {
-              edges {
-                node {
-                  options
-                  name
+            simpleProduct(id: $id, idType: SLUG) {
+                attributes {
+                  edges {
+                    node {
+                      options
+                      name
+                    }
+                  }
                 }
-              }
-            }
-            slug
-            name
-            description(format: RAW)
-            purchaseNote
-            image {
-              mediaItemUrl
-            }
-            galleryImages {
-              edges {
-                node {
-                  mediaItemUrl
-                }
-              }
-            }
-            productCategories(first:100) {
-              edges {
-                node {
-                  parentDatabaseId
-                  name
-                }
-              }
-            }
-            description(format: RAW)
-            shortDescription(format: RAW)
-          }
-          tags {
-            edges {
-              node {
-                name
-              }
-            }
-          }
-          productCategories {
-            edges {
-              node {
-                children {
+                price
+                productTags {
                   edges {
                     node {
                       name
                     }
                   }
                 }
+                downloads {
+                  file
+                  name
+                }
+                crossSell {
+                  edges {
+                    node {
+                      name
+                      slug
+                      productCategories(first: 100) {
+                        edges {
+                          node {
+                            name
+                            parentDatabaseId
+                          }
+                        }
+                      }
+                      attributes {
+                        edges {
+                          node {
+                            name
+                            options
+                          }
+                        }
+                      }
+                      image {
+                        mediaItemUrl
+                        sizes
+                      }
+                    }
+                  }
+                }
+                attributes {
+                  edges {
+                    node {
+                      id
+                    }
+                  }
+                }
+                slug
+                name
+                description(format: RAW)
+                purchaseNote
+                image {
+                  mediaItemUrl
+                }
+                galleryImages {
+                  edges {
+                    node {
+                      mediaItemUrl
+                    }
+                  }
+                }
+                productCategories(first: 100) {
+                  edges {
+                    node {
+                      parentDatabaseId
+                      name
+                    }
+                  }
+                }
+                description(format: RAW)
+                shortDescription(format: RAW)
               }
             }
-          }
-        }
+  
     `
     const response = await client.query({
         query: GET_PRODUCT_BY_URI,
@@ -237,7 +343,7 @@ export async function getStaticProps({ params }) {
             id:params.slug
         }
     })
-    const product = response?.data?.product
+    const product = response?.data?.simpleProduct
     return {
         props: {
             product

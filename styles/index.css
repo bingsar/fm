@@ -206,6 +206,66 @@ main {
     opacity: 1;
 }
 
+/* SIMILAR SWIPER */
+.similar__swiper {
+    position: relative;
+}
+.similar__swiper .swiper-button-prev {
+    top: unset;
+    bottom: 5px;
+    left: 0;
+}
+.similar__swiper .swiper-button-next {
+    top: unset;
+    bottom: 5px;
+    right: 0;
+}
+.similar__swiper .swiper-button-prev:after {
+    font-size: 25px;
+    color: #808080;
+}
+.similar__swiper .swiper-button-next:after {
+    font-size: 25px;
+    color: #808080;
+}
+.similar__swiper .swiper-pagination {
+    position: relative;
+    margin: 20px auto 0;
+    display: inline-block;
+    width: auto !important;
+    justify-content: center;
+    left: 50% !important;
+    transform: translateX(-50%);
+}
+.similar__swiper .swiper-pagination .swiper-pagination-bullet {
+    background: unset;
+    opacity: 1;
+    margin: 0 20px 0 0;
+    width: 35px;
+    height: 35px;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #808080;
+}
+.similar__swiper .swiper-pagination .swiper-pagination-bullet .pagination__number {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.similar__swiper .swiper-pagination .swiper-pagination-bullet-active {
+    color: #FCFCFC !important;
+    width: 35px;
+    height: 35px;
+    background: #000;
+    opacity: 1;
+}
+
+
 @media (min-width: 768px) {
     .main {
         border-radius: 0 0 40px 40px;

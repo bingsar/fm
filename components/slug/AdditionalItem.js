@@ -1,26 +1,36 @@
 import Image from "next/image";
 import minus from "../../public/minus.svg";
 import plus from "../../public/plus__thin.svg";
-import { useState} from "react";
+import { useEffect, useState } from "react";
 import React from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import styles from '/styles/specifications.module.css'
 
 export default function AdditionalItem({ product }) {
 
+    const matches = useMediaQuery('(min-width: 768px)')
+
     const [isAdditionalsOpen, setAdditionalsOpen] = useState(false)
     const additionalsCategory = 92
+
+    useEffect(() => {
+        if (matches) {
+            setAdditionalsOpen(true)
+        }
+    })
+
     function handleAdditionalsClick() {
         setAdditionalsOpen(!isAdditionalsOpen)
     }
 
     return (
         <div className={styles.item}>
-            <div className={styles.desc__item_title_wrap} onClick={() => { handleAdditionalsClick() }}>
+            <div className={styles.desc__item_title_wrap} onClick={() => { !matches ? handleAdditionalsClick() : null }}>
                 <div className={styles.desc__item_title}>
                     Additionals
                 </div>
-                { isAdditionalsOpen ?
+                { !matches ? isAdditionalsOpen ?
                     <div className={styles.desc__item_title_icon_minus}>
                         <Image src={minus} />
                     </div>
@@ -28,6 +38,8 @@ export default function AdditionalItem({ product }) {
                     <div className={styles.desc__item_title_icon_plus}>
                         <Image src={plus} />
                     </div>
+                    :
+                    null
                 }
             </div>
             { isAdditionalsOpen ?

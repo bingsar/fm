@@ -2,23 +2,35 @@ import React, { useState } from "react";
 import Image from "next/image";
 import minus from "../../public/minus.svg";
 import plus from "../../public/plus__thin.svg";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import styles from '/styles/specifications.module.css'
+import {useEffect} from "react";
 
 export default function Area({ product }) {
+    const matches = useMediaQuery('(min-width: 768px)')
     const [isAreaOpen, setAreaOpen] = useState(false)
     const areaCategory = 94
+
+    useEffect(() => {
+        if (matches) {
+            setAreaOpen(true)
+        }
+    })
+
     function handleAreaClick() {
         setAreaOpen(!isAreaOpen)
     }
 
+
+
     return (
         <div className={styles.item}>
-            <div className={styles.desc__item_title_wrap} onClick={() => { handleAreaClick() }}>
+            <div className={styles.desc__item_title_wrap} onClick={() => { !matches ? handleAreaClick() : null }}>
                 <div className={styles.desc__item_title}>
                     The area around
                 </div>
-                { isAreaOpen ?
+                { !matches ? isAreaOpen ?
                     <div className={styles.desc__item_title_icon_minus}>
                         <Image src={minus} />
                     </div>
@@ -26,6 +38,8 @@ export default function Area({ product }) {
                     <div className={styles.desc__item_title_icon_plus}>
                         <Image src={plus} />
                     </div>
+                    :
+                    null
                 }
             </div>
             { isAreaOpen ?

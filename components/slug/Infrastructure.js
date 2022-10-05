@@ -12,7 +12,6 @@ export default function Infrastructure({ product }) {
     return (
         <div className={styles.infrastructure}>
             { product.productCategories.edges.map((category, index) => { if (category.node.parentDatabaseId === infrastructureCategory) {
-                console.log(category)
                 return <div className={styles.item__mainRooms} key={index}>
                     <div className={styles.item__value_checked}>
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">

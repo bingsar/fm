@@ -1,13 +1,17 @@
 import Image from "next/image";
 import minus from "../../public/minus.svg";
 import plus from "../../public/plus__thin.svg";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import styles from "../../styles/specifications.module.css";
 import { useState } from "react";
 
 export default function MainRooms({ product }) {
 
+    const matches = useMediaQuery('(min-width: 768px)')
+
     const [isMainRoomsOpen, setMainRoomsOpen] = useState(true)
+
     function handleMainRoomsClick() {
         setMainRoomsOpen(!isMainRoomsOpen)
     }
@@ -15,11 +19,11 @@ export default function MainRooms({ product }) {
 
     return (
         <div className={styles.item}>
-            <div className={styles.desc__item_title_wrap} onClick={() => { handleMainRoomsClick() }}>
+            <div className={styles.desc__item_title_wrap} onClick={() => { !matches ? handleMainRoomsClick() : null }}>
                 <div className={styles.desc__item_title}>
                     Main rooms
                 </div>
-                { isMainRoomsOpen ?
+                { !matches ? isMainRoomsOpen ?
                     <div className={styles.desc__item_title_icon_minus}>
                         <Image src={minus} />
                     </div>
@@ -27,6 +31,8 @@ export default function MainRooms({ product }) {
                     <div className={styles.desc__item_title_icon_plus}>
                         <Image src={plus} />
                     </div>
+                    :
+                    null
                 }
             </div>
             { isMainRoomsOpen ?

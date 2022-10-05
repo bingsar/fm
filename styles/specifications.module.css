@@ -75,5 +75,34 @@
 }
 
 @media (min-width: 768px) {
-
+    .item {
+        border-top: 0;
+    }
+    .desc__item_title_wrap {
+        cursor: unset;
+    }
+    .desc__item_title {
+        margin: 7px 0 20px 0;;
+    }
+    .items {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: 0 0 85px 0;
+    }
+    .item__name {
+        font-size: 16px;
+        line-height: 21px;
+    }
+    .item__mainRooms {
+        margin: 0 0 15px 0;
+    }
+    .infrastructure {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border-bottom: 1px solid #000;
+        padding: 0 0 140px 0;
+    }
+    .infrastructure {
+        margin: 0;
+    }
 }

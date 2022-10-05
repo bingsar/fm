@@ -1,0 +1,169 @@
+.similar {
+    padding: 54px 0 60px 0;
+}
+.title {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 34px;
+    text-transform: uppercase;
+    color: #000000;
+    margin:  0 0 22px 0;
+}
+.slide__image {
+    position: relative;
+    display: block;
+    height: 131px;
+}
+.similar__title {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    margin: 6px 0 1px 0;
+}
+.similar__type {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #808080;
+    margin:  0 0 6px 0;
+}
+.slide__image img {
+    object-fit: cover;
+    object-position: left;
+}
+.item__country {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px 0;
+}
+.country__icon {
+    width: 16px;
+    height: 16px;
+    margin: 0 7px 0 0;
+}
+.country {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #000000;
+}
+.price {
+    display: flex;
+    align-items: center;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #000000;
+    padding: 1px 0 3px 0;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+.price__value {
+    margin: 0 15px 0 0;
+}
+.slide {
+    margin: 0 0 35px 0;
+}
+.item__attributes {
+    display: flex;
+    align-items: center;
+    margin: 11px 0 13px 0;
+}
+.item__attribute {
+    display: flex;
+    align-items: center;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #000000;
+}
+.sqm {
+    margin: 0 12px 0 0;
+}
+.sqm__icon {
+    position: relative;
+    top: 2px;
+}
+.sqm__value {
+    margin: 0 0 0 4px;
+}
+.bedrooms {
+    margin: 0 13px 0 0;
+}
+.bedrooms__icon {
+    position: relative;
+    top: 2px;
+}
+.bedrooms__value {
+    margin: 0 6px 0 0;
+}
+.bathrooms__icon {
+    position: relative;
+    top: 2px;
+    margin: 0 0 0 6px;
+}
+.slide {
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .similar {
+        padding: 121px 0 150px 0;
+    }
+    .title {
+        font-size: 110px;
+        line-height: 110px;
+        margin: 0 0 32px 0;
+    }
+    .slide__image {
+        position: relative;
+        display: block;
+        height: 200px;
+    }
+    .country__icon {
+        width: 19px;
+        height: 19px;
+    }
+    .price {
+        font-size: 20px;
+        line-height: 20px;
+        padding: 12px 0;
+    }
+    .item__attribute {
+        margin: 0 0 29px 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    .slide__image {
+        height: 350px;
+    }
+    .similar__title {
+        font-size: 30px;
+        line-height: 38px;
+        margin: 21px 0 1px 0;
+    }
+    .similar__type {
+        margin: 0 0 24px 0;
+        font-size: 16px;
+        line-height: 21px;
+    }
+    .item__country {
+        font-size: 16px;
+        line-height: 17px;
+        margin: 0 0 14px 0;
+    }
+}
