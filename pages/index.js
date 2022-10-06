@@ -5,8 +5,6 @@ import MainPagePosts from "../components/mainPage/MainPagePosts";
 import Mission from "../components/mainPage/Mission";
 import CatalogSlider from "../components/mainPage/CatalogSlider";
 
-import { client } from "../lib/apollo";
-import { gql } from "@apollo/client";
 import Labels from "../components/mainPage/Labels";
 import Footer from "../components/Footer";
 
@@ -30,39 +28,3 @@ export default function Home() {
     </div>
   )
 }
-//
-// export async function getStaticProps() {
-//
-//     const GET_POSTS = gql`
-//         query getAllPosts {
-//             posts {
-//               nodes {
-//               categories {
-//                 nodes {
-//                   name
-//                 }
-//               }
-//               excerpt
-//               title
-//               featuredImage {
-//                 node {
-//                   mediaItemUrl
-//                 }
-//               }
-//               id
-//             }
-//           }
-//         }
-//     `
-//
-//     const response = await  client.query({
-//         query: GET_POSTS
-//     })
-//
-//     const posts = response?.data?.posts?.nodes;
-//     return {
-//         props: {
-//             posts
-//         }
-//     }
-// }

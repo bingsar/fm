@@ -5,17 +5,37 @@ import sqm from '/public/sqm.svg'
 import bedroom from '/public/bedroom.svg'
 import bathroom from '/public/bathroom.svg'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import {Navigation, Pagination} from 'swiper';
+import { Pagination } from 'swiper';
+import {client} from "../../lib/apollo";
 import { useQuery, gql } from "@apollo/client";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import 'swiper/css';
 import "swiper/css/pagination";
 import styles from '/styles/catalogBlock.module.css'
+import arrow__black from "../../public/arrow__black.svg";
+import {useEffect, useState} from "react";
 
-const GET_PRODUCTS = gql`
-        query getAllProducts($first: Int!, $after: String) {
-          products(first: $first, after: $after) {
+export default function CatalogBlock({ filter }) {
+
+    const [countriesId, setCountriesId] = useState([])
+
+    function handleCountryCheck(countryId) {
+        { countriesId.includes(countryId) ? setCountriesId(countriesId.filter(e => e !== countryId)) : setCountriesId([...countriesId, countryId]) }
+    }
+
+    useEffect(() => {
+        console.log(countriesId)
+        client.refetchQueries({
+            include: [GET_PRODUCTS],
+        });
+        console.log('refetched')
+    }, [countriesId])
+
+
+    const GET_PRODUCTS = gql`
+        query getAllProducts($first: Int!, $after: String, $categoryId: [Int]) {
+          products(first: $first, after: $after, where: {categoryIdIn: $categoryId}) {
             pageInfo {
               hasNextPage
               endCursor
@@ -35,11 +55,12 @@ const GET_PRODUCTS = gql`
                     }
                   }
                 }
-                productCategories {
+                productCategories(first: 1000) {
                   edges {
                     node {
                       name
                       parentDatabaseId
+                      databaseId
                     }
                   }
                 }
@@ -57,27 +78,24 @@ const GET_PRODUCTS = gql`
         }
     `
 
-const BATCH_SIZE = 8;
+    const BATCH_SIZE = 8;
 
-
-
-export default function CatalogBlock() {
+    const { productCategories, attributes } = filter
 
     const matches = useMediaQuery('(min-width:768px)')
     const matches1440 = useMediaQuery('(min-width:1440px)')
 
     const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
-        variables: { first: BATCH_SIZE, after: null }
+        variables: { first: BATCH_SIZE, after: null, categoryId: countriesId}
     });
 
     if (error) {
+        console.log(error)
         return <p>Sorry, an error has occurred. Please reload the page.</p>;
     }
-
     if (!data && loading) {
         return <p className={styles.loading}>Loading...</p>;
     }
-
     if (!data?.products.edges.length) {
         return <p>No posts have been published.</p>;
     }
@@ -89,10 +107,13 @@ export default function CatalogBlock() {
     const propertyTypeCategory = 35
 
     return (
+        <>
         <div className={styles.catalog__wrap}>
             <div className={styles.catalog__items}>
                 { products.map((product, index) => {
+
                     const { id, name, image, galleryImages, productCategories, attributes, slug } = product;
+
                     return (
                         <div className={styles.item} key={id} data-id={index}>
                             <Link href={`/catalog/${slug}`}>
@@ -200,6 +221,63 @@ export default function CatalogBlock() {
                 ""
             )}
         </div>
+        <div className={styles.sidebar}>
+            <div className={styles.filter}>
+                <div className={styles.drop_bar}>
+                    <div className={styles.filter__title}>
+                        country
+                    </div>
+                    <div className={styles.clear}>
+                        Clear
+                    </div>
+                    <div className={styles.filter__icon}>
+                        <Image src={arrow__black} />
+                    </div>
+                </div>
+                <div className={styles.filter__list}>
+                    { productCategories.edges.map((category, index) => {
+                        if (category.node.parentDatabaseId === countryCategory) {
+                            return <div className={styles.filter__item} key={index}>
+                                <div className={styles.filter__name}>
+                                    { category.node.name }
+                                </div>
+                                <div className={styles.filter__checkbox} onClick={() => handleCountryCheck(category.node.databaseId)}>
+                                    { countriesId.map((id, index) => { if (id === category.node.databaseId) { return <div key={index} className={styles.filter__checkbox_checked}/> } }) }
+                                </div>
+                            </div>
+                        }
+                    })}
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.drop_bar}>
+                    <div className={styles.filter__title}>
+                        Price
+                    </div>
+                    <div className={styles.clear}>
+                        Clear
+                    </div>
+                    <div className={styles.filter__icon}>
+                        <Image src={arrow__black} />
+                    </div>
+                </div>
+                <div className={styles.filter__interval}>
+                    <div className={styles.number__input}>
+                        <input type="number" />
+                        <div className={styles.min}>
+                            min
+                        </div>
+                    </div>
+                    <div className={styles.filter__checkbox}>
+                        <input type="number"/>
+                        <div className={styles.max}>
+                            max
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </>
         )
 
 }

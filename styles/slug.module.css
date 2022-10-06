@@ -233,13 +233,16 @@
 }
 
 @media (min-width: 768px) {
+    .breadcrumbs {
+        padding: 11px 0 0 0;
+    }
     .leftColumn {
         max-width: calc(100vw - 320px);
     }
     .title {
         font-size: 35px;
         line-height: 44px;
-        margin: 55px 0 41px 0;
+        margin: 35px 0 41px 0;
     }
     .property__props {
         margin: 0 0 15px 0;

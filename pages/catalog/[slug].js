@@ -49,11 +49,9 @@ export default function Slug({ product }) {
             <Header />
             <main>
                 <section className="container">
-                    { matches ? null :
-                        <div className={styles.breadcrumbs}>
-                            <Link href="/"><a className="link">Home</a></Link>/<Link href="/catalog"><a className="link">Estate Catalog</a></Link>/ { name }
-                        </div>
-                    }
+                    <div className={styles.breadcrumbs}>
+                        <Link href="/"><a className="link">Home</a></Link>/<Link href="/catalog"><a className="link">Estate Catalog</a></Link>/ { name }
+                    </div>
                     <div className={styles.titleAndSliderAndInfo}>
                         <div className={styles.titleAndSlider}>
                             <div className={styles.header__wrap}>
@@ -162,7 +160,7 @@ export default function Slug({ product }) {
                                     Price per square meter
                                 </div>
                                 <div className={styles.sqmPerM__value}>
-                                    { attributes.edges.map((sqm) => { if (sqm.node.name === 'sqm') { return extractedPrice / sqm.node.options[0]  } }) } USD
+                                    { attributes.edges.map((sqm) => { if (sqm.node.name === 'sqm') { return (extractedPrice / sqm.node.options[0]).toFixed(2)  } }) } USD
                                 </div>
                             </div>
                             <div className={styles.floor}>

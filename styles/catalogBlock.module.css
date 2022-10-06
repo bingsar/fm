@@ -153,7 +153,76 @@
 .item__info {
     cursor: pointer;
 }
+/*FILTER*/
+.sidebar {
+    max-width: 320px;
+    width: 50%;
+    margin: 40px 0 0 20px;
+}
+.filter {
 
+}
+.drop_bar {
+    display: flex;
+    align-items: center;
+    height: 53px;
+}
+.filter__title {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    text-transform: uppercase;
+    color: #000;
+    margin: 0 0 0 13px;
+}
+.clear {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #808080;
+    margin: 0 36px 0 auto;
+}
+.filter__icon {
+    margin: 0 22px 0 0;
+}
+.filter__list {
+    margin: 0 0 15px;
+}
+.filter__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 13px;
+    height: 40px;
+}
+.filter__name {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
+}
+.filter__checkbox {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+.filter__checkbox_checked {
+    position: absolute;
+    background: #000;
+    width: 8px;
+    height: 8px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 @media (min-width: 768px) {
     .catalog__items {

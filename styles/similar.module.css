@@ -105,15 +105,16 @@
 }
 .bedrooms__icon {
     position: relative;
-    top: 2px;
 }
 .bedrooms__value {
-    margin: 0 6px 0 0;
+    margin: 0 6px 0 10px;
 }
 .bathrooms__icon {
     position: relative;
-    top: 2px;
     margin: 0 0 0 6px;
+}
+.bathrooms__value {
+    margin: 0 0 0 10px;
 }
 .slide {
     cursor: pointer;

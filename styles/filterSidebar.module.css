@@ -3,10 +3,12 @@
     width: 50%;
     margin: 40px 0 0 20px;
 }
-.country__fiter {
+.country__filter {
+
+}
+.country__drop_bar {
     display: flex;
     align-items: center;
-    background: #000;
     height: 53px;
 }
 .country__title {
@@ -16,7 +18,7 @@
     font-size: 20px;
     line-height: 26px;
     text-transform: uppercase;
-    color: #FCFCFC;
+    color: #000;
     margin: 0 0 0 13px;
 }
 .country__clear {
@@ -30,4 +32,22 @@
 }
 .country__icon {
     margin: 0 22px 0 0;
+}
+.country__list {
+    margin: 0 0 15px;
+}
+.country__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 13px;
+    height: 40px;
+}
+.country__name {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
 }
