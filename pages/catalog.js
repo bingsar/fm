@@ -46,7 +46,22 @@ export async function getStaticProps() {
                     databaseId
                   }
                 }
-              }
+            }
+            products(first: 100) {
+                edges {
+                  node {
+                    attributes {
+                      edges {
+                        node {
+                          attributeId
+                          name
+                          options
+                        }
+                      }
+                    }
+                  }
+                }
+            }
         }
     `
 

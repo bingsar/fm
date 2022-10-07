@@ -159,13 +159,32 @@
     width: 50%;
     margin: 40px 0 0 20px;
 }
-.filter {
-
+.filter__wrap {
+    position: relative;
 }
-.drop_bar {
+.drop__bar {
     display: flex;
+    position: relative;
     align-items: center;
+    justify-content: space-between;
     height: 53px;
+    background: #FCFCFC;
+    border-top: 1px solid #000;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+}
+.drop__bar:hover {
+    background: #F9F8F8;
+    transition: .2s ease-in-out;
+}
+.drop__bar_picked {
+    background: #000;
+}
+.drop__bar_picked:hover {
+    background: #282828;
+}
+.drop__bar_picked:hover .clear {
+    color: #FFF;
 }
 .filter__title {
     font-family: 'KoHo', sans-serif;
@@ -177,7 +196,14 @@
     color: #000;
     margin: 0 0 0 13px;
 }
+.filter__title_picked {
+    color: #FFF;
+}
 .clear {
+    position: absolute;
+    right: 70px;
+    top: 17px;
+    z-index: 100;
     font-family: 'KoHo', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -186,8 +212,17 @@
     color: #808080;
     margin: 0 36px 0 auto;
 }
+.clear:hover {
+    color: #FFF;
+}
 .filter__icon {
     margin: 0 22px 0 0;
+    transition: .2s ease-in-out;
+}
+.filter__icon_open {
+    margin: 0 22px 0 0;
+    transform: scale(1, -1) ;
+    transition: .2s ease-in-out;
 }
 .filter__list {
     margin: 0 0 15px;
@@ -196,8 +231,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 13px;
+    padding: 0 23px 0 13px;
     height: 40px;
+    cursor: pointer;
+}
+.filter__item:nth-child(even) {
+    background: #F9F8F8;
+}
+.filter__item_picked {
+    background: #000;
+    border-radius: 4px;
 }
 .filter__name {
     font-family: 'KoHo', sans-serif;
@@ -223,8 +266,57 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
+.filter__interval {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 0 13px;
+    position: relative;
+}
+.currency {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    margin: 9px 0 15px 13px;
+}
+.number__input {
+    width: 50%;
+}
+.input__number {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    text-transform: uppercase;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    height: 39px;
+    width: 100%;
+}
+.number__input:last-of-type {
+    margin: 0 0 0 6px;
+}
+.label {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #808080;
+    text-transform: capitalize;
+    margin: 4px 0 0 0;
+}
+.input__number_picked {
+    background: #000;
+    color: #FCFCFC;
+}
 @media (min-width: 768px) {
+    .wrapper {
+        display: block;
+    }
     .catalog__items {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;

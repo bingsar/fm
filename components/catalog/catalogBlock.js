@@ -7,35 +7,98 @@ import bathroom from '/public/bathroom.svg'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import {client} from "../../lib/apollo";
-import { useQuery, gql } from "@apollo/client";
+import {useQuery, gql, empty} from "@apollo/client";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import 'swiper/css';
 import "swiper/css/pagination";
 import styles from '/styles/catalogBlock.module.css'
 import arrow__black from "../../public/arrow__black.svg";
+import arrow__white from "../../public/arrow__white.svg";
 import {useEffect, useState} from "react";
 
 export default function CatalogBlock({ filter }) {
 
     const [countriesId, setCountriesId] = useState([])
+    const [isCountryListOpen, setCountryListOpen] = useState(true)
+    const [isCountryItemPicked, setCountryItemPicked] = useState(false)
+    
+    const [isPriceListOpen, setPriceListOpen] = useState(false)
+    const [isMinPriceItemPicked, setMinPriceItemPicked] = useState(false)
+    const [isMaxPriceItemPicked, setMaxPriceItemPicked] = useState(false)
+    const [minPrice, setMinPrice] = useState('')
+    const [maxPrice, setMaxPrice] = useState('')
+    let minFloat = parseFloat(minPrice)
+    let maxFloat = parseFloat(maxPrice)
+
+    const [typeId, setTypeId] = useState([])
+    const [isTypeListOpen, setTypeListOpen] = useState(false)
+    const [isTypeItemPicked, setTypeItemPicked] = useState(false)
+
+
+
+    useEffect(() => {
+        { countriesId.length > 0 ? setCountryItemPicked(true) : setCountryItemPicked(false)}
+        { typeId.length > 0 ? setTypeItemPicked(true) : setTypeItemPicked(false)}
+        { !isNaN(minFloat) ? setMinPriceItemPicked(true) : setMinPriceItemPicked(false)}
+        { !isNaN(maxFloat) ? setMaxPriceItemPicked(true) : setMaxPriceItemPicked(false)}
+        client.refetchQueries({
+            include: [GET_PRODUCTS],
+        });
+        console.log('Refetched')
+    }, [countriesId, minPrice, maxPrice, typeId])
 
     function handleCountryCheck(countryId) {
         { countriesId.includes(countryId) ? setCountriesId(countriesId.filter(e => e !== countryId)) : setCountriesId([...countriesId, countryId]) }
     }
+    function countryList() {
+        setCountryListOpen(!isCountryListOpen)
+    }
+    function clearCountry() {
+        setCountriesId([])
+    }
 
-    useEffect(() => {
-        console.log(countriesId)
-        client.refetchQueries({
-            include: [GET_PRODUCTS],
-        });
-        console.log('refetched')
-    }, [countriesId])
+
+    function priceList() {
+        setPriceListOpen(!isPriceListOpen)
+    }
+    function clearPrice() {
+        setMinPrice('')
+        setMaxPrice('')
+    }
+
+    function handleTypeCheck(id) {
+        { typeId.includes(id) ? setTypeId(typeId.filter(e => e !== id)) : setTypeId([...typeId, id]) }
+    }
+    function typeList() {
+        setTypeListOpen(!isTypeListOpen)
+    }
+    function clearType() {
+        setTypeId([])
+    }
+
+    function handleMinChange(e) {
+        setMinPrice(e.target.value)
+    }
+
+    function handleMaxChange(e) {
+        setMaxPrice(e.target.value)
+    }
 
 
     const GET_PRODUCTS = gql`
-        query getAllProducts($first: Int!, $after: String, $categoryId: [Int]) {
-          products(first: $first, after: $after, where: {categoryIdIn: $categoryId}) {
+        query getAllProducts(
+            $first: Int!,
+            $after: String,
+            $categoryId: [Int],
+            $minPrice: Float,
+            $maxPrice: Float
+        ) {
+          products(
+              first: $first, 
+              after: $after,
+              where: {categoryIdIn: $categoryId, minPrice: $minPrice, maxPrice: $maxPrice}
+          ) {
             pageInfo {
               hasNextPage
               endCursor
@@ -55,7 +118,9 @@ export default function CatalogBlock({ filter }) {
                     }
                   }
                 }
-                productCategories(first: 1000) {
+                productCategories(
+                    first: 100,
+                        ) {
                   edges {
                     node {
                       name
@@ -80,13 +145,15 @@ export default function CatalogBlock({ filter }) {
 
     const BATCH_SIZE = 8;
 
-    const { productCategories, attributes } = filter
+    const { productCategories, products } = filter
+
+    console.log(products)
 
     const matches = useMediaQuery('(min-width:768px)')
     const matches1440 = useMediaQuery('(min-width:1440px)')
 
     const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
-        variables: { first: BATCH_SIZE, after: null, categoryId: countriesId}
+        variables: { first: BATCH_SIZE, after: null, categoryId: typeId.concat(countriesId), minPrice: minFloat, maxPrice: maxFloat}
     });
 
     if (error) {
@@ -100,7 +167,7 @@ export default function CatalogBlock({ filter }) {
         return <p>No posts have been published.</p>;
     }
 
-    const products = data.products.edges.map((edge) => edge.node);
+    const productItems = data.products.edges.map((edge) => edge.node);
     const haveMoreProducts = Boolean(data?.products?.pageInfo?.hasNextPage);
 
     const countryCategory = 31
@@ -110,7 +177,7 @@ export default function CatalogBlock({ filter }) {
         <>
         <div className={styles.catalog__wrap}>
             <div className={styles.catalog__items}>
-                { products.map((product, index) => {
+                { productItems.map((product, index) => {
 
                     const { id, name, image, galleryImages, productCategories, attributes, slug } = product;
 
@@ -222,58 +289,115 @@ export default function CatalogBlock({ filter }) {
             )}
         </div>
         <div className={styles.sidebar}>
-            <div className={styles.filter}>
-                <div className={styles.drop_bar}>
-                    <div className={styles.filter__title}>
-                        country
-                    </div>
-                    <div className={styles.clear}>
+            <div className={styles.filter__wrap}>
+                {isCountryItemPicked ? <div className={styles.clear} onClick={() => clearCountry()}>
                         Clear
                     </div>
-                    <div className={styles.filter__icon}>
-                        <Image src={arrow__black} />
+                    :
+                    null
+                }
+                <div className={styles.filter}>
+                    <div className={isCountryItemPicked ? `${styles.drop__bar_picked} ${styles.drop__bar}` : styles.drop__bar} onClick={() => countryList()}>
+                        <div className={isCountryItemPicked ? `${styles.filter__title_picked} ${styles.filter__title}` : styles.filter__title}>
+                            country
+                        </div>
+                        <div className={isCountryListOpen ? styles.filter__icon_open : styles.filter__icon}>
+                            { isCountryItemPicked ? <Image src={arrow__white} /> : <Image src={arrow__black} /> }
+                        </div>
                     </div>
-                </div>
-                <div className={styles.filter__list}>
-                    { productCategories.edges.map((category, index) => {
-                        if (category.node.parentDatabaseId === countryCategory) {
-                            return <div className={styles.filter__item} key={index}>
-                                <div className={styles.filter__name}>
-                                    { category.node.name }
-                                </div>
-                                <div className={styles.filter__checkbox} onClick={() => handleCountryCheck(category.node.databaseId)}>
-                                    { countriesId.map((id, index) => { if (id === category.node.databaseId) { return <div key={index} className={styles.filter__checkbox_checked}/> } }) }
-                                </div>
-                            </div>
-                        }
-                    })}
+                    {isCountryListOpen ?
+                        <div className={styles.filter__list}>
+                            { productCategories.edges.map((category, index) => {
+                                if (category.node.parentDatabaseId === countryCategory) {
+                                    return <div className={styles.filter__item} key={index} onClick={() => handleCountryCheck(category.node.databaseId)}>
+                                        <div className={styles.filter__name}>
+                                            { category.node.name }
+                                        </div>
+                                        <div className={styles.filter__checkbox}>
+                                            { countriesId.map((id, index) => { if (id === category.node.databaseId) { return <div key={index} className={styles.filter__checkbox_checked}/> } }) }
+                                        </div>
+                                    </div>
+                                }
+                            })}
+                        </div>
+                        :
+                        null
+                    }
                 </div>
             </div>
-            <div className={styles.filter}>
-                <div className={styles.drop_bar}>
-                    <div className={styles.filter__title}>
-                        Price
-                    </div>
-                    <div className={styles.clear}>
+            <div className={styles.filter__wrap}>
+                {isMinPriceItemPicked || isMaxPriceItemPicked ? <div className={styles.clear} onClick={() => clearPrice()}>
                         Clear
                     </div>
-                    <div className={styles.filter__icon}>
-                        <Image src={arrow__black} />
+                    :
+                    null
+                }
+                <div className={styles.filter}>
+                    <div className={ isMinPriceItemPicked || isMaxPriceItemPicked ? `${styles.drop__bar_picked} ${styles.drop__bar}` : styles.drop__bar} onClick={() => priceList() }>
+                        <div className={ isMinPriceItemPicked || isMaxPriceItemPicked ? `${styles.filter__title_picked} ${styles.filter__title}` : styles.filter__title }>
+                            Price
+                        </div>
+                        <div className={isPriceListOpen ? styles.filter__icon_open : styles.filter__icon}>
+                            { isMinPriceItemPicked || isMaxPriceItemPicked ? <Image src={arrow__white} /> : <Image src={arrow__black} /> }
+                        </div>
                     </div>
+                    { isPriceListOpen ?
+                        <div className={styles.filter__list}>
+                            <div className={styles.currency}>USD</div>
+                            <div className={styles.filter__interval}>
+                                <div className={styles.number__input}>
+                                    <input type="number" min="0" value={minPrice} className={ isMinPriceItemPicked ? `${styles.input__number_picked} ${styles.input__number}` : styles.input__number} onChange={handleMinChange} />
+                                    <div className={styles.label}>
+                                        min
+                                    </div>
+                                </div>
+                                <div className={styles.number__input}>
+                                    <input type="number" min="0" value={maxPrice} className={ isMaxPriceItemPicked ? `${styles.input__number_picked} ${styles.input__number}` : styles.input__number} onChange={handleMaxChange} />
+                                    <div className={styles.label}>
+                                        max
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        :
+                        null
+                    }
                 </div>
-                <div className={styles.filter__interval}>
-                    <div className={styles.number__input}>
-                        <input type="number" />
-                        <div className={styles.min}>
-                            min
+            </div>
+            <div className={styles.filter__wrap}>
+                { isTypeItemPicked ? <div className={styles.clear} onClick={() => clearType()}>
+                        Clear
+                    </div>
+                    :
+                    null
+                }
+                <div className={styles.filter}>
+                    <div className={isTypeItemPicked ? `${styles.drop__bar_picked} ${styles.drop__bar}` : styles.drop__bar} onClick={() => typeList()}>
+                        <div className={isTypeItemPicked ? `${styles.filter__title_picked} ${styles.filter__title}` : styles.filter__title}>
+                            Property type
+                        </div>
+                        <div className={isTypeListOpen ? styles.filter__icon_open : styles.filter__icon}>
+                            { isTypeItemPicked ? <Image src={arrow__white} /> : <Image src={arrow__black} /> }
                         </div>
                     </div>
-                    <div className={styles.filter__checkbox}>
-                        <input type="number"/>
-                        <div className={styles.max}>
-                            max
+                    { isTypeListOpen ?
+                        <div className={styles.filter__list}>
+                            { productCategories.edges.map((category, index) => {
+                                if (category.node.parentDatabaseId === propertyTypeCategory) {
+                                    return <div className={styles.filter__item} key={index} onClick={() => handleTypeCheck(category.node.databaseId)}>
+                                        <div className={styles.filter__name}>
+                                            { category.node.name }
+                                        </div>
+                                        <div className={styles.filter__checkbox}>
+                                            { typeId.map((id, index) => { if (id === category.node.databaseId) { return <div key={index} className={styles.filter__checkbox_checked}/> } }) }
+                                        </div>
+                                    </div>
+                                }
+                            })}
                         </div>
-                    </div>
+                        :
+                        null
+                    }
                 </div>
             </div>
         </div>
