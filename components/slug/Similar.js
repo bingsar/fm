@@ -15,7 +15,10 @@ import bedroom from "../../public/bedroom.svg";
 import bathroom from "../../public/bathroom.svg";
 
 export default function Similar({ product }) {
+
     const matches = useMediaQuery('(min-width: 768px)')
+    const matches490 = useMediaQuery('(min-width:490px)')
+    const matches1000 = useMediaQuery('(min-width: 1000px)')
     const matches1200 = useMediaQuery('(min-width: 1200px)')
 
     let slidePerView
@@ -66,32 +69,48 @@ export default function Similar({ product }) {
                                             { similar.node.productCategories.edges.map((country) => { if (country.node.parentDatabaseId === countryCategory) { return country.node.name }}) }
                                         </div>
                                     </div>
-                                    <div className={styles.item__attributes}>
-                                        <div className={`${styles.sqm} ${styles.item__attribute}`}>
-                                            <div className={styles.sqm__icon}>
-                                                <Image src={sqm} />
+                                    {matches490 ?
+                                        <div className={styles.item__attributes}>
+                                            <div className={`${styles.sqm} ${styles.item__attribute}`}>
+                                                <div className={styles.sqm__icon}>
+                                                    <Image src={sqm}/>
+                                                </div>
+                                                <div className={styles.sqm__value}>
+                                                    {similar.node.attributes.edges.map((sqm) => {
+                                                        if (sqm.node.name === 'sqm') {
+                                                            return sqm.node.options[0]
+                                                        }
+                                                    })} sqm
+                                                </div>
                                             </div>
-                                            <div className={styles.sqm__value}>
-                                                { similar.node.attributes.edges.map((sqm) => { if (sqm.node.name === 'sqm') {return sqm.node.options[0]} }) } sqm
+                                            <div className={`${styles.bedrooms} ${styles.item__attribute}`}>
+                                                <div className={styles.bedrooms__value}>
+                                                    {similar.node.attributes.edges.map((bedroom) => {
+                                                        if (bedroom.node.name === 'Bedrooms') {
+                                                            return bedroom.node.options[0]
+                                                        }
+                                                    })}
+                                                </div>
+                                                <div className={styles.bedrooms__icon}>
+                                                    {matches1000 ? 'Bedrooms' : <Image src={bedroom}/>}
+                                                </div>
+                                            </div>
+                                            <div className={`${styles.bathrooms} ${styles.item__attribute}`}>
+                                                <div className={styles.bathrooms__value}>
+                                                    {similar.node.attributes.edges.map((bathroom) => {
+                                                        if (bathroom.node.name === 'Bathrooms') {
+                                                            return bathroom.node.options[0]
+                                                        }
+                                                    })}
+                                                </div>
+                                                <div className={styles.bathrooms__icon}>
+                                                    {matches1000 ? 'Bathrooms' : <Image src={bathroom}/>}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className={`${styles.bedrooms} ${styles.item__attribute}`}>
-                                            <div className={styles.bedrooms__value}>
-                                                { similar.node.attributes.edges.map((bedroom) => { if (bedroom.node.name === 'Bedrooms') {return bedroom.node.options[0]} }) }
-                                            </div>
-                                            <div className={styles.bedrooms__icon}>
-                                                Bedrooms
-                                            </div>
-                                        </div>
-                                        <div className={`${styles.bathrooms} ${styles.item__attribute}`}>
-                                            <div className={styles.bathrooms__value}>
-                                                { similar.node.attributes.edges.map((bathroom) => { if (bathroom.node.name === 'Bathrooms') {return bathroom.node.options[0]} }) }
-                                            </div>
-                                            <div className={styles.bathrooms__icon}>
-                                                Bathrooms
-                                            </div>
-                                        </div>
-                                    </div>
+                                        :
+                                        null
+                                    }
                                     <div className={styles.price}>
                                         <div className={styles.price__value}>
                                             { similar.node.attributes.edges.map((price) => { if (price.node.name === "Price") { return  price.node.options[0] }}) }

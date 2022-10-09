@@ -221,6 +221,7 @@
 }
 .spec {
     margin: 0;
+    padding: 0 0 52px 0;
 }
 .breadcrumbs {
     font-family: 'KoHo', sans-serif;

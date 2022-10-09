@@ -1,7 +1,62 @@
+.hero__breadcrumbs {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #808080;
+    padding: 0 0 17px 0;
+}
+.hero__title {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 34px;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 0 30px 0;
+}
+.hero__addCatalog__btn_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hero__filter__icon {
+    cursor: pointer;
+}
+.hero__addCatalog__btn {
+    display: flex;
+    align-items: center;
+    padding: 6px 15px;
+    background: #000;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.hero__btn__text {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FCFCFC;
+}
 .catalog__wrap {
     display: block;
     padding: 0 0 50px 0;
     width: 100%;
+}
+.catalog__wrap {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 28px;
+    color: #000000;
 }
 .catalog__items {
     margin: 40px 0 50px 0;
@@ -153,11 +208,31 @@
 .item__info {
     cursor: pointer;
 }
+
 /*FILTER*/
+.sidebar__title {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 34px;
+    text-transform: uppercase;
+    color: #000000;
+    padding: 30px 0 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
 .sidebar {
-    max-width: 320px;
-    width: 50%;
-    margin: 40px 0 0 20px;
+    position: fixed;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 10000;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #FFF;
+    overflow-y: auto;
+    padding: 0 30px 30px 30px;
 }
 .filter__wrap {
     position: relative;
@@ -195,6 +270,18 @@
     text-transform: uppercase;
     color: #000;
     margin: 0 0 0 13px;
+    width: 58%;
+}
+.sidebar__close {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #000000;
 }
 .filter__title_picked {
     color: #FFF;
@@ -210,7 +297,7 @@
     font-size: 14px;
     line-height: 18px;
     color: #808080;
-    margin: 0 36px 0 auto;
+    margin: 0 0 0 auto;
 }
 .clear:hover {
     color: #FFF;
@@ -225,7 +312,7 @@
     transition: .2s ease-in-out;
 }
 .filter__list {
-    margin: 0 0 15px;
+    margin: 16px 0 15px;
 }
 .filter__item {
     display: flex;
@@ -313,7 +400,59 @@
     background: #000;
     color: #FCFCFC;
 }
+.filter__item:last-of-type .filter__name_attribute:after {
+    content: '+';
+    position: absolute;
+    margin: 0 0 0 2px;
+}
+
 @media (min-width: 768px) {
+    .catalog__container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .hero__breadcrumbs {
+        padding: 10px 0 35px 0;
+    }
+    .hero__title {
+        font-size: 110px;
+        line-height: 110px;
+        margin: 0 0 30px 0;
+    }
+    .hero__btn__text {
+        font-size: 20px;
+        line-height: 20px;
+    }
+    .hero__addCatalog__btn_wrap {
+        justify-content: unset;
+    }
+    .hero__addCatalog__btn {
+        height: 40px;
+        cursor: pointer;
+    }
+    .hero__btn__icon {
+        width: 8px;
+        height: 8px;
+        background: #FFF;
+        border-radius: 50%;
+        margin: 0 0 0 28px;
+        transition: .3s ease-in-out;
+        cursor: pointer;
+    }
+    .hero__addCatalog__btn:hover .hero__btn__icon {
+        transform: scale(3.5);
+    }
+    .hero__addCatalog__text {
+        font-family: 'KoHo', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 23px;
+        color: #808080;
+        max-width: 242px;
+        margin: 0 0 0 16px;
+    }
     .wrapper {
         display: block;
     }
@@ -359,6 +498,16 @@
     .items__more_btn {
         width: 242px;
         margin: 0 auto;
+    }
+    /*  FILTER  */
+    .sidebar {
+        position: relative;
+        top: unset;
+        left: unset;
+        padding: unset;
+        max-width: 320px;
+        width: 50%;
+        margin: 40px 0 40px 20px;
     }
 }
 

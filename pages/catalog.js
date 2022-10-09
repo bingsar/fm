@@ -1,12 +1,10 @@
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import CatalogHero from "../components/catalog/catalogHero";
 import CatalogBlock from "../components/catalog/catalogBlock";
-// import FilterSidebar from "../components/catalog/filterSidebar";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import styles from '/styles/catalog.module.css'
+import styles from '../styles/catalog.module.css'
 import {gql} from "@apollo/client";
 import {client} from "../lib/apollo";
 
@@ -23,11 +21,7 @@ export default function Catalog({ data }) {
             <Header />
             <main>
                 <section className="container">
-                    <CatalogHero />
-                    <div className={styles.catalog__wrap}>
                       <CatalogBlock filter={ data } />
-                        {/*{ matches ? <FilterSidebar data={ data } /> : null}*/}
-                    </div>
                 </section>
             </main>
             <Footer />

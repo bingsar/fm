@@ -17,12 +17,12 @@
     font-family: 'Fjalla One', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
-    line-height: 13px;
+    font-size: 14px;
+    line-height: 16px;
     letter-spacing: 0.03em;
     text-transform: uppercase;
     color: #FCFCFC;
-    max-width: 66px;
+    max-width: 70px;
     margin: 0 0 0 7px;
 }
 .title {
@@ -149,14 +149,14 @@
 
 @media (min-width: 768px) {
     .logo__white {
-        width: 98px;
-        height: 58px;
+        width: 116px;
+        height: 91px;
     }
     .logo__text {
         max-width: 175px;
-        font-size: 31px;
-        line-height: 31px;
-        margin: 0 0 0 18px;
+        font-size: 44px;
+        line-height: 45px;
+        margin: 4px 0 0 18px;
     }
     .title {
         font-size: 80px;

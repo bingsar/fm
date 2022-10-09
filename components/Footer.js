@@ -10,10 +10,10 @@ export default function Footer (){
                     <div className={styles.contact}>
                         <div className={styles.logo}>
                             <div className={styles.logo__white}>
-                                <Image src={logo__white} />
+                                <Image src={logo__white}/>
                             </div>
                             <div className={styles.logo__text}>
-                                Funds and Management
+                                Minkh Capital
                             </div>
                         </div>
                         <div className={styles.title}>
