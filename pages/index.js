@@ -7,9 +7,11 @@ import CatalogSlider from "../components/mainPage/CatalogSlider";
 
 import Labels from "../components/mainPage/Labels";
 import Footer from "../components/Footer";
+import {gql} from "@apollo/client";
+import {client} from "../lib/apollo";
 
 
-export default function Home() {
+export default function Home({ images }) {
   return (
     <div className="container__wrap">
       <Head>
@@ -21,10 +23,63 @@ export default function Home() {
             <Hero />
             <MainPagePosts />
             <Mission />
-            <Labels />
-            <CatalogSlider />
+            <CatalogSlider data={ images }/>
         </main>
         <Footer />
     </div>
   )
+}
+
+export async function getStaticProps() {
+    const GET_IMAGES = gql`
+        query getImages {
+            productCategories(first: 100) {
+                edges {
+                  node {
+                    parentDatabaseId
+                    name
+                    databaseId
+                  }
+                }
+            }
+            products(first: 100) {
+                edges {
+                  node {
+                    attributes {
+                      edges {
+                        node {
+                          attributeId
+                          name
+                          options
+                        }
+                      }
+                    }
+                    productCategories(first: 100) {
+                        edges {
+                          node {
+                            parentDatabaseId
+                            name
+                            databaseId
+                          }
+                        }
+                    }
+                    image {
+                      mediaItemUrl
+                    }
+                  }
+                }
+            }
+        }
+    `
+
+    const response = await client.query({
+        query: GET_IMAGES
+    })
+    const images = response?.data
+
+    return {
+        props: {
+            images
+        }
+    }
 }

@@ -22,7 +22,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import { Thumbs } from 'swiper';
 import { client } from "../../lib/apollo";
-import { gql } from "@apollo/client";
+import {gql, useQuery} from "@apollo/client";
 
 import 'swiper/css'
 import "swiper/css/pagination";
@@ -30,8 +30,10 @@ import "swiper/css/navigation";
 import 'swiper/css/thumbs'
 import styles from '/styles/slug.module.css'
 
-export default function Slug({ product }) {
 
+export default function Slug({ product, data }) {
+
+    const [isLoadMore, setLoadMore] = useState(false)
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const matches = useMediaQuery("(min-width: 768px)")
     const countryCategory = 31
@@ -39,6 +41,10 @@ export default function Slug({ product }) {
     const { id, name, image, galleryImages, productCategories, attributes, slug, purchaseNote, description, productTags } = product;
 
     let extractedPrice
+
+    function openMoreHandler() {
+        setLoadMore(!isLoadMore)
+    }
 
     return (
         <div className="container__wrap">
@@ -81,13 +87,13 @@ export default function Slug({ product }) {
                                 <Swiper
                                     modules={[Thumbs, Pagination, Navigation]}
                                     thumbs={{ swiper: thumbsSwiper }}
+                                    navigation
                                     pagination={{
                                         clickable: true,
                                         renderBullet: function(index, className) {
                                             return '<div class="' + className + '">' + "<div class='pagination__number'>" + (index+1) + '</div>' + '</div>';
                                         }
                                     }}
-                                    navigation={true}
                                     className="gallery__swiper"
                                 >
                                     <SwiperSlide>
@@ -213,7 +219,12 @@ export default function Slug({ product }) {
                                 Description.
                             </div>
                             <div className={styles.desc__text}>
-                                { description }
+                                { isLoadMore ? description : description.slice(0, 300) + '...' }
+                                { !isLoadMore ? <div className={styles.desc__more} onClick={() => openMoreHandler()}>
+                                    more
+                                </div>
+                                    :
+                                    null }
                             </div>
                         </div>
                         <div className={styles.spec}>
@@ -222,7 +233,7 @@ export default function Slug({ product }) {
                             </div>
                             <div className={styles.desc__items}>
                                 <MainRooms product={product} />
-                                <AdditionalItem product={product} />
+                                <AdditionalItem product={product} data={data}/>
                                 <Area product={product} />
                             </div>
                         </div>
@@ -335,6 +346,8 @@ export async function getStaticProps({ params }) {
             }
   
     `
+
+
     const response = await client.query({
         query: GET_PRODUCT_BY_URI,
         variables: {
@@ -342,9 +355,31 @@ export async function getStaticProps({ params }) {
         }
     })
     const product = response?.data?.simpleProduct
+
+    const GET_DATA = gql`
+        query getData {
+          productCategories(first: 100) {
+            edges {
+              node {
+                parentDatabaseId
+                name
+                databaseId
+              }
+            }
+          }
+        }
+    `
+
+    const res = await client.query({
+        query: GET_DATA
+    })
+    const data = res?.data
+
+
     return {
         props: {
-            product
+            product,
+            data
         }
     }
 }

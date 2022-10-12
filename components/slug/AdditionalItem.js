@@ -7,7 +7,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import styles from '/styles/specifications.module.css'
 
-export default function AdditionalItem({ product }) {
+
+export default function AdditionalItem({ product, data }) {
 
     const matches = useMediaQuery('(min-width: 768px)')
 
@@ -44,18 +45,34 @@ export default function AdditionalItem({ product }) {
             </div>
             { isAdditionalsOpen ?
                 <div className={styles.items}>
-                    { product.productCategories.edges.map((category, index) => { if (category.node.parentDatabaseId === additionalsCategory) {
+                    { data.productCategories.edges.map((category, index) => { if (category.node.parentDatabaseId === additionalsCategory) {
                         return <div className={styles.item__mainRooms} key={index}>
-                                   <div className={styles.item__value_checked}>
-                                       <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                           <rect width="13" height="13" fill="black"/>
-                                       </svg>
-                                   </div>
-                                   <div className={styles.item__name}>
-                                       {category.node.name}
-                                   </div>
-                               </div>
+                            <div className={styles.item__value_checked}>
+                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="13" height="13" fill="black"/>
+                                </svg>
+                            </div>
+                            <div className={styles.item__name}>
+                                {category.node.name}
+                            </div>
+                        </div>
                     }})}
+
+
+
+
+                    {/*{ product.productCategories.edges.map((category, index) => { if (category.node.parentDatabaseId === additionalsCategory) {*/}
+                    {/*    return <div className={styles.item__mainRooms} key={index}>*/}
+                    {/*               <div className={styles.item__value_checked}>*/}
+                    {/*                   <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
+                    {/*                       <rect width="13" height="13" fill="black"/>*/}
+                    {/*                   </svg>*/}
+                    {/*               </div>*/}
+                    {/*               <div className={styles.item__name}>*/}
+                    {/*                   {category.node.name}*/}
+                    {/*               </div>*/}
+                    {/*           </div>*/}
+                    {/*}})}*/}
                 </div>
                 :
                 null

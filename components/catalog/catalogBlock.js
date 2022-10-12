@@ -7,8 +7,8 @@ import bedroom from '/public/bedroom.svg'
 import bathroom from '/public/bathroom.svg'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
-import {client} from "../../lib/apollo";
-import {useQuery, gql, empty} from "@apollo/client";
+import { client } from "../../lib/apollo";
+import { useQuery, gql } from "@apollo/client";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion } from "framer-motion";
 
@@ -311,8 +311,7 @@ export default function CatalogBlock({ filter }) {
     const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
         variables: { first: BATCH_SIZE, after: null, categoryId: countriesId, typeId: typeId, outdoorId: outdoorId, bedroomsNumber: bedroomsSelected, bathroomsNumber: bathroomsSelected, minPrice: minFloat, maxPrice: maxFloat, sqmQuery: sqmQuery}
     });
-    console.log(data)
-    console.log(countriesId.concat(typeId).concat(outdoorId))
+
     const countryCategory = 31
     const propertyTypeCategory = 35
     const outdoorCategory = 92
@@ -1349,11 +1348,11 @@ export default function CatalogBlock({ filter }) {
                                                 </div>
                                             </div>
                                             <div className={styles.price}>
-                                                <div className={styles.price__value}>
-                                                    { attributes.edges.map((price) => { if (price.node.name === 'Price') {return price.node.options[0]} }) }
-                                                </div>
                                                 <div className={styles.price__currency}>
                                                     USD
+                                                </div>
+                                                <div className={styles.price__value}>
+                                                    { attributes.edges.map((price) => { if (price.node.name === 'Price') {return price.node.options[0]} }) }
                                                 </div>
                                             </div>
                                             <div className={styles.item__btn}>

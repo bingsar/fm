@@ -138,6 +138,7 @@
         justify-content: space-between;
         height: 369px;
         padding: 0 30px;
+        border-radius: 4px;
     }
     .title {
         font-size: 80px;

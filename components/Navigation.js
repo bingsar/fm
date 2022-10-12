@@ -4,11 +4,13 @@ import logo from '/public/logo_fm.svg'
 import globus from '/public/globus.svg'
 
 import styles from '../styles/navigation.module.css'
-import {useState} from "react";
+import { useState, useContext } from "react";
 
-export default function Navigation() {
+export default function Navigation({ country }) {
 
     const [isOpen, setIsOpen] = useState(false)
+
+    console.log(country)
 
     function openHandler() {
         setIsOpen(!isOpen)

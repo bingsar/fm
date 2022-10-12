@@ -1,12 +1,15 @@
 import '../styles/index.css'
 import { ApolloProvider } from "@apollo/client/react";
 import { client } from "../lib/apollo";
+import { AppWrapper } from "../src/store";
 
 function MyApp({ Component, pageProps }) {
   return (
-      <ApolloProvider client={client}>
-        <Component {...pageProps} />
-      </ApolloProvider>
+      <AppWrapper>
+          <ApolloProvider client={client}>
+            <Component {...pageProps} />
+          </ApolloProvider>
+      </AppWrapper>
     )
 }
 

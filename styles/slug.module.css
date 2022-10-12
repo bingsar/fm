@@ -6,7 +6,7 @@
     position: relative;
     display: block;
     height: 300px;
-    border-radius: 2px;
+    border-radius: 4px;
     overflow: hidden;
 }
 .slide__image img {
@@ -155,6 +155,16 @@
     line-height: 18px;
     color: #000000;
 }
+.desc__more {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    text-decoration-line: underline;
+    color: #000000;
+    cursor: pointer;
+}
 .spec__title {
     font-family: 'Fjalla One', sans-serif;
     font-style: normal;
@@ -287,6 +297,11 @@
         font-size: 18px;
         line-height: 23px;
     }
+    .desc__more {
+        font-size: 18px;
+        line-height: 23px;
+        margin: 7px 0 0 0;
+    }
     .spec {
         border-top: 1px solid #000;
         padding: 16px 0 0 0;
@@ -325,7 +340,7 @@
         display: flex;
     }
     .property__info {
-        margin: 181px 0 0 20px;
+        margin: 158px 0 0 20px;
     }
     .titleAndSlider {
         display: flex;
