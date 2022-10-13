@@ -7,10 +7,12 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from '/styles/specifications.module.css'
 import {useEffect} from "react";
 
-export default function Area({ product }) {
+export default function Area({ product, data }) {
     const matches = useMediaQuery('(min-width: 768px)')
     const [isAreaOpen, setAreaOpen] = useState(false)
     const areaCategory = 94
+
+    const { productCategories } = product
 
     useEffect(() => {
         if (matches) {
@@ -44,12 +46,14 @@ export default function Area({ product }) {
             </div>
             { isAreaOpen ?
                 <div className={styles.items}>
-                    { product.productCategories.edges.map((category, index) => { if (category.node.parentDatabaseId === areaCategory) {
+                    { data.productCategories.edges.map((category, index) => { if (category.node.parentDatabaseId === areaCategory) {
                         return <div className={styles.item__mainRooms} key={index}>
                             <div className={styles.item__value_checked}>
-                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                { productCategories.edges.map((item, index) => { if (item.node.databaseId === category.node.databaseId) {
+                                return <svg key={index} width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="13" height="13" fill="black"/>
-                                </svg>
+                                    </svg>
+                                }})}
                             </div>
                             <div className={styles.item__name}>
                                 {category.node.name}

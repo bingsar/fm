@@ -1,28 +1,57 @@
-import { createContext, useContext, useState } from 'react';
+import {createContext, useContext, useEffect, useState} from 'react';
+import {gql, useQuery} from "@apollo/client";
 
 const AppContext = createContext({
-    country: '',
-    setCountry: (id) => {}
+    stages: [],
+    ctxCountry: '',
+    setCtxCountry: () => {}
 });
 
 export function AppWrapper({ children }) {
 
-    const [navCountryId, setNavCountryId] = useState('')
+    const [stages, setStages] = useState([]);
+    const [ctxCountry, setCtxCountry] = useState([])
 
-    function setCountryHandler(id) {
-        setNavCountryId(id)
+    const GET_COUNTRY = gql`
+        query getCountry {
+            productCategories(first: 100) {
+                edges {
+                  node {
+                    parentDatabaseId
+                    name
+                    databaseId
+                  }
+                }
+            }
+        }
+    `
+
+    const { data, loading, error } = useQuery(GET_COUNTRY);
+
+    if (error) {
+        console.log(error)
+    }
+    if (!data && loading) {
+        console.log('loading...')
     }
 
-    let context = {
-        country: navCountryId,
-        setCountry: setCountryHandler
-    }
+    useEffect(() => {
+        setStages(data)
+    })
+
+    const state = {
+        stages,
+        ctxCountry,
+        setCtxCountry
+    };
 
     return (
-        <AppContext.Provider value={context}>
+        <AppContext.Provider value={{state, ctxCountry, setCtxCountry}} >
             {children}
         </AppContext.Provider>
     );
 }
 
-export default AppContext
+export default function useAppContext() {
+    return useContext(AppContext);
+}

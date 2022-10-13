@@ -4,14 +4,25 @@ import logo from '/public/logo_fm.svg'
 import globus from '/public/globus.svg'
 
 import styles from '../styles/navigation.module.css'
-import { useState, useContext } from "react";
+import {useEffect, useState} from "react";
+import useAppContext from "../src/store";
 
-export default function Navigation({ country }) {
+export default function Navigation() {
+
+    const { setCtxCountry, ctxCountry } =  useAppContext()
+
+    const handleChange = (e) => {
+        setCtxCountry(e.target.value);
+    };
+
+    useEffect(() => {
+        setCtxCountry(parseInt(ctxCountry))
+    },[])
+
+    let country = useAppContext()?.state?.stages?.productCategories
 
     const [isOpen, setIsOpen] = useState(false)
-
-    console.log(country)
-
+    const countryCategoryId = 31
     function openHandler() {
         setIsOpen(!isOpen)
     }
@@ -28,18 +39,16 @@ export default function Navigation({ country }) {
                         </Link>
                         <div className={styles.country}>
                             <div className={styles.globus__icon}>
-                                <Image src={globus} />
+                                <Image src={globus}/>
                             </div>
-                            <select className={styles.select}>
-                                <option>
-                                    Georgia
-                                </option>
-                                <option>
-                                    Turkey
-                                </option>
-                                <option>
-                                    UAE
-                                </option>
+                            <select className={styles.select} onChange={handleChange}>
+                                { country?.edges.map((country, index) => {
+                                    if (country.node.parentDatabaseId === countryCategoryId) {
+                                        return <option key={index} selected={ctxCountry===country.node.databaseId? ctxCountry : null} value={country.node.databaseId}>
+                                            {country.node.name}
+                                        </option>
+                                    }
+                                }) }
                             </select>
                         </div>
                         <Link href="/catalog">
@@ -58,7 +67,7 @@ export default function Navigation({ country }) {
                     </div>
                 </div>
                 { isOpen ? <>
-                        <div className={styles.menuContainer} >
+                        <div className={styles.menuContainer}>
                             <div className={styles.menu__close} onClick={() => openHandler()}>Close</div>
                             <div className={styles.menu__items}>
                                 <Link href="/family-office">
@@ -105,7 +114,8 @@ export default function Navigation({ country }) {
                         </div>
                     </>
                     :
-                    null }
+                    null
+                }
             </nav>
         </>
     )

@@ -4,14 +4,13 @@ import Hero from "../components/Hero";
 import MainPagePosts from "../components/mainPage/MainPagePosts";
 import Mission from "../components/mainPage/Mission";
 import CatalogSlider from "../components/mainPage/CatalogSlider";
-
-import Labels from "../components/mainPage/Labels";
 import Footer from "../components/Footer";
 import {gql} from "@apollo/client";
 import {client} from "../lib/apollo";
 
 
 export default function Home({ images }) {
+
   return (
     <div className="container__wrap">
       <Head>
@@ -71,7 +70,6 @@ export async function getStaticProps() {
             }
         }
     `
-
     const response = await client.query({
         query: GET_IMAGES
     })

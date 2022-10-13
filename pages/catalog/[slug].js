@@ -234,7 +234,7 @@ export default function Slug({ product, data }) {
                             <div className={styles.desc__items}>
                                 <MainRooms product={product} />
                                 <AdditionalItem product={product} data={data}/>
-                                <Area product={product} />
+                                <Area product={product}  data={data}/>
                             </div>
                         </div>
                         <div className={styles.infrastruct}>
@@ -242,7 +242,7 @@ export default function Slug({ product, data }) {
                                 Infrastructure.
                             </div>
                         </div>
-                        <Infrastructure product={product} />
+                        <Infrastructure product={product} data={data}/>
                         <Location />
                         <NearBy product={product} />
                         <Info product={product} />
@@ -293,6 +293,7 @@ export async function getStaticProps({ params }) {
                           node {
                             name
                             parentDatabaseId
+                            databaseId
                           }
                         }
                       }
@@ -337,6 +338,7 @@ export async function getStaticProps({ params }) {
                     node {
                       parentDatabaseId
                       name
+                      databaseId
                     }
                   }
                 }

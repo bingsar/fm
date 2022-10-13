@@ -2,14 +2,22 @@ import '../styles/index.css'
 import { ApolloProvider } from "@apollo/client/react";
 import { client } from "../lib/apollo";
 import { AppWrapper } from "../src/store";
+import { useState } from "react";
 
 function MyApp({ Component, pageProps }) {
+
+  const [ctxCountry, setCtxCountry] = useState();
+  const value = { ctxCountry, setCtxCountry };
+
+
   return (
-      <AppWrapper>
+
           <ApolloProvider client={client}>
-            <Component {...pageProps} />
+              <AppWrapper value={value}>
+                <Component {...pageProps} />
+              </AppWrapper>
           </ApolloProvider>
-      </AppWrapper>
+
     )
 }
 

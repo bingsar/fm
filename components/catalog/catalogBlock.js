@@ -17,9 +17,12 @@ import "swiper/css/pagination";
 import styles from '/styles/catalogBlock.module.css'
 import arrow__black from "../../public/arrow__black.svg";
 import arrow__white from "../../public/arrow__white.svg";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import useAppContext from "../../src/store";
 
 export default function CatalogBlock({ filter }) {
+
+    const { ctxCountry } = useAppContext()
 
     const { productCategories, products } = filter
 
@@ -69,6 +72,7 @@ export default function CatalogBlock({ filter }) {
             animate: {y:100},
         }
     }
+
 
     function mobileMenuHandler() {
         setMobileMenuFilterOpen(!isMobileMenuFilterOpen)
@@ -211,6 +215,10 @@ export default function CatalogBlock({ filter }) {
 
         setSqmQuery(maxSqmArray)
     }
+
+    useEffect(() => {
+        setCountriesId([parseInt(ctxCountry)])
+    }, [ctxCountry])
 
     useEffect(() => {
         { countriesId.length > 0 ? setCountryItemPicked(true) : setCountryItemPicked(false)}
