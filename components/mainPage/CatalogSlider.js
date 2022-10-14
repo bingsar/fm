@@ -22,7 +22,10 @@ export default function CatalogSlider({ data }) {
 
     const propertyTypeCategory = 35
 
-    const { productCategories, products } = data
+    let productCategories
+    let products
+
+    data !== undefined ? { productCategories, products } = data : null
 
     return (
         <section className={styles.container}>
