@@ -6,7 +6,7 @@ import { useState } from "react";
 
 function MyApp({ Component, pageProps }) {
 
-  const [ctxCountry, setCtxCountry] = useState();
+  const [ctxCountry, setCtxCountry] = useState([34]);
   const value = { ctxCountry, setCtxCountry };
 
 

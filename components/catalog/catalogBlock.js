@@ -17,12 +17,14 @@ import "swiper/css/pagination";
 import styles from '/styles/catalogBlock.module.css'
 import arrow__black from "../../public/arrow__black.svg";
 import arrow__white from "../../public/arrow__white.svg";
-import { useEffect, useState, useContext } from "react";
+import {useEffect, useState, useContext, useRef} from "react";
 import useAppContext from "../../src/store";
+import {logMissingFieldErrors} from "@apollo/client/core/ObservableQuery";
 
 export default function CatalogBlock({ filter }) {
+    const price = useRef()
 
-    const { ctxCountry } = useAppContext()
+    const { ctxCountry, setCtxCountry } = useAppContext()
 
     const { productCategories, products } = filter
 
@@ -216,6 +218,15 @@ export default function CatalogBlock({ filter }) {
         setSqmQuery(maxSqmArray)
     }
 
+    // CURRENCY EXCHANGE
+    const [isCurrency, setIsCurrency] = useState('')
+    function handleCurrency(e) {
+        setIsCurrency(e.target.value)
+    }
+
+
+
+    //REFETCH DATA
     useEffect(() => {
         setCountriesId([parseInt(ctxCountry)])
     }, [ctxCountry])
@@ -236,6 +247,8 @@ export default function CatalogBlock({ filter }) {
         console.log('Refetched')
     }, [countriesId, minPrice, maxPrice, typeId, bedroomsSelected, bathroomsSelected, outdoorId, sqmQuery, minSqm, maxSqm])
 
+
+    //DATA FETCHING
     const GET_PRODUCTS = gql`
         query getAllProducts(
             $first: Int!,
@@ -1310,64 +1323,101 @@ export default function CatalogBlock({ filter }) {
 
                             return (
                                 <div className={styles.item} key={id} data-id={index}>
-                                    <Link href={`/catalog/${slug}`}>
+
                                         <div className={styles.item__info}>
-                                            <div className={styles.catalog__main_image}>
-                                                <Image src={ image.mediaItemUrl } priority layout={"fill"}/>
-                                            </div>
-                                            <div className={styles.item__title}>
-                                                { name }
-                                            </div>
-                                            <div className={styles.item__property_type}>
-                                                { productCategories.edges.map((category) => { if (category.node.parentDatabaseId === propertyTypeCategory) {return category.node.name}}) }
-                                            </div>
-                                            <div className={styles.item__country}>
-                                                <div className={styles.country__icon}>
-                                                    <Image src={globus} />
+                                            <Link href={`/catalog/${slug}`}>
+                                                <div>
+                                                    <div className={styles.catalog__main_image}>
+                                                        <Image src={ image.mediaItemUrl } priority layout={"fill"}/>
+                                                    </div>
+                                                    <div className={styles.item__title}>
+                                                        { name }
+                                                    </div>
+                                                    <div className={styles.item__property_type}>
+                                                        { productCategories.edges.map((category) => { if (category.node.parentDatabaseId === propertyTypeCategory) {return category.node.name}}) }
+                                                    </div>
+                                                    <div className={styles.item__country}>
+                                                        <div className={styles.country__icon}>
+                                                            <Image src={globus} />
+                                                        </div>
+                                                        <div className={styles.country}>
+                                                            { productCategories.edges.map((category) => { if (category.node.parentDatabaseId === countryCategory) {return category.node.name}})}
+                                                        </div>
+                                                    </div>
+                                                    <div className={styles.item__attributes}>
+                                                        <div className={`${styles.sqm} ${styles.item__attribute}`}>
+                                                            <div className={styles.sqm__icon}>
+                                                                <Image src={sqm} />
+                                                            </div>
+                                                            <div className={styles.sqm__value}>
+                                                                { attributes.edges.map((sqm) => { if (sqm.node.name === 'sqm') {return sqm.node.options[0]} }) } sqm
+                                                            </div>
+                                                        </div>
+                                                        <div className={`${styles.bedrooms} ${styles.item__attribute}`}>
+                                                            <div className={styles.bedrooms__value}>
+                                                                { attributes.edges.map((bedroom) => { if (bedroom.node.name === 'Bedrooms') {return bedroom.node.options[0]} }) }
+                                                            </div>
+                                                            <div className={styles.bedrooms__icon}>
+                                                                { matches1440 ? 'Bedrooms' : <Image src={bedroom} />}
+                                                            </div>
+                                                        </div>
+                                                        <div className={`${styles.bathrooms} ${styles.item__attribute}`}>
+                                                            <div className={styles.bathrooms__value}>
+                                                                { attributes.edges.map((bathroom) => { if (bathroom.node.name === 'Bathrooms') {return bathroom.node.options[0]} }) }
+                                                            </div>
+                                                            <div className={styles.bathrooms__icon}>
+                                                                { matches1440 ? 'Bathrooms' : <Image src={bathroom} />}
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div className={styles.country}>
-                                                    { productCategories.edges.map((category) => { if (category.node.parentDatabaseId === countryCategory) {return category.node.name}})}
-                                                </div>
-                                            </div>
-                                            <div className={styles.item__attributes}>
-                                                <div className={`${styles.sqm} ${styles.item__attribute}`}>
-                                                    <div className={styles.sqm__icon}>
-                                                        <Image src={sqm} />
-                                                    </div>
-                                                    <div className={styles.sqm__value}>
-                                                        { attributes.edges.map((sqm) => { if (sqm.node.name === 'sqm') {return sqm.node.options[0]} }) } sqm
-                                                    </div>
-                                                </div>
-                                                <div className={`${styles.bedrooms} ${styles.item__attribute}`}>
-                                                    <div className={styles.bedrooms__value}>
-                                                        { attributes.edges.map((bedroom) => { if (bedroom.node.name === 'Bedrooms') {return bedroom.node.options[0]} }) }
-                                                    </div>
-                                                    <div className={styles.bedrooms__icon}>
-                                                        { matches1440 ? 'Bedrooms' : <Image src={bedroom} />}
-                                                    </div>
-                                                </div>
-                                                <div className={`${styles.bathrooms} ${styles.item__attribute}`}>
-                                                    <div className={styles.bathrooms__value}>
-                                                        { attributes.edges.map((bathroom) => { if (bathroom.node.name === 'Bathrooms') {return bathroom.node.options[0]} }) }
-                                                    </div>
-                                                    <div className={styles.bathrooms__icon}>
-                                                        { matches1440 ? 'Bathrooms' : <Image src={bathroom} />}
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            </Link>
                                             <div className={styles.price}>
-                                                <div className={styles.price__currency}>
-                                                    USD
+                                                <div className={styles.price__currency__wrap}>
+                                                    <select className={styles.price__currency} name="" id="" onChange={handleCurrency}>
+                                                        <option value="USD">USD</option>
+                                                        <option value="TRY">TRY</option>
+                                                        <option value="AED">AED</option>
+                                                    </select>
                                                 </div>
-                                                <div className={styles.price__value}>
-                                                    { attributes.edges.map((price) => { if (price.node.name === 'Price') {return price.node.options[0]} }) }
+                                                <div className={styles.price__value} ref={price}>
+                                                    { attributes.edges.map((price) => { if (price.node.name === 'Price') {
+                                                        // let currentPrice
+                                                        // try {
+                                                        //     function currentTRYxUSD() {
+                                                        //         return fetch('https://api.exchangerate.host/latest?base=USD&places=0&symbols=TRY&amount=1', {
+                                                        //             method: 'GET',
+                                                        //         })
+                                                        //             .then(function(response) {
+                                                        //                 return response.json();
+                                                        //             })
+                                                        //             .then(function(data) {
+                                                        //                 return data.rates['TRY'];
+                                                        //             })
+                                                        //     }
+                                                        //     let priceTRY = currentTRYxUSD()
+                                                        //
+                                                        //     if (isCurrency === price.node.name) {
+                                                        //         priceTRY.then(function(result) {
+                                                        //             currentPrice = result * price.node.options[0]
+                                                        //             console.log(currentPrice)
+                                                        //
+                                                        //         })
+                                                        //     }
+                                                        // } catch (e) {
+                                                        //     console.log(e)
+                                                        // }
+                                                        //
+                                                        //
+                                                        // return currentPrice
+
+                                                    } }) }
                                                 </div>
                                             </div>
                                             <div className={styles.item__btn}>
                                                 Call me
                                             </div>
                                         </div>
-                                    </Link>
                                     { matches && index % 7 === 0 ? <div className={styles.item__gallery}>
                                             <Swiper
                                                 spaceBetween={0}

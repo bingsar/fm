@@ -3,14 +3,14 @@ import {gql, useQuery} from "@apollo/client";
 
 const AppContext = createContext({
     stages: [],
-    ctxCountry: '',
+    ctxCountry: [0],
     setCtxCountry: () => {}
 });
 
 export function AppWrapper({ children }) {
 
     const [stages, setStages] = useState([]);
-    const [ctxCountry, setCtxCountry] = useState([])
+    const [ctxCountry, setCtxCountry] = useState([34])
 
     const GET_COUNTRY = gql`
         query getCountry {
