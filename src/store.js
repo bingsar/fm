@@ -36,7 +36,7 @@ export function AppWrapper({ children }) {
     }
 
     useEffect(() => {
-        setStages(data)
+        { data !== undefined ? setStages(data) : null})
     })
 
     const state = {
