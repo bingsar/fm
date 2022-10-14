@@ -41,7 +41,7 @@ export default function CatalogSlider({ data }) {
                 We handpicked for you the best-in-class private real estate properties in the market that combine high construction quality, the right location, and a high return on investment.
             </div>
             <div className={styles.labels}>
-                { productCategories.edges.map((category, index) => {
+                { productCategories?.edges?.map((category, index) => {
                     if (category.node.parentDatabaseId === propertyTypeCategory) {
                     return  <div key={index} className={isType[0] === category.node.databaseId ? `${styles.label} ${styles.label__picked}` :styles.label } onClick={() => typeHandler(category.node.databaseId)}>
                         { category.node.name }
@@ -61,8 +61,8 @@ export default function CatalogSlider({ data }) {
                 }}
                 id="catalog__swiper"
             >
-                { isType !== [] ? products.edges.map((item, index) => {
-                    return item.node.productCategories.edges.map((category) => {
+                { isType !== [] ? products?.edges?.map((item, index) => {
+                    return item.node.productCategories?.edges?.map((category) => {
                         if (category.node.databaseId === isType[0]) {
                             return <SwiperSlide key={index}>
                                 <Link href="/catalog">
