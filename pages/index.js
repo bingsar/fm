@@ -22,7 +22,7 @@ export default function Home({ images }) {
             <Hero />
             <MainPagePosts />
             <Mission />
-            <CatalogSlider data={ images }/>
+            <CatalogSlider data = { images }/>
         </main>
         <Footer />
     </div>
@@ -73,7 +73,10 @@ export async function getStaticProps() {
     const response = await client.query({
         query: GET_IMAGES
     })
-    const images = response?.data
+
+    let images
+
+    response?.data !== undefined ? images = response?.data : null
 
     return {
         props: {
