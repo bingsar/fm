@@ -11,18 +11,17 @@ import { client } from "../../lib/apollo";
 import { useQuery, gql } from "@apollo/client";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion } from "framer-motion";
+import CurrentPrice from "./currentPrice";
 
 import 'swiper/css';
 import "swiper/css/pagination";
 import styles from '/styles/catalogBlock.module.css'
 import arrow__black from "../../public/arrow__black.svg";
 import arrow__white from "../../public/arrow__white.svg";
-import {useEffect, useState, useContext, useRef} from "react";
+import { useEffect, useState } from "react";
 import useAppContext from "../../src/store";
-import {logMissingFieldErrors} from "@apollo/client/core/ObservableQuery";
 
 export default function CatalogBlock({ filter }) {
-    const price = useRef()
 
     const { ctxCountry, setCtxCountry } = useAppContext()
 
@@ -118,8 +117,8 @@ export default function CatalogBlock({ filter }) {
     function allBedroomsMore5(products) {
         let bedroomsMore = []
 
-        products.edges.map((bedrooms) => {
-            bedrooms.node.attributes.edges.map((bedroom) => {
+        products.edges?.map((bedrooms) => {
+            bedrooms.node.attributes.edges?.map((bedroom) => {
                 { bedroom.node.name === 'Bedrooms' && bedroom.node.options[0] >=5 && !bedroomsMore.includes(bedroom.node.options[0]) ? bedroomsMore.push(bedroom.node.options[0]) : null }
             })
         })
@@ -144,8 +143,8 @@ export default function CatalogBlock({ filter }) {
     function allBathroomsMore5(products) {
         let bathroomsMore = []
 
-        products.edges.map((bathrooms) => {
-            bathrooms.node.attributes.edges.map((bathroom) => {
+        products.edges?.map((bathrooms) => {
+            bathrooms.node.attributes.edges?.map((bathroom) => {
                 { bathroom.node.name === 'Bathrooms' && bathroom.node.options[0] >=5 && !bathroomsMore.includes(bathroom.node.options[0]) ? bathroomsMore.push(bathroom.node.options[0]) : null }
             })
         })
@@ -217,13 +216,6 @@ export default function CatalogBlock({ filter }) {
 
         setSqmQuery(maxSqmArray)
     }
-
-    // CURRENCY EXCHANGE
-    const [isCurrency, setIsCurrency] = useState('')
-    function handleCurrency(e) {
-        setIsCurrency(e.target.value)
-    }
-
 
 
     //REFETCH DATA
@@ -398,7 +390,7 @@ export default function CatalogBlock({ filter }) {
                             </div>
                             {isCountryListOpen ?
                                 <div className={styles.filter__list}>
-                                    { productCategories.edges.map((category, index) => {
+                                    { productCategories.edges?.map((category, index) => {
                                         if (category.node.parentDatabaseId === countryCategory) {
                                             return <div className={styles.filter__item} key={index} onClick={() => handleCountryCheck(category.node.databaseId)}>
                                                 <div className={styles.filter__name}>
@@ -473,7 +465,7 @@ export default function CatalogBlock({ filter }) {
                             </div>
                             { isTypeListOpen ?
                                 <div className={styles.filter__list}>
-                                    { productCategories.edges.map((category, index) => {
+                                    { productCategories.edges?.map((category, index) => {
                                         if (category.node.parentDatabaseId === propertyTypeCategory) {
                                             return <div className={styles.filter__item} key={index} onClick={() => handleTypeCheck(category.node.databaseId)}>
                                                 <div className={styles.filter__name}>
@@ -630,7 +622,7 @@ export default function CatalogBlock({ filter }) {
                             </div>
                             {isOutdoorListOpen ?
                                 <div className={styles.filter__list}>
-                                    { productCategories.edges.map((category, index) => {
+                                    { productCategories.edges?.map((category, index) => {
                                         if (category.node.parentDatabaseId === outdoorCategory) {
                                             return <div className={styles.filter__item} key={index} onClick={() => handleOutdoorCheck(category.node.databaseId)}>
                                                 <div className={styles.filter__name}>
@@ -710,7 +702,7 @@ export default function CatalogBlock({ filter }) {
                             </div>
                             {isCountryListOpen ?
                                 <div className={styles.filter__list}>
-                                    { productCategories.edges.map((category, index) => {
+                                    { productCategories.edges?.map((category, index) => {
                                         if (category.node.parentDatabaseId === countryCategory) {
                                             return <div className={styles.filter__item} key={index} onClick={() => handleCountryCheck(category.node.databaseId)}>
                                                 <div className={styles.filter__name}>
@@ -785,7 +777,7 @@ export default function CatalogBlock({ filter }) {
                             </div>
                             { isTypeListOpen ?
                                 <div className={styles.filter__list}>
-                                    { productCategories.edges.map((category, index) => {
+                                    { productCategories.edges?.map((category, index) => {
                                         if (category.node.parentDatabaseId === propertyTypeCategory) {
                                             return <div className={styles.filter__item} key={index} onClick={() => handleTypeCheck(category.node.databaseId)}>
                                                 <div className={styles.filter__name}>
@@ -943,7 +935,7 @@ export default function CatalogBlock({ filter }) {
                             </div>
                             {isOutdoorListOpen ?
                                 <div className={styles.filter__list}>
-                                    { productCategories.edges.map((category, index) => {
+                                    { productCategories.edges?.map((category, index) => {
                                         if (category.node.parentDatabaseId === outdoorCategory) {
                                             return <div className={styles.filter__item} key={index} onClick={() => handleOutdoorCheck(category.node.databaseId)}>
                                                 <div className={styles.filter__name}>
@@ -965,7 +957,7 @@ export default function CatalogBlock({ filter }) {
             </div>
         </>;
     }
-    if (!data?.products.edges.length) {
+    if (!data?.products.edges?.length) {
         return <>
             <div className={styles.hero__breadcrumbs}>
                 <Link href="/"><a className="link">Home</a></Link>/ Estate Catalog.
@@ -1022,7 +1014,7 @@ export default function CatalogBlock({ filter }) {
                             </div>
                             {isCountryListOpen ?
                                 <div className={styles.filter__list}>
-                                    { productCategories.edges.map((category, index) => {
+                                    { productCategories.edges?.map((category, index) => {
                                         if (category.node.parentDatabaseId === countryCategory) {
                                             return <div className={styles.filter__item} key={index} onClick={() => handleCountryCheck(category.node.databaseId)}>
                                                 <div className={styles.filter__name}>
@@ -1097,7 +1089,7 @@ export default function CatalogBlock({ filter }) {
                             </div>
                             { isTypeListOpen ?
                                 <div className={styles.filter__list}>
-                                    { productCategories.edges.map((category, index) => {
+                                    { productCategories.edges?.map((category, index) => {
                                         if (category.node.parentDatabaseId === propertyTypeCategory) {
                                             return <div className={styles.filter__item} key={index} onClick={() => handleTypeCheck(category.node.databaseId)}>
                                                 <div className={styles.filter__name}>
@@ -1255,7 +1247,7 @@ export default function CatalogBlock({ filter }) {
                             </div>
                             {isOutdoorListOpen ?
                                 <div className={styles.filter__list}>
-                                    { productCategories.edges.map((category, index) => {
+                                    { productCategories.edges?.map((category, index) => {
                                         if (category.node.parentDatabaseId === outdoorCategory) {
                                             return <div className={styles.filter__item} key={index} onClick={() => handleOutdoorCheck(category.node.databaseId)}>
                                                 <div className={styles.filter__name}>
@@ -1278,7 +1270,7 @@ export default function CatalogBlock({ filter }) {
         </>
     }
 
-    const productItems = data.products.edges.map((edge) => edge.node);
+    const productItems = data.products.edges?.map((edge) => edge.node);
     const haveMoreProducts = Boolean(data?.products?.pageInfo?.hasNextPage);
 
     return (
@@ -1334,14 +1326,14 @@ export default function CatalogBlock({ filter }) {
                                                         { name }
                                                     </div>
                                                     <div className={styles.item__property_type}>
-                                                        { productCategories.edges.map((category) => { if (category.node.parentDatabaseId === propertyTypeCategory) {return category.node.name}}) }
+                                                        { productCategories.edges?.map((category) => { if (category.node.parentDatabaseId === propertyTypeCategory) {return category.node.name}}) }
                                                     </div>
                                                     <div className={styles.item__country}>
                                                         <div className={styles.country__icon}>
                                                             <Image src={globus} />
                                                         </div>
                                                         <div className={styles.country}>
-                                                            { productCategories.edges.map((category) => { if (category.node.parentDatabaseId === countryCategory) {return category.node.name}})}
+                                                            { productCategories.edges?.map((category) => { if (category.node.parentDatabaseId === countryCategory) {return category.node.name}})}
                                                         </div>
                                                     </div>
                                                     <div className={styles.item__attributes}>
@@ -1350,12 +1342,12 @@ export default function CatalogBlock({ filter }) {
                                                                 <Image src={sqm} />
                                                             </div>
                                                             <div className={styles.sqm__value}>
-                                                                { attributes.edges.map((sqm) => { if (sqm.node.name === 'sqm') {return sqm.node.options[0]} }) } sqm
+                                                                { attributes.edges?.map((sqm) => { if (sqm.node.name === 'sqm') {return sqm.node.options[0]} }) } sqm
                                                             </div>
                                                         </div>
                                                         <div className={`${styles.bedrooms} ${styles.item__attribute}`}>
                                                             <div className={styles.bedrooms__value}>
-                                                                { attributes.edges.map((bedroom) => { if (bedroom.node.name === 'Bedrooms') {return bedroom.node.options[0]} }) }
+                                                                { attributes.edges?.map((bedroom) => { if (bedroom.node.name === 'Bedrooms') {return bedroom.node.options[0]} }) }
                                                             </div>
                                                             <div className={styles.bedrooms__icon}>
                                                                 { matches1440 ? 'Bedrooms' : <Image src={bedroom} />}
@@ -1363,7 +1355,7 @@ export default function CatalogBlock({ filter }) {
                                                         </div>
                                                         <div className={`${styles.bathrooms} ${styles.item__attribute}`}>
                                                             <div className={styles.bathrooms__value}>
-                                                                { attributes.edges.map((bathroom) => { if (bathroom.node.name === 'Bathrooms') {return bathroom.node.options[0]} }) }
+                                                                { attributes.edges?.map((bathroom) => { if (bathroom.node.name === 'Bathrooms') {return bathroom.node.options[0]} }) }
                                                             </div>
                                                             <div className={styles.bathrooms__icon}>
                                                                 { matches1440 ? 'Bathrooms' : <Image src={bathroom} />}
@@ -1372,48 +1364,10 @@ export default function CatalogBlock({ filter }) {
                                                     </div>
                                                 </div>
                                             </Link>
-                                            <div className={styles.price}>
-                                                <div className={styles.price__currency__wrap}>
-                                                    <select className={styles.price__currency} name="" id="" onChange={handleCurrency}>
-                                                        <option value="USD">USD</option>
-                                                        <option value="TRY">TRY</option>
-                                                        <option value="AED">AED</option>
-                                                    </select>
-                                                </div>
-                                                <div className={styles.price__value} ref={price}>
-                                                    { attributes.edges.map((price) => { if (price.node.name === 'Price') {
-                                                        // let currentPrice
-                                                        // try {
-                                                        //     function currentTRYxUSD() {
-                                                        //         return fetch('https://api.exchangerate.host/latest?base=USD&places=0&symbols=TRY&amount=1', {
-                                                        //             method: 'GET',
-                                                        //         })
-                                                        //             .then(function(response) {
-                                                        //                 return response.json();
-                                                        //             })
-                                                        //             .then(function(data) {
-                                                        //                 return data.rates['TRY'];
-                                                        //             })
-                                                        //     }
-                                                        //     let priceTRY = currentTRYxUSD()
-                                                        //
-                                                        //     if (isCurrency === price.node.name) {
-                                                        //         priceTRY.then(function(result) {
-                                                        //             currentPrice = result * price.node.options[0]
-                                                        //             console.log(currentPrice)
-                                                        //
-                                                        //         })
-                                                        //     }
-                                                        // } catch (e) {
-                                                        //     console.log(e)
-                                                        // }
-                                                        //
-                                                        //
-                                                        // return currentPrice
-
-                                                    } }) }
-                                                </div>
-                                            </div>
+                                            { attributes?.edges?.map((price, index) => {
+                                                let currentPrice = [price.node.options[0]]
+                                                return price.node.name === 'Price' && <CurrentPrice price={currentPrice} key={index}/>
+                                            })}
                                             <div className={styles.item__btn}>
                                                 Call me
                                             </div>
@@ -1432,7 +1386,7 @@ export default function CatalogBlock({ filter }) {
                                                 }}
                                                 className="item__swiper"
                                             >
-                                                { galleryImages.edges.map((slide, index) => {
+                                                { galleryImages.edges?.map((slide, index) => {
                                                     return <SwiperSlide key={index}>
                                                         <div className={styles.slide__image}>
                                                             <Image src={slide.node.mediaItemUrl} layout={"fill"}/>
@@ -1489,7 +1443,7 @@ export default function CatalogBlock({ filter }) {
                                 </div>
                                 {isCountryListOpen ?
                                     <div className={styles.filter__list}>
-                                        {productCategories.edges.map((category, index) => {
+                                        {productCategories.edges?.map((category, index) => {
                                             if (category.node.parentDatabaseId === countryCategory) {
                                                 return <div className={styles.filter__item} key={index}
                                                             onClick={() => handleCountryCheck(category.node.databaseId)}>
@@ -1582,7 +1536,7 @@ export default function CatalogBlock({ filter }) {
                                 </div>
                                 {isTypeListOpen ?
                                     <div className={styles.filter__list}>
-                                        {productCategories.edges.map((category, index) => {
+                                        {productCategories.edges?.map((category, index) => {
                                             if (category.node.parentDatabaseId === propertyTypeCategory) {
                                                 return <div className={styles.filter__item} key={index}
                                                             onClick={() => handleTypeCheck(category.node.databaseId)}>
@@ -1770,7 +1724,7 @@ export default function CatalogBlock({ filter }) {
                                 </div>
                                 {isOutdoorListOpen ?
                                     <div className={styles.filter__list}>
-                                        {productCategories.edges.map((category, index) => {
+                                        {productCategories.edges?.map((category, index) => {
                                             if (category.node.parentDatabaseId === outdoorCategory) {
                                                 return <div className={styles.filter__item} key={index}
                                                             onClick={() => handleOutdoorCheck(category.node.databaseId)}>
