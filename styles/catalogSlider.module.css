@@ -16,8 +16,8 @@
 .slide__image {
     position: relative;
     display: block;
-    width: 340px;
-    height: 260px;
+    width: 204px;
+    height: 173px;
     clip-path: url(#ellipse);
     z-index: 1;
     overflow: hidden;
@@ -38,20 +38,20 @@
 }
 .path__wrap svg {
     position: absolute;
-    width: 320px;
-    height: 260px;
+    width: 204px;
+    height: 173px;
 }
 .path__wrap text {
     position: relative;
     z-index: 20;
     fill: #FFF;
-    transform: translate(36px, 31px);
+    transform: translate(25px, 23px);
 }
 .pathCatalog {
     font-family: 'Fjalla One', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 84px;
     text-transform: uppercase;
     color: #FFF;
@@ -109,7 +109,7 @@
     position: relative;
     display: block;
     width: 100%;
-    max-width: 264px;
+    max-width: 306px;
     margin: 0 auto 30px;
     text-align: center;
 }
@@ -158,5 +158,19 @@
     .label {
         font-size: 20px;
         line-height: 20px;
+    }
+    .slide__image {
+        width: 340px;
+        height: 260px;
+    }
+    .path__wrap svg {
+        width: 320px;
+        height: 260px;
+    }
+    .path__wrap text {
+        transform: translate(36px, 31px);
+    }
+    .pathCatalog {
+        font-size: 20px;
     }
 }
