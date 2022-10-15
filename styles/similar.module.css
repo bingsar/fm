@@ -59,6 +59,8 @@
 .price {
     display: flex;
     align-items: center;
+    flex-direction: row-reverse;
+    justify-content: left;
     font-family: 'KoHo', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -68,6 +70,14 @@
     padding: 1px 0 3px 0;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
+}
+.price__currency {
+    border: none;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
 }
 .price__value {
     margin: 0 15px 0 0;
@@ -119,6 +129,9 @@
 .slide {
     cursor: pointer;
 }
+.callBtn {
+    display: none;
+}
 
 @media (min-width: 768px) {
     .similar {
@@ -139,12 +152,64 @@
         height: 19px;
     }
     .price {
+        flex-direction: unset;
+    }
+    .price {
         font-size: 20px;
         line-height: 20px;
         padding: 12px 0;
     }
+    .price__currency {
+        font-size: 20px;
+        line-height: 20px;
+    }
+    .price__value {
+        margin: 0 0 0 15px;
+    }
     .item__attribute {
         margin: 0 0 29px 0;
+    }
+    .callBtn {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #000;
+        width: 150px;
+        height: 40px;
+        border-radius: 40px;
+        cursor: pointer;
+        margin: 30px 0 0 0;
+    }
+    .callBtn__text {
+        font-family: 'KoHo', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: #FCFCFC;
+        margin: 0 0 0 16px;
+    }
+    .callBtn__icon {
+        width: 8px;
+        height: 8px;
+        background: #FFF;
+        border-radius: 50%;
+        margin: 0 16px 0 0;
+        transition: .3s ease-in-out;
+    }
+    .callBtn:hover .callBtn__icon {
+        transform: scale(3.5);
+    }
+    .callBtn:active .callBtn__text:after {
+        position: absolute;
+        right: 16px;
+        top: 8px;
+        width: 8px;
+        height: 8px;
+        z-index: 10;
+        content: url("data:image/svg+xml;charset=UTF-8, <svg width='11' height='11' viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0.292893 9.29289C-0.0976311 9.68342 -0.0976311 10.3166 0.292893 10.7071C0.683418 11.0976 1.31658 11.0976 1.70711 10.7071L0.292893 9.29289ZM11 1C11 0.447716 10.5523 3.00139e-07 10 7.21607e-07L1 5.10873e-07C0.447715 5.10873e-07 -3.8724e-07 0.447716 -3.8724e-07 1C-3.8724e-07 1.55229 0.447715 2 1 2L9 2L9 10C9 10.5523 9.44771 11 10 11C10.5523 11 11 10.5523 11 10L11 1ZM1.70711 10.7071L10.7071 1.70711L9.29289 0.292894L0.292893 9.29289L1.70711 10.7071Z' fill='black'/></svg>");
     }
 }
 

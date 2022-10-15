@@ -12,7 +12,10 @@ export default function AnyQuestions() {
                     <input className={styles.form__name} placeholder={"Name"} type="text"/>
                     <input className={styles.form__phone} placeholder={"Phone"} type="tel"/>
                     <button className={styles.btn}>
-                        call me
+                        <div className={styles.btn__text}>call me</div>
+                        <div className={styles.btn__icon}>
+
+                        </div>
                     </button>
                     <div className={styles.privacy}>
                         <input type="checkbox" className={styles.checkbox} required={true}/>

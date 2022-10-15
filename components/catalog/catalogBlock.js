@@ -26,7 +26,7 @@ export default function CatalogBlock({ filter }) {
     const { ctxCountry, setCtxCountry } = useAppContext()
 
     const [currency, setCurrency] = useState()
-    
+
     const { productCategories, products } = filter
 
     const [countriesId, setCountriesId] = useState([])
@@ -1332,14 +1332,14 @@ export default function CatalogBlock({ filter }) {
                                                         { name }
                                                     </div>
                                                     <div className={styles.item__property_type}>
-                                                        { productCategories.edges?.map((category) => { if (category.node.parentDatabaseId === propertyTypeCategory) {return category.node.name}}) }
+                                                        { productCategories.edges?.map((category) => { if (category.node.parentDatabaseId === propertyTypeCategory) { return <div className={styles.ifCategories}>{ category.node.name }</div> }}) }
                                                     </div>
                                                     <div className={styles.item__country}>
                                                         <div className={styles.country__icon}>
                                                             <Image src={globus} />
                                                         </div>
                                                         <div className={styles.country}>
-                                                            { productCategories.edges?.map((category) => { if (category.node.parentDatabaseId === countryCategory) {return category.node.name}})}
+                                                            { productCategories.edges?.map((category) => { if (category.node.parentDatabaseId === countryCategory) {return <div className={styles.ifCategories}>{ category.node.name }</div>}})}
                                                         </div>
                                                     </div>
                                                     <div className={styles.item__attributes}>
@@ -1374,7 +1374,12 @@ export default function CatalogBlock({ filter }) {
                                                 return price.node.name === 'Price' && <CurrentPrice price={[price.node.options[0]]} currency={handleCurrency} key={index}/>
                                             })}
                                             <div className={styles.item__btn}>
-                                                Call me
+                                                <div className={styles.btn__text}>
+                                                    call me
+                                                </div>
+                                                <div className={styles.btn__icon}>
+
+                                                </div>
                                             </div>
                                         </div>
                                     { matches && index % 7 === 0 ? <div className={styles.item__gallery}>
