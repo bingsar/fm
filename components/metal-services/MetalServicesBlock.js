@@ -7,7 +7,10 @@ import brokerage from '/public/brokerage.jpg'
 
 import styles from "/styles/metalServicesBlock.module.css"
 
+
 export default function MetalServicesBlock() {
+
+    
 
     const matches = useMediaQuery('(min-width:768px)');
 

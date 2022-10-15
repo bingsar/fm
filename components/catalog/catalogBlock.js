@@ -21,6 +21,7 @@ import arrow__white from "../../public/arrow__white.svg";
 import { useEffect, useState } from "react";
 import useAppContext from "../../src/store";
 
+
 export default function CatalogBlock({ filter }) {
 
     const { ctxCountry, setCtxCountry } = useAppContext()

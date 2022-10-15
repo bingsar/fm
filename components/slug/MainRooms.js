@@ -6,7 +6,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from "../../styles/specifications.module.css";
 import { useState } from "react";
 
+
 export default function MainRooms({ product }) {
+
+    
 
     const matches = useMediaQuery('(min-width: 768px)')
 

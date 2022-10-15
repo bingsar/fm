@@ -1,8 +1,3 @@
-import Image from "next/image";
-import minus from "../../public/minus.svg";
-import plus from "../../public/plus__thin.svg";
-import React, {useState} from "react";
-
 import styles from "../../styles/specifications.module.css";
 
 export default function Infrastructure({ product, data }) {

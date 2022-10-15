@@ -3,7 +3,11 @@ import map from '/public/map.jpg'
 
 import styles from '/styles/location.module.css'
 
+
 export default function Location() {
+
+    
+
     return (
         <div className={styles.location}>
             <div className={styles.title}>

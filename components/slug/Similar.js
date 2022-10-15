@@ -16,6 +16,7 @@ import bedroom from "../../public/bedroom.svg";
 import bathroom from "../../public/bathroom.svg";
 import {useState} from "react";
 
+
 export default function Similar({ product }) {
 
     const [currency, setCurrency] = useState()

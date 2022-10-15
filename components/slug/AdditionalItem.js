@@ -8,7 +8,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from '/styles/specifications.module.css'
 
 
+
 export default function AdditionalItem({ product, data }) {
+
+    
 
     const matches = useMediaQuery('(min-width: 768px)')
 

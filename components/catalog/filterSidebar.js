@@ -4,7 +4,10 @@ import arrow__black from '/public/arrow__black.svg'
 
 import styles from '/styles/filterSidebar.module.css'
 
+
 export default function FilterSidebar({ data }) {
+
+    
 
     const countryCategory = 31
     const { productCategories } = data

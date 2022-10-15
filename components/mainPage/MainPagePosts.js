@@ -7,9 +7,12 @@ import capital from '../../public/posts__img/capital.jpg'
 import realEstate from '../../public/posts__img/realestate.jpg'
 
 import styles from "../../styles/mainPagePosts.module.css"
-import InvestmentManagment from "../../pages/investment-managment";
+
 
 export default function MainPagePosts({ post }) {
+
+    
+
     return (
         <section className="container">
             <div className={styles.grid}>
@@ -19,7 +22,7 @@ export default function MainPagePosts({ post }) {
                 <div className={styles.items}>
                     <div className={styles.item}>
                         <div className={styles.item__image}>
-                            <Image src={inv_management} layout={"responsive"} />
+                            <Image placeholder="blur"  src={inv_management} layout={"responsive"} />
                         </div>
                         <div className={styles.item__title}>
                             Investment management.
@@ -42,7 +45,7 @@ export default function MainPagePosts({ post }) {
                     </div>
                     <div className={styles.item}>
                         <div className={styles.item__image}>
-                            <Image src={family} layout={"responsive"} />
+                            <Image placeholder="blur"  src={family} layout={"responsive"} />
                         </div>
                         <div className={styles.item__title}>
                             Family office.
@@ -64,7 +67,7 @@ export default function MainPagePosts({ post }) {
                     </div>
                     <div className={styles.item}>
                         <div className={styles.item__image}>
-                            <Image src={metal} layout={"responsive"} />
+                            <Image placeholder="blur"  src={metal} layout={"responsive"} />
                         </div>
                         <div className={styles.item__title}>
                             Precious metal services.
@@ -86,7 +89,7 @@ export default function MainPagePosts({ post }) {
                     </div>
                     <div className={styles.item}>
                         <div className={styles.item__image}>
-                            <Image src={capital} layout={"responsive"} />
+                            <Image placeholder="blur"  src={capital} layout={"responsive"} />
                         </div>
                         <div className={styles.item__title}>
                             Capital migration.
@@ -108,7 +111,7 @@ export default function MainPagePosts({ post }) {
                     </div>
                     <div className={styles.item}>
                         <div className={styles.item__image}>
-                            <Image src={realEstate} layout={"responsive"} />
+                            <Image placeholder="blur"  src={realEstate} layout={"responsive"} />
                         </div>
                         <div className={styles.item__title}>
                             Real estate investment.

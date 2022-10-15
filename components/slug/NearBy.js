@@ -1,6 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {Navigation, Pagination, Thumbs} from 'swiper';
-import ReactHtmlParser from 'react-html-parser';
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import 'swiper/css'
@@ -9,7 +8,10 @@ import "swiper/css/navigation";
 import styles from '/styles/nearBy.module.css'
 import Image from "next/image";
 
+
 export default function NearBy({ product }) {
+
+    
 
     const matches = useMediaQuery('(min-width: 768px)')
     let slidesPerView

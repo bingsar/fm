@@ -7,8 +7,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from '../../styles/capitalBlock.module.css'
 import Link from "next/link";
 
+
 export default function CapitalBlock() {
 
+    
     const matches = useMediaQuery('(min-width:768px)');
 
     return (

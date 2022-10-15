@@ -33,6 +33,7 @@ import 'swiper/css/thumbs'
 import styles from '/styles/slug.module.css'
 
 
+
 export default function Slug({ product, data }) {
 
     const router = useRouter()

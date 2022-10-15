@@ -10,7 +10,9 @@ import {motion} from "framer-motion";
 import styles from '../../styles/mission.module.css'
 import {useState} from "react";
 
+
 export default function Mission() {
+
     const matches = useMediaQuery('(min-width:768px)');
 
     const [isOpenT, setIsOpenT] = useState(true)
@@ -72,7 +74,7 @@ export default function Mission() {
                             </div>
                             {isOpenT ? <div className={styles.item__text}>We understand that your values, needs, and goals are unique and create strategies with accurate attention to your aspirations.</div> : null}
                         </div>
-                        {isOpenT ? <div className={styles.item__image}><Image src={tailored}></Image></div> : null }
+                        {isOpenT ? <div className={styles.item__image}><Image placeholder="blur" src={tailored}></Image></div> : null }
                         <div className={styles.item}>
                             <div className={styles.item__title} onClick={() => openPHandler()}>
                                 <div className={styles.title__text}>
@@ -84,7 +86,7 @@ export default function Mission() {
                             </div>
                             {isOpenP ? <div className={styles.item__text}>We constantly keep an eye on new and emerging trends to offer you the best opportunities for growth, whether it comes to management of classic or digital asssets.</div> : null }
                         </div>
-                        {isOpenP ? <div className={styles.item__image}><Image src={progressive}></Image></div> : null }
+                        {isOpenP ? <div className={styles.item__image}><Image placeholder="blur" src={progressive}></Image></div> : null }
                         <div className={styles.item}>
                             <div className={styles.item__title} onClick={() => openTrHandler()}>
                                 <div className={styles.title__text}>
@@ -96,7 +98,7 @@ export default function Mission() {
                             </div>
                             {isOpenTr ? <div className={styles.item__text}>Knowing from inside and out is the key to make the right decision. We provide you with in-depth insights on all challenges and risks you may have with a strategy.</div> : null }
                         </div>
-                        {isOpenTr ? <div className={styles.item__image}><Image src={transparent}></Image></div> : null }
+                        {isOpenTr ? <div className={styles.item__image}><Image placeholder="blur" src={transparent}></Image></div> : null }
                     </div>
                     :
                     <div className={styles.items}>
@@ -136,9 +138,9 @@ export default function Mission() {
                             </div>
                         </div>
                         <div className={styles.images}>
-                            {isOpenT ? <div className={styles.item__image}><Image src={tailored}></Image></div> : null}
-                            {isOpenP ? <div className={styles.item__image}><Image src={progressive}></Image></div> : null }
-                            {isOpenTr ? <div className={styles.item__image}><Image src={transparent}></Image></div> : null}
+                            {isOpenT ? <div className={styles.item__image}><Image placeholder="blur" src={tailored}></Image></div> : null}
+                            {isOpenP ? <div className={styles.item__image}><Image placeholder="blur" src={progressive}></Image></div> : null }
+                            {isOpenTr ? <div className={styles.item__image}><Image placeholder="blur" src={transparent}></Image></div> : null}
                         </div>
                     </div>
                 }

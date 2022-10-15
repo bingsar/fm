@@ -8,7 +8,10 @@ import Link from "next/link";
 import styles from '/styles/aboutUs.module.css'
 
 
+
 export default function AboutUsBlock() {
+
+    
 
     const matches = useMediaQuery('(min-width:768px)');
 

@@ -1,8 +1,12 @@
 import Image from "next/image";
 import logo__white from "../public/logo__white.svg"
 import styles from '../styles/footer.module.css'
+import useAppContext from "../src/store";
 
-export default function Footer (){
+export default function Footer () {
+
+    
+
     return (
         <footer>
             <div className={styles.container}>
@@ -30,7 +34,14 @@ export default function Footer (){
                             <input className={styles.input__item} required type="email" placeholder={"E-mail"}/>
                             <input className={styles.input__item} type="text" placeholder={"Message"}/>
                             <div className={styles.btn__privacy_wrap}>
-                                <button className={styles.submit} type={"submit"}>Submit</button>
+                                <button className={styles.submit} type={"submit"}>
+                                    <div className={styles.submit__text}>
+                                        Submit
+                                    </div>
+                                    <div className={styles.submit__icon}>
+
+                                    </div>
+                                </button>
                                 <div className={styles.privacy}>
                                     <input type="checkbox" className={styles.checkbox} required={true}/>
                                     <div className={styles.text}>I have read the <span className={styles.link}>privacy policy</span></div>

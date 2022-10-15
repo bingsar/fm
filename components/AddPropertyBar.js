@@ -4,8 +4,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import styles from "../styles/addPropertyBar.module.css"
+import useAppContext from "../src/store";
 
 export default function AddPropertyBar() {
+
+    
+
     const [isClose, setIsClose] = useState(false)
 
     function handleClose() {

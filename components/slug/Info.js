@@ -5,7 +5,10 @@ import Link from "next/link";
 
 import styles from '/styles/info.module.css'
 
+
 export default function Info({ product }) {
+
+    
 
     if (product.downloads) {
         const { attributes, downloads } = product

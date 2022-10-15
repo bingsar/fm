@@ -4,7 +4,6 @@ import Footer from "../components/Footer";
 import CatalogBlock from "../components/catalog/catalogBlock";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import styles from '../styles/catalog.module.css'
 import {gql} from "@apollo/client";
 import {client} from "../lib/apollo";
 

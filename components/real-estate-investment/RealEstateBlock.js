@@ -8,7 +8,10 @@ import diversification2 from '/public/diversifications2.jpg'
 
 import styles from '../../styles/realEstateInvestment.module.css'
 
+
 export default function RealEstateBlock() {
+
+    
 
     const matches = useMediaQuery('(min-width:768px)');
 

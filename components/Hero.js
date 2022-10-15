@@ -4,8 +4,11 @@ import hero__mobile2x from "../public/hero__banner_mobile2x.jpg"
 import useMediaQuery from '@mui/material/useMediaQuery'
 
 import styles from "../styles/hero.module.css"
+import useAppContext from "../src/store";
 
 export default function Hero() {
+
+    
 
     const matches = useMediaQuery('(min-width:768px)');
 
@@ -13,7 +16,7 @@ export default function Hero() {
         <section className="container">
             <div className={styles.banner}>
                 <div className={styles.hero__img}>
-                    {matches ?   <Image  src={hero2x} priority={true} layout={"responsive"}/> : <Image  src={hero__mobile2x} layout={"responsive"}/>}
+                    {matches ?   <Image  src={hero2x} priority={true} placeholder="blur" layout={"responsive"}/> : <Image  src={hero__mobile2x} layout={"responsive"}/>}
                 </div>
                 <div className={styles.title}>
                     invest profitably in luxury real estate.

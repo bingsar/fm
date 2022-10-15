@@ -9,7 +9,7 @@ import useAppContext from "../src/store";
 
 export default function Navigation() {
 
-    const { setCtxCountry, ctxCountry } =  useAppContext()
+    const { setCtxCountry, ctxCountry} =  useAppContext()
 
     const handleChange = (e) => {
         setCtxCountry(e.target.value);

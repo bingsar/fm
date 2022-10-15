@@ -7,7 +7,11 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from '/styles/specifications.module.css'
 import {useEffect} from "react";
 
+
 export default function Area({ product, data }) {
+
+    
+
     const matches = useMediaQuery('(min-width: 768px)')
     const [isAreaOpen, setAreaOpen] = useState(false)
     const areaCategory = 94

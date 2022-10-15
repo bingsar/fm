@@ -10,7 +10,10 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useState } from "react";
 
+
 export default function CatalogSlider({ data }) {
+
+    
 
     const [isType, setIsType] = useState([36])
 
