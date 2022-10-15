@@ -22,7 +22,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import { Thumbs } from 'swiper';
 import { client } from "../../lib/apollo";
-import {gql, useQuery} from "@apollo/client";
+import { gql } from "@apollo/client";
+import { useRouter } from 'next/router'
+import CurrentSlugPrice from "../../components/slug/currentSlugPrice";
 
 import 'swiper/css'
 import "swiper/css/pagination";
@@ -33,6 +35,10 @@ import styles from '/styles/slug.module.css'
 
 export default function Slug({ product, data }) {
 
+    const router = useRouter()
+
+    const [value, setValue] = useState()
+    const [currency, setCurrency] = useState()
     const [isLoadMore, setLoadMore] = useState(false)
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const matches = useMediaQuery("(min-width: 768px)")
@@ -40,8 +46,12 @@ export default function Slug({ product, data }) {
     const propertyTypeCategory = 35
     const { id, name, image, galleryImages, productCategories, attributes, slug, purchaseNote, description, productTags } = product;
 
-    let extractedPrice
-
+    const handleValue = (e) => {
+        setValue(e)
+    }
+    const handleCurrency = (e) => {
+        setCurrency(e)
+    }
     function openMoreHandler() {
         setLoadMore(!isLoadMore)
     }
@@ -136,19 +146,9 @@ export default function Slug({ product, data }) {
                             </div>
                         </div>
                         <div className={styles.property__info}>
-                            <div className={styles.price__wrap}>
-                                <div className={styles.price}>
-                                    { attributes.edges.map((price) => {
-                                        if (price.node.name === 'Price') {
-                                            extractedPrice = price.node.options[0]
-                                            return price.node.options[0]
-                                        }
-                                    }) }
-                                </div>
-                                <div className={styles.currency}>
-                                    USD
-                                </div>
-                            </div>
+                            { attributes?.edges?.map((price, index) => {
+                                return price.node.name === 'Price' && <CurrentSlugPrice price={[price.node.options[0]]} currency={router.query.currency} changedValue={handleValue} changedCurrency={handleCurrency} key={index}/>
+                            })}
                             <div className={styles.square}>
                                 <div className={styles.square__title}>
                                     Square
@@ -166,7 +166,7 @@ export default function Slug({ product, data }) {
                                     Price per square meter
                                 </div>
                                 <div className={styles.sqmPerM__value}>
-                                    { attributes.edges.map((sqm) => { if (sqm.node.name === 'sqm') { return (extractedPrice / sqm.node.options[0]).toFixed(2)  } }) } USD
+                                    { attributes.edges.map((sqm) => { if (sqm.node.name === 'sqm') { return (value / sqm.node.options[0]).toFixed(0)  } }) } {currency}
                                 </div>
                             </div>
                             <div className={styles.floor}>

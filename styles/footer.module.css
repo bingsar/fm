@@ -54,6 +54,13 @@
     width: 100%;
     margin: 0 0 35px 0;
     padding: 0 0 6px 0;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #FCFCFC;
+    outline: none;
 }
 .input__item::placeholder {
     font-family: 'KoHo', sans-serif;
@@ -175,11 +182,15 @@
         justify-content: space-between;
         margin: 144px 0 178px 0;
     }
-    .input__item {
+    .input__item::placeholder {
         font-size: 18px;
         line-height: 23px;
+    }
+    .input__item {
         margin: 0 0 40px 0;
         padding: 0 0 19px 0;
+        font-size: 18px;
+        line-height: 23px;
     }
     .contact {
         width: 40%;
@@ -188,6 +199,10 @@
         margin: 255px 0 0 0;
         width: 60%;
         padding: 0 0 0 30px;
+    }
+    .text {
+        font-size: 14px;
+        line-height: 18px;
     }
     .copyright__wrap {
         display: flex;

@@ -1,13 +1,14 @@
 import styles from "../../styles/catalogBlock.module.css";
 import {useEffect, useState} from "react";
 
-export default function CurrentPrice({price}) {
+export default function CurrentPrice({price, currency}) {
 
     const [isCurrency, setIsCurrency] = useState('')
     const [rate, setRate] = useState()
 
     function handleCurrency(e) {
         setIsCurrency(e.target.value)
+        currency(e.target.value)
     }
 
     useEffect(() => {
@@ -32,7 +33,7 @@ export default function CurrentPrice({price}) {
                         <option value="AED">AED</option>
                     </select>
                 </div>
-                <div className={styles.price__value} ref={price}>
+                <div className={styles.price__value}>
                     {isCurrency === 'AED' ? price * rate.rates['AED'] : isCurrency === 'TRY' ? price * rate.rates['TRY'] : price }
                 </div>
             </div>

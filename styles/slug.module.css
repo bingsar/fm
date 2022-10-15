@@ -79,6 +79,13 @@
 }
 .currency {
     margin: 0 0 0 20px;
+    border: none;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #000000;
 }
 .square {
     display: flex;
@@ -217,18 +224,6 @@
     width: 23px;
     height: 23px;
 }
-.item__name {
-    font-family: 'KoHo', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    display: flex;
-    align-items: center;
-    text-transform: uppercase;
-    color: #000000;
-    margin: 0 0 0 12px;
-}
 .spec {
     margin: 0;
     padding: 0 0 52px 0;
@@ -262,6 +257,7 @@
     }
     .price__wrap {
         align-items: flex-end;
+        justify-content: space-between;
     }
     .price {
         font-size: 36px;
@@ -270,6 +266,9 @@
     .currency {
         font-size: 18px;
         line-height: 23px;
+        border: 1px solid #000;
+        border-radius: 3px;
+        width: 100px;
     }
     .square {
         font-size: 20px;

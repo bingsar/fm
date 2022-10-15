@@ -25,6 +25,8 @@ export default function CatalogBlock({ filter }) {
 
     const { ctxCountry, setCtxCountry } = useAppContext()
 
+    const [currency, setCurrency] = useState()
+    
     const { productCategories, products } = filter
 
     const [countriesId, setCountriesId] = useState([])
@@ -1313,11 +1315,15 @@ export default function CatalogBlock({ filter }) {
 
                             const { id, name, image, galleryImages, productCategories, attributes, slug } = product;
 
+                            const handleCurrency = (e) => {
+                                setCurrency(e)
+                            }
+
                             return (
                                 <div className={styles.item} key={id} data-id={index}>
 
                                         <div className={styles.item__info}>
-                                            <Link href={`/catalog/${slug}`}>
+                                            <Link href={{ pathname: `/catalog/${slug}`, query: { currency: currency } }}>
                                                 <div>
                                                     <div className={styles.catalog__main_image}>
                                                         <Image src={ image.mediaItemUrl } priority layout={"fill"}/>
@@ -1365,8 +1371,7 @@ export default function CatalogBlock({ filter }) {
                                                 </div>
                                             </Link>
                                             { attributes?.edges?.map((price, index) => {
-                                                let currentPrice = [price.node.options[0]]
-                                                return price.node.name === 'Price' && <CurrentPrice price={currentPrice} key={index}/>
+                                                return price.node.name === 'Price' && <CurrentPrice price={[price.node.options[0]]} currency={handleCurrency} key={index}/>
                                             })}
                                             <div className={styles.item__btn}>
                                                 Call me
