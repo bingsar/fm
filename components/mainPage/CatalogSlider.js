@@ -51,7 +51,7 @@ export default function CatalogSlider({ data }) {
                 { productCategories?.edges?.map((category, index) => {
                     if (category.node.parentDatabaseId === propertyTypeCategory) {
                     return  <div key={index} className={isType[0] === category.node.databaseId ? `${styles.label} ${styles.label__picked}` :styles.label } onClick={() => typeHandler(category.node.databaseId)}>
-                        { category.node.name }s
+                        { category.node.name }
                     </div>
                 }})}
             </div>
