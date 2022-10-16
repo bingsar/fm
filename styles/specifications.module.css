@@ -21,11 +21,11 @@
 }
 .desc__item_title_icon_minus {
     position: relative;
-    bottom: 10px;
+    top: -5px;
 }
 .desc__item_title_icon_plus {
     position: relative;
-    bottom: 3px;
+    top: 2px;
 }
 .item__mainRooms {
     display: flex;
