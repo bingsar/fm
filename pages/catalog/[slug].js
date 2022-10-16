@@ -45,7 +45,7 @@ export default function Slug({ product, data }) {
     const matches = useMediaQuery("(min-width: 768px)")
     const countryCategory = 31
     const propertyTypeCategory = 35
-    const { id, name, image, galleryImages, productCategories, attributes, slug, purchaseNote, description, productTags } = product;
+    const { id, name, image, galleryImages, productCategories, attributes, location, slug, purchaseNote, description, productTags } = product;
 
     const handleValue = (e) => {
         setValue(e)
@@ -60,7 +60,7 @@ export default function Slug({ product, data }) {
     return (
         <div className="container__wrap">
             <Head>
-                <title>F&M | { name }</title>
+                <title>Minkh Capital | { name }</title>
                 <link rel="icon" href="/logo_fm.svg"></link>
             </Head>
             <Header />
@@ -260,7 +260,7 @@ export default function Slug({ product, data }) {
                                     </div>
                                 </div>
                                 <Infrastructure product={product} data={data}/>
-                                <Location />
+                                    <Location location={[location.attitude]} />
                                 <NearBy product={product} />
                                 <Info product={product} />
                             </div>
@@ -363,6 +363,9 @@ export async function getStaticProps({ params }) {
     const GET_PRODUCT_BY_URI = gql`
         query getProductBySlug( $id: ID!) {
             simpleProduct(id: $id, idType: SLUG) {
+                location {
+                  attitude
+                }
                 attributes {
                   edges {
                     node {

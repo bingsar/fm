@@ -13,14 +13,13 @@ export default function MetalServices({ images }) {
     return (
         <div className="container__wrap">
             <Head>
-                <title>F&M | Precious Metal Services.</title>
+                <title>Minkh Capital | Precious Metal Services.</title>
                 <link rel="icon" href="logo_fm.svg"></link>
             </Head>
             <Header />
             <main>
-                <MetalServicesBlock data={ images } />
-                
-                <CatalogSlider />
+                <MetalServicesBlock />
+                <CatalogSlider data={ images } />
             </main>
             <Footer />
         </div>

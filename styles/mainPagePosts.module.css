@@ -1,6 +1,12 @@
 .grid {
     display: grid;
-    border-top: 1px solid #000;
+}
+.border {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    margin: 0 auto;
 }
 .title {
     font-family: 'Fjalla One', sans-serif;

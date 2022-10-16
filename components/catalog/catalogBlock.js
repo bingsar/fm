@@ -360,7 +360,7 @@ export default function CatalogBlock({ filter }) {
                 { matches ?
                     <div className={styles.hero__addCatalog__text}>
                         Add your properties into
-                        the F&M real estate catalog.
+                        the Minkh Capital real estate catalog.
                     </div>
                     :
                     null
@@ -675,7 +675,7 @@ export default function CatalogBlock({ filter }) {
                 { matches ?
                     <div className={styles.hero__addCatalog__text}>
                         Add your properties into
-                        the F&M real estate catalog.
+                        the Minkh Capital real estate catalog.
                     </div>
                     :
                     null
@@ -987,7 +987,7 @@ export default function CatalogBlock({ filter }) {
                 { matches ?
                     <div className={styles.hero__addCatalog__text}>
                         Add your properties into
-                        the F&M real estate catalog.
+                        the Minkh Capital real estate catalog.
                     </div>
                     :
                     null
@@ -1303,7 +1303,7 @@ export default function CatalogBlock({ filter }) {
                 { matches ?
                     <div className={styles.hero__addCatalog__text}>
                         Add your properties into
-                        the F&M real estate catalog.
+                        the Minkh Capital real estate catalog.
                     </div>
                     :
                     null

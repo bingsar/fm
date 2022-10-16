@@ -14,7 +14,7 @@ export default function Home({ images }) {
   return (
     <div className="container__wrap">
       <Head>
-        <title>F&M | Real Estate</title>
+        <title>Minkh Capital | Real Estate</title>
         <link rel="icon" href="logo_fm.svg"></link>
       </Head>
         <Header />

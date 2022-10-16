@@ -13,7 +13,7 @@ export default function CapitalMigration({ images }) {
     return (
         <div className="container__wrap">
             <Head>
-                <title>F&M | Capital Migration</title>
+                <title>Minkh Capital | Capital Migration</title>
                 <link rel="icon" href="logo_fm.svg"></link>
             </Head>
             <Header />

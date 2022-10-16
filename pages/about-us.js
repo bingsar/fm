@@ -11,13 +11,12 @@ export default function AboutUs({ images }) {
     return (
         <div className="container__wrap">
             <Head>
-                <title>F&M | About Us</title>
+                <title>Minkh Capital | About Us</title>
                 <link rel="icon" href="/logo_fm.svg"></link>
             </Head>
             <Header />
             <main>
                 <AboutUsBlock />
-                
                 <CatalogSlider data={ images } />
             </main>
             <Footer />

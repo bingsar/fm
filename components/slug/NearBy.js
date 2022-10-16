@@ -1,30 +1,25 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {Navigation, Pagination, Thumbs} from 'swiper';
 import useMediaQuery from "@mui/material/useMediaQuery";
+import NearBySlide from "./nearBySlide";
 
 import 'swiper/css'
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import styles from '/styles/nearBy.module.css'
-import Image from "next/image";
+
 
 
 export default function NearBy({ product }) {
 
-    
-
     const matches = useMediaQuery('(min-width: 768px)')
-    let slidesPerView
-    !matches ? slidesPerView = 1 : slidesPerView = 2
-    let nearByArray
     let htmlImage
     let htmlText
     let alt
     let path
-    let slide
+    let htmlValue
 
-    if (product.shortDescription) {
-        nearByArray = product.shortDescription.split(' ')
+    if (product?.shortDescription) {
         return (
             <div className={styles.near}>
                 <div className={styles.title}>
@@ -32,9 +27,10 @@ export default function NearBy({ product }) {
                 </div>
                 <div className={styles.slider}>
                     <Swiper
-                        slidesPerView={slidesPerView}
                         modules={[Pagination, Navigation]}
-                        spaceBetween={20}
+                        slidesPerView={"auto"}
+                        spaceBetween={8}
+                        autoHeight={true}
                         pagination={{
                             clickable: true,
                             renderBullet: function (index, className) {
@@ -44,18 +40,26 @@ export default function NearBy({ product }) {
                         navigation={true}
                         className="nearby__swiper"
                     >
-                        { nearByArray.map((item, index) => {
+                        { product?.shortDescription.split(' ').map((item) => {
+
                             path = item.includes('src')
+                            alt = item.includes('alt')
 
                             if (path) {
-                                path = item.replace('src="', '').replace('"', '')
-                                return <SwiperSlide key={index}>
-                                    <div className={styles.slide__image}>
-                                        <Image src={path} layout={"fill"}/>
-                                    </div>
-                                </SwiperSlide>
-                            }
+                            htmlImage = item.replace('src="', '').replace('"', '')
 
+                            htmlValue = `
+                                <div class="near__slide_image">
+                                    <img src=${ htmlImage } layout="fill"/>
+                                </div>
+                                `
+                            }
+                            if (alt) {
+                                htmlText = item.replace('alt="', '').replace('"', '')
+                                htmlValue = htmlValue + `<div class="near__alt">${htmlText}</div>`
+                                console.log(htmlValue)
+                                return <SwiperSlide><NearBySlide innerHtml={htmlValue} /></SwiperSlide>
+                            }
                         })}
 
                     </Swiper>

@@ -14,7 +14,7 @@ export default function Catalog({ data }) {
     return (
         <div className="container__wrap">
             <Head>
-                <title>F&M | Catalog</title>
+                <title>Minkh Capital | Catalog</title>
                 <link rel="icon" href="/logo_fm.svg"></link>
             </Head>
             <Header />

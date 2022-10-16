@@ -31,7 +31,7 @@ export default function RealEstateBlock() {
                 </div>
             </div>
             <div className={styles.subtitle}>
-                F&M connects you with the best-in-class private real estate funds that invest in multifamily properties for accredited investors seeking income or appreciation.
+                Minkh Capital connects you with the best-in-class private real estate funds that invest in multifamily properties for accredited investors seeking income or appreciation.
             </div>
             <div className={styles.items}>
                 <div className={styles.item}>

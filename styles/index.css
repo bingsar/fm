@@ -207,6 +207,28 @@ main {
     background: #000;
     opacity: 1;
 }
+.nearby__swiper .swiper-slide {
+    width: auto;
+}
+.near__slide_image {
+    position: relative;
+    width: auto;
+    height: 350px;
+}
+.near__slide_image img {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+}
+.near__alt {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #808080;
+    margin: 20px 0 0 0;
+}
 
 /* SIMILAR SWIPER */
 .similar__swiper {

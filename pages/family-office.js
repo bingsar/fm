@@ -12,7 +12,7 @@ export default function Family({ images }) {
     return (
         <div className="container__wrap">
             <Head>
-                <title>F&M | Family Office</title>
+                <title>Minkh Capital | Family Office</title>
                 <link rel="icon" href="logo_fm.svg"></link>
             </Head>
             <Header />

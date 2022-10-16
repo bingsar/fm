@@ -13,7 +13,7 @@ export default function InvestmentManagment({ images }) {
     return (
         <div className="container__wrap">
             <Head>
-                <title>F&M | Real Estate Investment</title>
+                <title>Minkh Capital | Real Estate Investment</title>
                 <link rel="icon" href="logo_fm.svg"></link>
             </Head>
             <Header />
