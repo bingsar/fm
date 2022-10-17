@@ -597,8 +597,8 @@
     }
     .item__btn:active .btn__text:after {
         position: absolute;
-        right: 16px;
-        top: 0;
+        right: 17px;
+        top: -1px;
         width: 8px;
         height: 8px;
         z-index: 10;
