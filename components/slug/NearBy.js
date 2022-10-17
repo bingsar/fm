@@ -57,7 +57,6 @@ export default function NearBy({ product }) {
                             if (alt) {
                                 htmlText = item.replace('alt="', '').replace('"', '')
                                 htmlValue = htmlValue + `<div class="near__alt">${htmlText}</div>`
-                                console.log(htmlValue)
                                 return <SwiperSlide><NearBySlide innerHtml={htmlValue} /></SwiperSlide>
                             }
                         })}

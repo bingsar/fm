@@ -260,7 +260,7 @@ export default function Slug({ product, data }) {
                                     </div>
                                 </div>
                                 <Infrastructure product={product} data={data}/>
-                                    <Location location={[location.attitude]} />
+                                    <Location location={[location.attitude]} description={[location.description]} />
                                 <NearBy product={product} />
                                 <Info product={product} />
                             </div>
@@ -365,6 +365,7 @@ export async function getStaticProps({ params }) {
             simpleProduct(id: $id, idType: SLUG) {
                 location {
                   attitude
+                  description
                 }
                 attributes {
                   edges {
