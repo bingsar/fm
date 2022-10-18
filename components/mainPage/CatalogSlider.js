@@ -9,11 +9,16 @@ import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 
 export default function CatalogSlider({ data }) {
 
-    
+    const { ref, inView, entry } = useInView({
+        /* Optional options */
+        triggerOnce: true,
+        threshold: 0,
+    });
 
     const [isType, setIsType] = useState([36])
 
@@ -44,8 +49,28 @@ export default function CatalogSlider({ data }) {
                     </clipPath>
                 </svg>
             }
-            <div className={styles.label__title}>
-                REAL ESTATE CATALOG.
+            <span
+                style={{
+                    width: inView ? "calc(100% - 60px)" : "0",
+                    transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+                }}
+                className={styles.border}
+            />
+            <div className={styles.title__wrap} ref={ref}>
+                <div className={styles.label__title}>
+                    <div
+                        style={{
+                            height: inView ? "0" : "100%",
+                            transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+                            transitionDelay: "1s"
+                        }}
+                        className={styles.title__overflow}
+                    />
+                    REAL ESTATE CATALOG.
+                </div>
+            </div>
+            <div className={styles}>
+
             </div>
             <div className={styles.label__subtitle}>
                 We handpicked for you the best-in-class private real estate properties in the market that combine high construction quality, the right location, and a high return on investment.

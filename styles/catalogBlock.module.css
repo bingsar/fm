@@ -485,7 +485,7 @@
         font-size: 18px;
         line-height: 23px;
         color: #808080;
-        max-width: 242px;
+        max-width: 265px;
         margin: 0 0 0 16px;
     }
     .wrapper {
@@ -562,6 +562,15 @@
         position: relative;
         display: block;
         height: 560px;
+    }
+    .slide__single_image {
+        position: relative;
+        display: block;
+        height: 350px;
+    }
+    .slide__single_image  img {
+        object-fit: cover;
+        object-position: center;
     }
     .item:not(:nth-child(7n+1)) .item__gallery {
         display: none;

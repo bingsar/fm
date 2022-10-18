@@ -5,13 +5,19 @@ import tailored from '../../public/tailored.jpg'
 import progressive from '../../public/progressive.jpg'
 import transparent from '../../public/transparent.jpg'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import {motion} from "framer-motion";
+import { useInView } from 'react-intersection-observer';
 
 import styles from '../../styles/mission.module.css'
 import {useState} from "react";
 
 
 export default function Mission() {
+
+    const { ref, inView, entry } = useInView({
+        /* Optional options */
+        triggerOnce: true,
+        threshold: 0,
+    });
 
     const matches = useMediaQuery('(min-width:768px)');
 
@@ -50,9 +56,36 @@ export default function Mission() {
 
     return (
         <section className="container">
-            <div className={styles.title}>
-                our mission is the constant growth
-                of your wealth.
+            <span
+                style={{
+                    width: inView ? "100%" : "0",
+                    transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+                }}
+                className={styles.border}
+            />
+            <div className={styles.title__wrap} ref={ref}>
+                <div className={styles.title}>
+                    <div
+                        style={{
+                            height: inView ? "0" : "100%",
+                            transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+                            transitionDelay: "1s"
+                        }}
+                        className={styles.title__overflow}
+                    />
+                    our mission is the constant&nbsp;
+                </div>
+                <div className={styles.title}>
+                    <div
+                        style={{
+                            height: inView ? "0" : "100%",
+                            transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+                            transitionDelay: "1s"
+                        }}
+                        className={styles.title__overflow}
+                    />
+                    growth of your wealth.
+                </div>
             </div>
             <div className={styles.text}>
                 We provide wealth management advice

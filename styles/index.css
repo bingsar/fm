@@ -62,6 +62,9 @@ main {
     text-transform: uppercase;
     color: #808080;
 }
+#catalog__swiper .swiper-pagination .swiper-pagination-bullet:hover {
+    background: rgba(0,0,0,.1);
+}
 #catalog__swiper .swiper-pagination .swiper-pagination-bullet .pagination__number {
     position: relative;
     top: 50%;
@@ -71,7 +74,7 @@ main {
     color: #FCFCFC !important;
     width: 35px;
     height: 35px;
-    background: #000;
+    background: #000 !important;
     opacity: 1;
 }
 
@@ -85,6 +88,20 @@ main {
     background: #000000;
     border-radius: 4px;
     height: 4px;
+    bottom: unset !important;
+}
+
+/* SINGLE ITEM SWIPER */
+.single__swiper .swiper-pagination {
+    bottom: unset !important;
+    top: 10px;
+}
+.single__swiper .swiper-pagination .swiper-pagination-bullet {
+    width: 44px;
+    background: #000000;
+    border-radius: 4px;
+    height: 4px;
+    margin: 3px;
     bottom: unset !important;
 }
 
@@ -136,6 +153,9 @@ main {
     text-transform: uppercase;
     color: #808080;
 }
+.gallery__swiper .swiper-pagination .swiper-pagination-bullet:hover {
+    background: rgba(0,0,0,.1);
+}
 .gallery__swiper .swiper-pagination .swiper-pagination-bullet .pagination__number {
     position: relative;
     top: 50%;
@@ -145,7 +165,7 @@ main {
     color: #FCFCFC !important;
     width: 35px;
     height: 35px;
-    background: #000;
+    background: #000 !important;
     opacity: 1;
 }
 
@@ -195,6 +215,9 @@ main {
     text-transform: uppercase;
     color: #808080;
 }
+.nearby__swiper .swiper-pagination .swiper-pagination-bullet:hover {
+    background: rgba(0,0,0,.1);
+}
 .nearby__swiper .swiper-pagination .swiper-pagination-bullet .pagination__number {
     position: relative;
     top: 50%;
@@ -204,7 +227,7 @@ main {
     color: #FCFCFC !important;
     width: 35px;
     height: 35px;
-    background: #000;
+    background: #000 !important;
     opacity: 1;
 }
 .nearby__swiper .swiper-slide {
@@ -276,6 +299,10 @@ main {
     text-transform: uppercase;
     color: #808080;
 }
+.similar__swiper .swiper-pagination .swiper-pagination-bullet:hover {
+    background: rgba(0,0,0,.1);
+}
+
 .similar__swiper .swiper-pagination .swiper-pagination-bullet .pagination__number {
     position: relative;
     top: 50%;
@@ -285,7 +312,7 @@ main {
     color: #FCFCFC !important;
     width: 35px;
     height: 35px;
-    background: #000;
+    background: #000 !important;
     opacity: 1;
 }
 

@@ -69,16 +69,24 @@ export default function Similar({ product }) {
                                             <div className={styles.similar__title}>
                                                 { similar.node.name }
                                             </div>
-                                            <div className={styles.similar__type}>
-                                                { similar.node.productCategories.edges.map((type) => { if (type.node.parentDatabaseId === propertyTypeCategory) { return type.node.name }}) }
+                                            <div>
+                                                { similar.node.productCategories.edges.map((type) => { if (type.node.parentDatabaseId === propertyTypeCategory) {
+                                                    return <div className={styles.similar__type}>
+                                                        { type.node.name }
+                                                    </div>
+                                                }}) }
                                             </div>
-                                            <div className={styles.item__country}>
-                                                <div className={styles.country__icon}>
-                                                    <Image src={globus} />
-                                                </div>
-                                                <div className={styles.country}>
-                                                    { similar.node.productCategories.edges.map((country) => { if (country.node.parentDatabaseId === countryCategory) { return country.node.name }}) }
-                                                </div>
+                                            <div>
+                                                { similar.node.productCategories.edges.map((country) => { if (country.node.parentDatabaseId === countryCategory) {
+                                                    return <div className={styles.item__country}>
+                                                        <div className={styles.country__icon}>
+                                                            <Image src={globus} />
+                                                        </div>
+                                                        <div className={styles.country}>
+                                                            { country.node.name }
+                                                        </div>
+                                                    </div>
+                                                }}) }
                                             </div>
                                             {matches490 ?
                                                 <div className={styles.item__attributes}>

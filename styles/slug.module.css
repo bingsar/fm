@@ -334,8 +334,16 @@
         line-height: 26px;
         color: #000;
     }
+    .property__address_icon {
+        position: relative;
+        top: 2px;
+    }
     .property__address_icon img {
         filter: none;
+    }
+    .property__type_icon {
+        position: relative;
+        top: 3px;
     }
     .property__type_icon img {
         filter: none;

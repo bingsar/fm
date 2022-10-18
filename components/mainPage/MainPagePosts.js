@@ -5,26 +5,29 @@ import family from '../../public/posts__img/family.jpg'
 import metal from '../../public/posts__img/metal.jpg'
 import capital from '../../public/posts__img/capital.jpg'
 import realEstate from '../../public/posts__img/realestate.jpg'
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import {useEffect, useRef, useState} from "react";
+import { useInView } from 'react-intersection-observer';
 
 import styles from "../../styles/mainPagePosts.module.css"
 import useAppContext from "../../src/store";
 
 
 
+
 export default function MainPagePosts({ post }) {
-    const ref = useRef(null)
-    const isInView = useInView(ref)
+
+
+    const { ref, inView, entry } = useInView({
+        /* Optional options */
+        triggerOnce: true,
+        threshold: 0,
+    });
+
 
     const matches = useMediaQuery('(min-width: 768px)')
     const { showAnimation, setShowAnimation } =  useAppContext()
     const noAnimation = {}
-
-    useEffect(() => {
-        console.log("Element is in view: ", isInView)
-    }, [isInView])
 
     const container = {
         start: { y: 1000 },
@@ -40,26 +43,53 @@ export default function MainPagePosts({ post }) {
         setShowAnimation(false)
     }
 
+
+
     if (matches) {
         return (
             <motion.section
+                ref={ref}
                 variants={ container }
                 initial={ showAnimation ? "start" : "finish"}
                 animate="finish"
                 onAnimationComplete={onComplete}
                 className="container"
             >
-                <motion.span
+                <span
                     style={{
-                        width: isInView? "100%" : "0",
-                        transition: { duration: 1 },
+                        width: inView ? "100%" : "0",
+                        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
                     }}
-                    onAnimationComplete = { onComplete }
                     className={styles.border}
                 />
-                <motion.div className={styles.grid}>
-                    <div ref={ref} className={styles.title}>
-                        what we do?
+                <div className={styles.grid}>
+                    <div className={styles.title__wrap} ref={ref}>
+                        <div
+                            className={styles.title}
+                        >
+                            <div
+                                style={{
+                                    height: inView ? "0" : "100%",
+                                    transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+                                    transitionDelay: "1s"
+                                }}
+                                className={styles.title__overflow}
+                            />
+                            what
+                        </div>
+                        <div
+                            className={styles.title}
+                        >
+                            <div
+                                style={{
+                                    height: inView ? "0" : "100%",
+                                    transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+                                    transitionDelay: "1s"
+                                }}
+                                className={styles.title__overflow}
+                            />
+                            we do?
+                        </div>
                     </div>
                     <div className={styles.items}>
                         <div className={styles.item}>
@@ -173,7 +203,7 @@ export default function MainPagePosts({ post }) {
                             </Link>
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </motion.section>
         )
     } else {
@@ -181,8 +211,13 @@ export default function MainPagePosts({ post }) {
             <section className="container">
                 <motion.span className={styles.border}/>
                 <div className={styles.grid}>
-                    <div className={styles.title}>
-                        what we do?
+                    <div className={styles.title__wrap}>
+                        <div ref={ref} className={styles.title}>
+                            what&nbsp;
+                        </div>
+                        <div className={styles.title}>
+                            we do?
+                        </div>
                     </div>
                     <div className={styles.items}>
                         <div className={styles.item}>
@@ -301,3 +336,4 @@ export default function MainPagePosts({ post }) {
         )
     }
 }
+

@@ -9,6 +9,7 @@
     margin: 0 auto;
 }
 .title {
+    display: inline-block;
     font-family: 'Fjalla One', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -16,6 +17,9 @@
     line-height: 34px;
     text-transform: uppercase;
     color: #000000;
+
+}
+.title__wrap {
     margin: 8px 0 24px 0;
 }
 .item {
@@ -70,9 +74,18 @@
     .grid {
         grid-template-columns: 320px 1fr;
     }
+    .title__overflow {
+        position: absolute;
+        display: block;
+        background: #FFFFFF;
+        width: 100%;
+        height: 100%;
+    }
     .title {
+        position: relative;
+        display: block;
         font-size: 110px;
-        line-height: 110px;
+        line-height: 113px;
     }
     .item__title {
         font-size: 30px;

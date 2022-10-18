@@ -34,6 +34,9 @@
     color: #808080;
     margin:  0 0 6px 0;
 }
+.similar__type:not(:nth-child(1)) {
+    display: none;
+}
 .slide__image img {
     object-fit: cover;
     object-position: left;
@@ -42,6 +45,9 @@
     display: flex;
     align-items: center;
     margin: 0 0 10px 0;
+}
+.item__country:not(:nth-child(1)) {
+    display: none;
 }
 .country__icon {
     width: 16px;

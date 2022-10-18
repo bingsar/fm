@@ -1326,9 +1326,39 @@ export default function CatalogBlock({ filter }) {
                                         <div className={styles.item__info}>
                                             <Link href={{ pathname: `/catalog/${slug}`, query: { currency: currency } }}>
                                                 <div>
-                                                    <div className={styles.catalog__main_image}>
-                                                        <Image src={ image.mediaItemUrl } priority layout={"fill"}/>
-                                                    </div>
+                                                    { index % 7 !== 0 ?
+                                                        <Swiper
+                                                            spaceBetween={0}
+                                                            slidesPerView={"auto"}
+                                                            loop={false}
+                                                            modules={[Pagination]}
+                                                            pagination={{
+                                                                clickable: true,
+                                                                renderBullet: function(index, className) {
+                                                                    return '<div class="' + className + '">' + '</div>';
+                                                                }
+                                                            }}
+                                                            className="single__swiper"
+                                                        >
+                                                            <SwiperSlide>
+                                                                <div className={styles.slide__single_image}>
+                                                                    <Image src={image.mediaItemUrl} layout={"fill"}/>
+                                                                </div>
+                                                            </SwiperSlide>
+                                                            { galleryImages.edges?.map((slide, index) => {
+                                                                return <SwiperSlide key={index}>
+                                                                    <div className={styles.slide__single_image}>
+                                                                        <Image src={slide.node.mediaItemUrl} layout={"fill"}/>
+                                                                    </div>
+                                                                </SwiperSlide>
+                                                            }) }
+                                                        </Swiper>
+                                                    :
+                                                        <div className={styles.catalog__main_image}>
+                                                            <Image src={ image.mediaItemUrl } priority layout={"fill"}/>
+                                                        </div>
+                                                    }
+
                                                     <div className={styles.item__title}>
                                                         { name }
                                                     </div>
