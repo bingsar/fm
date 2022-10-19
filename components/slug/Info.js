@@ -14,6 +14,8 @@ export default function Info({ product }) {
         const { attributes, downloads } = product
         let document = downloads.map((file) => { if (file.name === 'Document') { return file.file }})
         let presentation = downloads.map((file) => { if (file.name === 'Presentation') { return file.file }})
+        let owner = downloads.map((file) => { if (file.name === 'Owner') { return file.file }})
+        let buyer = downloads.map((file) => { if (file.name === 'Buyer') { return file.file }})
 
         return (
             <div className={styles.info}>
@@ -61,12 +63,12 @@ export default function Info({ product }) {
                     </div>
                     <div className={styles.column}>
                         <div className={styles.column__item}>
-                            <div className={styles.column__text}>
+                            <div className={`${styles.column__text} ${styles.disabled}`}>
                                 Owner
                             </div>
                         </div>
                         <div className={styles.column__item}>
-                            <div className={styles.column__text}>
+                            <div className={`${styles.column__text} ${styles.disabled}`}>
                                 Buyer
                             </div>
                         </div>

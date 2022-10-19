@@ -5,11 +5,15 @@ const AppContext = createContext({
     stages: [],
     ctxCountry: [0],
     showAnimation: true,
+    isClose: false,
     setCtxCountry: () => {},
-    setShowAnimation: () => {}
+    setShowAnimation: () => {},
+    setIsClose: () => {},
 });
 
 export function AppWrapper({ children }) {
+
+    const [isClose, setIsClose] = useState(false)
     const [stages, setStages] = useState([]);
     const [ctxCountry, setCtxCountry] = useState([34])
     const [showAnimation, setShowAnimation] = useState(true)
@@ -44,13 +48,15 @@ export function AppWrapper({ children }) {
     const state = {
         stages,
         ctxCountry,
+        isClose,
         setCtxCountry,
         showAnimation,
-        setShowAnimation
+        setShowAnimation,
+        setIsClose,
     };
 
     return (
-        <AppContext.Provider value={{state, ctxCountry, setCtxCountry, showAnimation, setShowAnimation }} >
+        <AppContext.Provider value={{state, ctxCountry, setCtxCountry, showAnimation, setShowAnimation, setIsClose, isClose }} >
             {children}
         </AppContext.Provider>
     );

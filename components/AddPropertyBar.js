@@ -9,9 +9,12 @@ import useAppContext from "../src/store";
 
 export default function AddPropertyBar() {
 
+    const [isHovered, setHovered] = useState(false)
+
     const matches = useMediaQuery('(min-width: 768px)')
 
-    const { showAnimation, setShowAnimation } =  useAppContext()
+    const { showAnimation, setShowAnimation, setIsClose, isClose } =  useAppContext()
+
     const container = {
         start: { opacity: 0 },
         finish: {
@@ -22,8 +25,6 @@ export default function AddPropertyBar() {
             }
         },
     }
-
-    const [isClose, setIsClose] = useState(false)
 
     function handleClose() {
         setIsClose(true)
@@ -48,7 +49,10 @@ export default function AddPropertyBar() {
                         <div className={styles.bar}>
                             <div className={styles.plus__btn}>
                                 <div className={styles.plus__icon}>
-                                    <Image src={plus} />
+                                    <div className={styles.icon}>
+                                        <span className={styles.h}></span>
+                                        <span className={styles.v}></span>
+                                    </div>
                                 </div>
                                 <div className={styles.text}>
                                     Submit to add your properties into the Minkh Capital real estate catalog.

@@ -1346,11 +1346,13 @@ export default function CatalogBlock({ filter }) {
                                                                 </div>
                                                             </SwiperSlide>
                                                             { galleryImages.edges?.map((slide, index) => {
+                                                                if (index < 2) {
                                                                 return <SwiperSlide key={index}>
                                                                     <div className={styles.slide__single_image}>
                                                                         <Image src={slide.node.mediaItemUrl} layout={"fill"}/>
                                                                     </div>
                                                                 </SwiperSlide>
+                                                                }
                                                             }) }
                                                         </Swiper>
                                                     :
@@ -1451,6 +1453,7 @@ export default function CatalogBlock({ filter }) {
                                 event.preventDefault();
                                 fetchMore({ variables: { after: data.products.pageInfo.endCursor }});
                             }}
+                            className={styles.show__form}
                         >
                             <button className={styles.items__more_btn} type="submit" disabled={loading}>
                                 {loading ? "Loading..." : "Show more"}
