@@ -126,11 +126,6 @@ if (matches) {
                                         About us.
                                     </div>
                                 </Link>
-                                <Link href="/contact">
-                                    <div className={styles.menu__item}>
-                                        Contact us
-                                    </div>
-                                </Link>
                             </div>
                         </div>
                     </>
@@ -217,11 +212,6 @@ if (matches) {
                                 <Link href="/about-us">
                                     <div className={styles.menu__item}>
                                         About us.
-                                    </div>
-                                </Link>
-                                <Link href="/contact">
-                                    <div className={styles.menu__item}>
-                                        Contact us
                                     </div>
                                 </Link>
                             </div>

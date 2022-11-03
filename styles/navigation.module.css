@@ -49,6 +49,11 @@
     color: #FCFCFC;
     margin: 0 0 15px 0;
     cursor: pointer;
+    transition: .5s ease-out;
+}
+.menu__item:hover {
+    margin-left: 29px;
+    transition: .5s ease-out;
 }
 .menu__close {
     position: absolute;
@@ -61,9 +66,6 @@
     line-height: 18px;
     color: #FCFCFC;
     cursor: pointer;
-}
-.menu__item:last-of-type {
-    margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -79,7 +81,7 @@
         font-size: 20px;
         line-height: 20px;
         top: 159px;
-        right: 289px;
+        right: 10px;
     }
     .top__menu {
         height: 109px;
@@ -176,6 +178,12 @@
     }
 }
 
+@media (min-width: 1000px) {
+    .menu__close {
+        right: 200px;
+    }
+}
+
 @media (min-width: 1440px) {
     .container {
         max-width: 1340px;
@@ -186,5 +194,8 @@
     .logo__wrap {
         width: 600px;
         height: 56px;
+    }
+    .menu__close {
+        right: 289px;
     }
 }
