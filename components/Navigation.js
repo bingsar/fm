@@ -65,7 +65,7 @@ if (matches) {
                             <select className={styles.select} onChange={handleChange}>
                                 { country?.edges.map((country, index) => {
                                     if (country.node.parentDatabaseId === countryCategoryId) {
-                                        return <option key={index} selected={ctxCountry===country.node.databaseId? ctxCountry : null} value={country.node.databaseId}>
+                                        return <option key={index} defaultValue={ctxCountry===country.node.databaseId? ctxCountry : null} value={country.node.databaseId}>
                                             {country.node.name}
                                         </option>
                                     }
@@ -153,7 +153,7 @@ if (matches) {
                             <select className={styles.select} onChange={handleChange}>
                                 { country?.edges.map((country, index) => {
                                     if (country.node.parentDatabaseId === countryCategoryId) {
-                                        return <option key={index} selected={ctxCountry===country.node.databaseId? ctxCountry : null} value={country.node.databaseId}>
+                                        return <option key={index} defaultValue={ctxCountry===country.node.databaseId? ctxCountry : null} value={country.node.databaseId}>
                                             {country.node.name}
                                         </option>
                                     }

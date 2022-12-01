@@ -11,13 +11,11 @@ function MyApp({ Component, pageProps }) {
 
 
   return (
-
-          <ApolloProvider client={client}>
-              <AppWrapper value={value}>
-                <Component {...pageProps} />
-              </AppWrapper>
-          </ApolloProvider>
-
+    <ApolloProvider client={client}>
+        <AppWrapper value={value}>
+            <Component {...pageProps} />
+        </AppWrapper>
+    </ApolloProvider>
     )
 }
 
