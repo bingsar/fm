@@ -224,7 +224,7 @@ export default function CatalogBlock({ filter }) {
     //REFETCH DATA
     useEffect(() => {
         setCountriesId([parseInt(ctxCountry)])
-    }, [ctxCountry])
+    }, [ctxCountry, setCtxCountry])
 
     useEffect(() => {
         { countriesId.length > 0 ? setCountryItemPicked(true) : setCountryItemPicked(false)}

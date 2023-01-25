@@ -15,7 +15,7 @@ export function AppWrapper({ children }) {
 
     const [isClose, setIsClose] = useState(false)
     const [stages, setStages] = useState([]);
-    const [ctxCountry, setCtxCountry] = useState([34])
+    const [ctxCountry, setCtxCountry] = useState([33])
     const [showAnimation, setShowAnimation] = useState(true)
 
     const GET_COUNTRY = gql`
