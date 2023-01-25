@@ -67,6 +67,14 @@
     color: #FCFCFC;
     cursor: pointer;
 }
+.link {
+    cursor: pointer;
+    display: block;
+}
+.link:hover {
+    opacity: .7;
+    transition: .3s ease-in;
+}
 
 @media (min-width: 768px) {
     .menu__items {
@@ -130,7 +138,9 @@
     }
     /*For IE*/
     .select::-ms-expand { display: none; }
-
+    .language {
+        width: 64px;
+    }
     .globus__icon {
         width: 31px;
         height: 31px;

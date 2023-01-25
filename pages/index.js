@@ -7,6 +7,7 @@ import CatalogSlider from "../components/mainPage/CatalogSlider";
 import Footer from "../components/Footer";
 import {gql} from "@apollo/client";
 import {client} from "../lib/apollo";
+import BitrixScript from "../components/bitrixScript";
 
 
 export default function Home({ images }) {

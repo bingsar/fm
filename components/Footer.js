@@ -63,7 +63,7 @@ export default function Footer () {
                         </div>
                     </div>
                     <div className={styles.copyright}>
-                        © 2022 Funds and Management
+                        © 2023 Funds and Management
                     </div>
                 </div>
             </div>

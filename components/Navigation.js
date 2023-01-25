@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from '/public/logo_fm.svg'
 import globus from '/public/globus.svg'
+import phone from '/public/phone.svg'
 import {useEffect, useState} from "react";
 import useAppContext from "../src/store";
 import { motion } from "framer-motion";
@@ -11,11 +12,14 @@ import styles from '../styles/navigation.module.css'
 
 export default function Navigation() {
 
-    const { setCtxCountry, ctxCountry, showAnimation, setShowAnimation} =  useAppContext()
+    const { setCtxCountry, ctxLanguage, setCtxLanguage, ctxCountry, showAnimation, setShowAnimation} =  useAppContext()
     const matches = useMediaQuery('(min-width: 768px)')
-    const handleChange = (e) => {
+    const handleCountryChange = (e) => {
         setCtxCountry(e.target.value);
-    };
+    }
+    const handleLanguageChange = (e) => {
+        setCtxLanguage(e.target.value);
+    }
     let country = useAppContext()?.state?.stages?.productCategories
     const [isOpen, setIsOpen] = useState(false)
     const countryCategoryId = 31
@@ -62,7 +66,7 @@ if (matches) {
                             <div className={styles.globus__icon}>
                                 <Image src={globus}/>
                             </div>
-                            <select className={styles.select} onChange={handleChange}>
+                            <select className={styles.select} onChange={handleCountryChange}>
                                 { country?.edges.map((country, index) => {
                                     if (country.node.parentDatabaseId === countryCategoryId) {
                                         return <option key={index} selected={ctxCountry===country.node.databaseId? ctxCountry : null} value={country.node.databaseId}>
@@ -81,6 +85,21 @@ if (matches) {
 
                                 </div>
                             </div>
+                        </Link>
+                        <div className={styles.country}>
+                            <select className={`${styles.select} ${styles.language}`} onChange={handleLanguageChange}>
+
+                                <option value='EN'>
+                                    EN
+                                </option>
+                                <option value='RU'>
+                                    RU
+                                </option>
+
+                            </select>
+                        </div>
+                        <Link href='tel:+74993253998'>
+                            <Image src={phone} alt='Phone Icon'  className={styles.link}/>
                         </Link>
                         <div className={styles.menu__btn} onClick={() => openHandler()}>
                             Menu
@@ -150,7 +169,7 @@ if (matches) {
                             <div className={styles.globus__icon}>
                                 <Image src={globus}/>
                             </div>
-                            <select className={styles.select} onChange={handleChange}>
+                            <select className={styles.select} onChange={handleCountryChange}>
                                 { country?.edges.map((country, index) => {
                                     if (country.node.parentDatabaseId === countryCategoryId) {
                                         return <option key={index} selected={ctxCountry===country.node.databaseId? ctxCountry : null} value={country.node.databaseId}>

@@ -11,7 +11,7 @@ export default function FilterSidebar({ data }) {
 
     const countryCategory = 31
     const { productCategories } = data
-    console.log(productCategories)
+
 
     function handleCountryCheck() {
 

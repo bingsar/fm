@@ -1,0 +1,133 @@
+.container {
+    position: relative;
+}
+.wrap {
+    position: fixed;
+    background: black;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000000000;
+}
+.inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    background: #FFF;
+    border-radius: 20px;
+}
+.content {
+    padding: 34px 48px 66px 99px;
+}
+.close {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 33px;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #808080;
+}
+.title {
+    display: block;
+    max-width: 602px;
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 90px;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 0 25px 0;
+}
+.subtitle {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #808080;
+    margin: 0 0 51px 0;
+}
+.list__title {
+    font-family: 'Fjalla One', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000;
+    margin: 0 0 25px 0;
+}
+.form__wrap {
+
+}
+.details {
+    display: flex;
+    justify-content: space-between;
+}
+.privacy {
+    position: relative;
+    top: 2px;
+    display: flex;
+    gap: 12px;
+    margin: 0 0 32px 0;
+}
+.checkbox__text {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #808080;
+}
+.checkbox__text span {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    text-decoration-line: underline;
+    color: #808080;
+}
+.inputs__wrap {
+    margin-bottom: 68px;
+}
+.input::placeholder {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
+}
+.input {
+    display: block;
+    outline: none;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #000000;
+    border-radius: 0;
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
+    padding: 0 0 20px 0;
+    margin: 0 0 24px 0;
+}
+.select {
+    font-family: 'KoHo', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #808080;
+    margin: 0 0 0 7px;
+}
